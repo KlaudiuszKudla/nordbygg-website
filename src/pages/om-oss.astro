@@ -1,15 +1,168 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { siteConfig } from '../data/siteConfig';
+import { path } from '../utils/paths';
+import DirectContactBanner from '../components/conversion/DirectContactBanner.astro';
+
 const pageTitle = `Om oss | ${siteConfig.companyName}`;
-const pageDescription = `Møt ${siteConfig.owner}, håndverker og daglig leder.`;
+const pageDescription = `Møt ${siteConfig.owner}, håndverker og daglig leder i Satisfaction med ${siteConfig.experienceYears} års erfaring i Oslo.`;
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
-  <section class="section-padding">
-    <div class="container">
-      <h1>Om Satisfaction</h1>
-      <p>Drives av Waldemar Kudla med 15 års erfaring i Oslo.</p>
+  <section class="section-padding om-oss-section">
+    <div class="container om-oss-grid">
+      <div class="om-oss-image-col">
+        <div class="om-oss-image-card">
+          <img
+            src={path('/images/waldemar.jpg')}
+            alt="Waldemar Kudla, daglig leder i Satisfaction"
+            class="om-oss-photo"
+            width="600"
+            height="500"
+          />
+          <div class="om-oss-badge">
+            <strong>{siteConfig.owner}</strong>
+            <span>Håndverker & daglig leder</span>
+            <span class="badge-exp">{siteConfig.experienceYears} års erfaring i Oslo</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="om-oss-copy">
+        <span class="eyebrow">Om Satisfaction</span>
+        <h1 class="page-title">Din personlige håndverker i Oslo</h1>
+        <p class="lead-text">
+          Satisfaction ledes av Waldemar Kudla, en erfaren håndverker med over 15 års praktisk bakgrunn
+          innen totalrenovering av bad, kjøkken, gulvlegging, maling og varierte monteringsoppdrag.
+        </p>
+        <p>
+          Vi tror på enkel og direkte kommunikasjon. Når du velger Satisfaction, forholder du deg til én person
+          fra første uforpliktende befaring til prosjektet står ferdig overlevert. Ingen fordyrende mellomledd
+          eller uklar ansvarsfordeling.
+        </p>
+        <p>
+          Ved større prosjekter som krever autoriserte rørlegger- og elektrikerarbeider, koordinerer vi
+          pålitelige fagpartnere slik at du slipper å styre logistikken selv.
+        </p>
+
+        <div class="om-oss-highlights">
+          <div class="highlight-item">
+            <span class="highlight-num">15+</span>
+            <span class="highlight-label">Års erfaring i bransjen</span>
+          </div>
+          <div class="highlight-item">
+            <span class="highlight-num">100%</span>
+            <span class="highlight-label">Fokus på finish og ryddighet</span>
+          </div>
+          <div class="highlight-item">
+            <span class="highlight-num">1</span>
+            <span class="highlight-label">Fast kontaktperson</span>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
+
+  <DirectContactBanner
+    heading="Har du et prosjekt på gang?"
+    subheading={`Ta direkte kontakt med Waldemar Kudla for en uforpliktende befaring i Oslo og omegn.`}
+  />
 </BaseLayout>
+
+<style>
+  .om-oss-section {
+    background-color: var(--bg-canvas);
+  }
+  .om-oss-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+  @media (min-width: 900px) {
+    .om-oss-grid {
+      grid-template-columns: 1fr 1.25fr;
+      gap: 4rem;
+    }
+  }
+  .om-oss-image-card {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    border: 1px solid var(--border-subtle);
+    background-color: var(--bg-dark);
+  }
+  .om-oss-photo {
+    width: 100%;
+    height: 440px;
+    object-fit: cover;
+    object-position: center 20%;
+    display: block;
+  }
+  .om-oss-badge {
+    position: absolute;
+    bottom: 1.25rem;
+    left: 1.25rem;
+    right: 1.25rem;
+    background-color: rgba(250, 248, 245, 0.96);
+    padding: 1rem 1.25rem;
+    border-radius: var(--radius-md);
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  }
+  .om-oss-badge strong {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    color: var(--text-main);
+  }
+  .om-oss-badge span {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+  }
+  .badge-exp {
+    font-size: 0.8rem !important;
+    font-weight: 700;
+    color: var(--accent-primary) !important;
+  }
+  .page-title {
+    font-size: clamp(2rem, 3.5vw, 2.75rem);
+    margin-bottom: 1.25rem;
+  }
+  .lead-text {
+    font-size: 1.125rem;
+    color: var(--text-main);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+  .om-oss-copy p {
+    font-size: 1rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+    margin-bottom: 1.25rem;
+  }
+  .om-oss-highlights {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-subtle);
+  }
+  .highlight-item {
+    display: flex;
+    flex-direction: column;
+  }
+  .highlight-num {
+    font-family: var(--font-heading);
+    font-size: 1.85rem;
+    font-weight: 800;
+    color: var(--accent-primary);
+  }
+  .highlight-label {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+  }
+</style>

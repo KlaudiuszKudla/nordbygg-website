@@ -5,6 +5,7 @@ const featuredProjects = [
   {
     title: 'Totalrenovering av bad og gang i klassisk bygård',
     slug: path('/prosjekter/bad-st-hanshaugen/'),
+    image: path('/images/bad.jpg'),
     location: 'St. Hanshaugen, Oslo',
     buildingType: 'Bygård fra 1898',
     duration: '4,5 uker',
@@ -14,6 +15,7 @@ const featuredProjects = [
   {
     title: 'Nytt kjøkken og fiskebensparkett i leilighet',
     slug: path('/prosjekter/kjokken-frogner/'),
+    image: path('/images/kjokken.jpg'),
     location: 'Frogner, Oslo',
     buildingType: 'Klassisk leilighet',
     duration: '3 uker',
@@ -36,15 +38,22 @@ const featuredProjects = [
     <div class="projects-grid">
       {featuredProjects.map((project) => (
         <article class="project-card">
-          <div class="project-meta-top">
-            <span>📍 {project.location}</span>
-            <span>⏱ {project.duration}</span>
+          <div class="project-image">
+            <a href={project.slug} tabindex="-1" aria-hidden="true">
+              <img src={project.image} alt={project.title} loading="lazy" width="500" height="280" />
+            </a>
           </div>
-          <h3 class="project-title">
-            <a href={project.slug}>{project.title}</a>
-          </h3>
-          <p class="project-building">{project.buildingType}</p>
-          <p class="project-summary">{project.summary}</p>
+          <div class="project-content">
+            <div class="project-meta-top">
+              <span>📍 {project.location}</span>
+              <span>⏱ {project.duration}</span>
+            </div>
+            <h3 class="project-title">
+              <a href={project.slug}>{project.title}</a>
+            </h3>
+            <p class="project-building">{project.buildingType}</p>
+            <p class="project-summary">{project.summary}</p>
+          </div>
         </article>
       ))}
     </div>
@@ -83,7 +92,40 @@ const featuredProjects = [
     background-color: var(--bg-card);
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius-md);
-    padding: 1.75rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .project-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-card);
+  }
+  .project-image {
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+    background-color: var(--bg-surface);
+  }
+  .project-image a {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  .project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  .project-card:hover .project-image img {
+    transform: scale(1.04);
+  }
+  .project-content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
   }
   .project-meta-top {
     display: flex;

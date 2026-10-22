@@ -1,11 +1,190 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { siteConfig } from '../../data/siteConfig';
+import { path } from '../../utils/paths';
+import DirectContactBanner from '../../components/conversion/DirectContactBanner.astro';
+
+const projects = [
+  {
+    title: 'Totalrenovering av bad og gang i klassisk bygård',
+    location: 'St. Hanshaugen, Oslo',
+    buildingType: 'Klassisk bygård',
+    duration: '4,5 uker',
+    image: path('/images/bad.jpg'),
+    summary: 'Riving, ny støp, membran, 60x60 fliser, montering av baderomsinnredning og armaturer.',
+    tags: ['Bad', 'Flislegging', 'Våtrom'],
+  },
+  {
+    title: 'Nytt kjøkken og fiskebensparkett i leilighet',
+    location: 'Frogner, Oslo',
+    buildingType: 'Klassisk leilighet',
+    duration: '3 uker',
+    image: path('/images/kjokken.jpg'),
+    summary: 'Avretting av undergulv, presis montering av kjøkkeninnredning, tilpasning av foringer og benkeplate.',
+    tags: ['Kjøkken', 'Gulvlegging', 'Montering'],
+  },
+  {
+    title: 'Oppretting av skjeve gulv og legging av 1-stavs eikeparkett',
+    location: 'Majorstuen, Oslo',
+    buildingType: 'Eldre bygård',
+    duration: '1 uke',
+    image: path('/images/gulv.jpg'),
+    summary: 'Flytsparkling og avretting av 75 m² gulvflate, trinnlydsisolering og legging av eikeparkett med nye gulvlister.',
+    tags: ['Gulvlegging', 'Avretting'],
+  },
+  {
+    title: 'Helsparkling, maling og listverk i 3-roms leilighet',
+    location: 'Grünerløkka, Oslo',
+    buildingType: 'Bygårdsleilighet',
+    duration: '1,5 uker',
+    image: path('/images/maling.jpg'),
+    summary: 'Helsparkling av gips- og murvegger, støvfri sliping og maling i tidsriktige farger samt nymalte dørkarmer.',
+    tags: ['Malerarbeid', 'Helsparkling'],
+  },
+  {
+    title: 'Plassbygd garderobeløsning og montering av innerdører',
+    location: 'Nordstrand, Oslo',
+    buildingType: 'Enebolig',
+    duration: '4 dager',
+    image: path('/images/montering.jpg'),
+    summary: 'Montering av skreddersydd skyvedørsgarderobe, tilpasning av foringer og utskifting av fem innerdører.',
+    tags: ['Montering', 'Garderobe', 'Dører'],
+  },
+];
 ---
 
-<BaseLayout title="Prosjekter" description="Utførte prosjekter">
-  <section class="section-padding">
+<BaseLayout title={`Utførte prosjekter | ${siteConfig.companyName}`} description="Se et utvalg av våre utførte prosjekter innen oppussing og montering i Oslo.">
+  <section class="section-padding projects-page-hero">
     <div class="container">
-      <h1>Utførte prosjekter</h1>
+      <span class="eyebrow">Referanser & Prosjekter</span>
+      <h1 class="page-title">Utvalgte prosjekter i Oslo</h1>
+      <p class="lead-text">
+        Her er et lite utvalg av utførte oppussings- og monteringsarbeider i Oslo, Bærum og omegn.
+        Hvert prosjekt er utført med fokus på nøyaktighet, ryddighet og god dialog underveis.
+      </p>
+
+      <div class="projects-list-grid">
+        {projects.map((project) => (
+          <article class="project-card">
+            <div class="project-img-wrapper">
+              <img src={project.image} alt={project.title} loading="lazy" width="500" height="300" />
+            </div>
+            <div class="project-info">
+              <div class="project-meta-top">
+                <span>📍 {project.location}</span>
+                <span>⏱ {project.duration}</span>
+              </div>
+              <h2 class="project-card-title">{project.title}</h2>
+              <p class="project-building">{project.buildingType}</p>
+              <p class="project-desc">{project.summary}</p>
+              <div class="project-tags">
+                {project.tags.map((tag) => (
+                  <span class="tag-pill">{tag}</span>
+                ))}
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
     </div>
   </section>
+
+  <DirectContactBanner
+    heading="Vil du ha lignende resultat hjemme hos deg?"
+    subheading="Ta kontakt for en uforpliktende prat og gratis befaring."
+  />
 </BaseLayout>
+
+<style>
+  .projects-page-hero {
+    background-color: var(--bg-canvas);
+  }
+  .page-title {
+    font-size: clamp(2rem, 3.5vw, 2.75rem);
+    margin-bottom: 1rem;
+  }
+  .lead-text {
+    font-size: 1.125rem;
+    color: var(--text-muted);
+    max-width: 65ch;
+    margin-bottom: 3rem;
+  }
+  .projects-list-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  @media (min-width: 768px) {
+    .projects-list-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  .project-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease;
+  }
+  .project-card:hover {
+    transform: translateY(-2px);
+  }
+  .project-img-wrapper {
+    width: 100%;
+    height: 240px;
+    overflow: hidden;
+    background-color: var(--bg-surface);
+  }
+  .project-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .project-info {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  .project-meta-top {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: var(--accent-trust);
+    margin-bottom: 0.5rem;
+  }
+  .project-card-title {
+    font-size: 1.25rem;
+    margin-bottom: 0.35rem;
+  }
+  .project-building {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 0.85rem;
+  }
+  .project-desc {
+    font-size: 0.9375rem;
+    color: var(--text-main);
+    line-height: 1.5;
+    margin-bottom: 1.25rem;
+    flex: 1;
+  }
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .tag-pill {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.2rem 0.55rem;
+    border-radius: var(--radius-sm);
+    color: var(--text-muted);
+  }
+</style>
