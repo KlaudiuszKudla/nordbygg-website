@@ -13,7 +13,7 @@ const mailtoHref = buildSmartMailto();
         ★ {siteConfig.experienceYears} års erfaring med oppussing i Oslo og omegn
       </span>
       <h1 class="hero-title">
-        Oppussing og wykończenia av bolig i Oslo
+        Oppussing og håndverkstjenester i Oslo
       </h1>
       <p class="hero-lead">
         Vår lange erfaring innen håndverkstjenester gjør at vi kan hjelpe deg med alt fra
@@ -22,7 +22,7 @@ const mailtoHref = buildSmartMailto();
 
       <div class="hero-cta-group">
         <a href={`tel:${siteConfig.phoneHref}`} class="btn-primary tabular-nums">
-          📞 Ring Waldemar: {siteConfig.phoneDisplay}
+          📞 Ring {siteConfig.owner.split(' ')[0]}: {siteConfig.phoneDisplay}
         </a>
         <a href={mailtoHref} class="btn-secondary">
           ✉️ Avtal gratis befaring (E-post)
@@ -41,7 +41,7 @@ const mailtoHref = buildSmartMailto();
         <div class="craftsman-image-wrapper">
           <img
             src={path('/images/waldemar.jpg')}
-            alt="Waldemar Kudla, håndverker og daglig leder i Satisfaction"
+            alt={`${siteConfig.owner}, håndverker og daglig leder i ${siteConfig.companyName}`}
             class="craftsman-photo"
             loading="eager"
             width="600"
@@ -55,7 +55,7 @@ const mailtoHref = buildSmartMailto();
         </div>
         <div class="craftsman-quote">
           <p>
-            «Når du engasjerer Satisfaction, forholder du deg direkte til meg fra første befaring til ferdigstilt
+            «Når du engasjerer {siteConfig.companyName}, forholder du deg direkte til meg fra første befaring til ferdigstilt
             prosjekt. Vi holder arbeidsplassen ryddig og leverer til avtalt tid.»
           </p>
           <span class="quote-author">— {siteConfig.owner}, Daglig leder i {siteConfig.companyName}</span>

@@ -1,122 +1,448 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { siteConfig } from '../../data/siteConfig';
+import { path } from '../../utils/paths';
+import { buildSmartMailto } from '../../utils/mailtoBuilder';
 import DirectContactBanner from '../../components/conversion/DirectContactBanner.astro';
 
 export async function getStaticPaths() {
-  return siteConfig.services.map((service) => ({
+  const paths = siteConfig.services.map((service) => ({
     params: { slug: service.slug },
     props: { service },
   }));
+
+  // Support alias for snekkerarbeid-oslo if queried
+  const snekker = siteConfig.services.find((s) => s.slug === 'montering-oslo');
+  if (snekker) {
+    paths.push({
+      params: { slug: 'snekkerarbeid-oslo' },
+      props: {
+        service: {
+          ...snekker,
+          title: 'Snekkerarbeid og montering',
+        },
+      },
+    });
+  }
+
+  // Support aliases for husmaling-oslo and fasademaling-oslo
+  const utvendig = siteConfig.services.find((s) => s.slug === 'utvendig-maling-oslo');
+  if (utvendig) {
+    paths.push(
+      {
+        params: { slug: 'husmaling-oslo' },
+        props: {
+          service: {
+            ...utvendig,
+            title: 'Husmaling og utvendig malerarbeid',
+          },
+        },
+      },
+      {
+        params: { slug: 'fasademaling-oslo' },
+        props: {
+          service: {
+            ...utvendig,
+            title: 'Fasademaling og utvendig trebeskyttelse',
+          },
+        },
+      }
+    );
+  }
+
+  return paths;
 }
 
 const { service } = Astro.props;
+
+// Other services for bottom cross-linking
+const otherServices = siteConfig.services.filter((s) => s.slug !== service.slug);
+
+// Mailto link customized for this service
+const mailtoHref = buildSmartMailto({ serviceName: service.title });
+
+// JSON-LD FAQ schema for SEO rich snippets
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: service.faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.answer,
+    },
+  })),
+};
 ---
 
-<BaseLayout title={`${service.title} | ${siteConfig.companyName}`} description={service.shortDesc}>
-  <section class="section-padding service-detail-hero">
-    <div class="container service-detail-grid">
-      <div class="service-detail-copy">
+<BaseLayout
+  title={`${service.title} i Oslo | ${siteConfig.companyName}`}
+  description={service.shortDesc}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- Breadcrumb Navigation -->
+  <nav class="breadcrumb-nav" aria-label="Brødsmulesti">
+    <div class="container">
+      <ol class="breadcrumb-list">
+        <li><a href={path('/')}>Hjem</a></li>
+        <li class="separator" aria-hidden="true">/</li>
+        <li><a href={path('/tjenester/')}>Tjenester</a></li>
+        <li class="separator" aria-hidden="true">/</li>
+        <li aria-current="page">{service.title}</li>
+      </ol>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="service-hero section-padding">
+    <div class="container service-hero-grid">
+      <div class="service-hero-copy">
         <span class="eyebrow">Tjeneste i Oslo og omegn</span>
         <h1 class="service-title">{service.title} i Oslo</h1>
-        <p class="service-lead">{service.shortDesc}</p>
+        <p class="service-lead">{service.heroIntro || service.shortDesc}</p>
 
-        {service.highlights && (
-          <ul class="service-highlights-list">
+        {service.highlights && service.highlights.length > 0 && (
+          <ul class="service-highlights-pills" aria-label="Nøkkelpunkter">
             {service.highlights.map((h) => (
-              <li>✓ {h}</li>
+              <li class="highlight-pill">
+                <span class="pill-check" aria-hidden="true">✓</span>
+                <span>{h}</span>
+              </li>
             ))}
           </ul>
         )}
 
         <div class="service-meta-box">
           <div class="meta-item">
-            <span class="meta-label">Typisk tidsramme:</span>
-            <strong>{service.typicalTimeline}</strong>
+            <span class="meta-label">Typisk varighet</span>
+            <strong class="meta-value">{service.typicalTimeline}</strong>
           </div>
           <div class="meta-item">
-            <span class="meta-label">Befaring:</span>
-            <strong>Alltid gratis og uforpliktende</strong>
+            <span class="meta-label">Befaring</span>
+            <strong class="meta-value">Alltid gratis og uforpliktende</strong>
           </div>
+          <div class="meta-item">
+            <span class="meta-label">Håndverker</span>
+            <strong class="meta-value">{siteConfig.owner} – direkte kontakt</strong>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Trygghet</span>
+            <strong class="meta-value">Ingen forskudd – betal etter utført arbeid</strong>
+          </div>
+        </div>
+
+        <div class="service-hero-actions">
+          <a href={`tel:${siteConfig.phoneHref}`} class="btn-primary tabular-nums">
+            📞 Ring {siteConfig.owner}: {siteConfig.phoneDisplay}
+          </a>
+          <a href={mailtoHref} class="btn-secondary">
+            ✉️ Få prisestimat på e-post
+          </a>
         </div>
       </div>
 
       {service.image && (
-        <div class="service-detail-media">
-          <div class="service-media-card">
-            <img src={service.image} alt={service.title} class="service-hero-img" width="600" height="420" />
+        <div class="service-hero-media">
+          <div class="media-card">
+            <img
+              src={service.image}
+              alt={`${service.title} utført av ${siteConfig.companyName} i Oslo`}
+              class="service-img"
+              width="640"
+              height="440"
+              loading="eager"
+            />
+            <div class="media-badge">
+              <span class="badge-dot" aria-hidden="true"></span>
+              <span>Kvalitetshåndverk i Oslo</span>
+            </div>
           </div>
         </div>
       )}
     </div>
   </section>
 
-  {service.scopeOfWork && (
-    <section class="section-padding scope-section">
+  <!-- 2-Column "Vi utfører" Checkmark Checklist -->
+  {service.scopeOfWork && service.scopeOfWork.length > 0 && (
+    <section class="section-padding scope-section" aria-labelledby="scope-heading">
       <div class="container">
-        <h2 class="section-subtitle">Hva inngår i arbeidet?</h2>
-        <ul class="scope-grid">
-          {service.scopeOfWork.map((step) => (
-            <li class="scope-item">
-              <span class="scope-icon">✓</span>
-              <span>{step}</span>
-            </li>
+        <div class="section-intro">
+          <span class="eyebrow">Arbeidets omfang</span>
+          <h2 id="scope-heading" class="section-title">Hva inngår i arbeidet?</h2>
+          <p class="section-desc">
+            Når du velger {siteConfig.companyName}, får du en ryddig håndverker som tar hånd om hele prosessen fra forberedelse og riving til ferdigstilt resultat og sluttkontroll.
+          </p>
+        </div>
+
+        <div class="scope-grid-2col">
+          {service.scopeOfWork.map((item, index) => (
+            <article class="scope-card">
+              <div class="scope-icon-wrap" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </div>
+              <div class="scope-text">
+                <h3 class="scope-item-title">{item.title}</h3>
+                <p class="scope-item-desc">{item.description}</p>
+              </div>
+            </article>
           ))}
-        </ul>
+        </div>
+
+        {service.bygardNote && (
+          <aside class="bygard-callout" aria-label="Ekspertise i Oslo-bygårder">
+            <div class="bygard-icon" aria-hidden="true">🏛️</div>
+            <div class="bygard-text">
+              <h4 class="bygard-title">Kjenner bygårdene i Oslo inn og ut</h4>
+              <p class="bygard-desc">{service.bygardNote}</p>
+            </div>
+          </aside>
+        )}
       </div>
     </section>
   )}
 
+  <!-- Pricing Factors Section -->
+  {service.pricingFactors && service.pricingFactors.length > 0 && (
+    <section class="section-padding pricing-factors-section" aria-labelledby="pricing-heading">
+      <div class="container">
+        <div class="section-intro">
+          <span class="eyebrow">Forutsigbarhet & budsjett</span>
+          <h2 id="pricing-heading" class="section-title">
+            Hva påvirker prisen på {service.title.toLowerCase()}?
+          </h2>
+          <p class="section-desc">
+            {service.pricingIntro || 'Hvert prosjekt er unikt. For at du skal få en rettferdig og nøyaktig pris, vurderer vi alltid de tekniske forutsetningene grundig:'}
+          </p>
+        </div>
+
+        <div class="pricing-grid">
+          {service.pricingFactors.map((factor, index) => (
+            <div class="pricing-card">
+              <span class="pricing-factor-num">0{index + 1}</span>
+              <h3 class="pricing-card-title">{factor.title}</h3>
+              <p class="pricing-card-desc">{factor.description}</p>
+            </div>
+          ))}
+        </div>
+
+        <div class="pricing-advice-banner">
+          <div class="advice-content">
+            <h3 class="advice-title">💡 Ønsker du et raskt prisanslag?</h3>
+            <p class="advice-text">
+              Send oss 2–4 bilder av rommet, en kort beskrivelse av hva du ønsker gjort, og hvor i Oslo boligen ligger. Vi gir deg en rask tilbakemelding!
+            </p>
+          </div>
+          <div class="advice-actions">
+            <a href={mailtoHref} class="btn-advice">
+              Send bilder for prisestimat
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Typical Timeline and Process Section -->
+  {service.timelineSteps && service.timelineSteps.length > 0 && (
+    <section class="section-padding timeline-section" aria-labelledby="timeline-heading">
+      <div class="container">
+        <div class="section-intro">
+          <span class="eyebrow">Fremdriftsplan</span>
+          <h2 id="timeline-heading" class="section-title">
+            Slik jobber vi – fra befaring til ferdigstillelse
+          </h2>
+          <p class="section-desc">
+            Tydelig fremdriftsplan og én fast kontaktperson gir trygghet og færre forsinkelser.
+          </p>
+        </div>
+
+        <div class="timeline-meta-card">
+          <div class="timeline-badge-label">Forventet tidsbruk</div>
+          <div class="timeline-badge-value">{service.typicalTimeline}</div>
+        </div>
+
+        <div class="timeline-stepper">
+          {service.timelineSteps.map((step, idx) => (
+            <div class="timeline-step-card">
+              <div class="step-header">
+                <span class="step-pill">{step.phase}</span>
+                <span class="step-num-circle">{idx + 1}</span>
+              </div>
+              <h3 class="step-title">{step.title}</h3>
+              <p class="step-desc">{step.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- FAQ Accordion Section -->
+  {service.faqs && service.faqs.length > 0 && (
+    <section class="section-padding faq-section" aria-labelledby="faq-heading">
+      <div class="container faq-container">
+        <div class="section-intro">
+          <span class="eyebrow">Spørsmål og svar</span>
+          <h2 id="faq-heading" class="section-title">
+            Ofte stilte spørsmål om {service.title.toLowerCase()}
+          </h2>
+          <p class="section-desc">
+            Har du andre spørsmål? Ring {siteConfig.owner} direkte på {siteConfig.phoneDisplay} eller send en e-post.
+          </p>
+        </div>
+
+        <div class="faq-accordion-group">
+          {service.faqs.map((faq, index) => (
+            <details class="faq-accordion-item" open={index === 0}>
+              <summary class="faq-question">
+                <span class="faq-q-text">{faq.question}</span>
+                <span class="faq-toggle-icon" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </span>
+              </summary>
+              <div class="faq-answer">
+                <p>{faq.answer}</p>
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Cross-linking to other services -->
+  {otherServices.length > 0 && (
+    <section class="section-padding cross-services-section" aria-labelledby="related-heading">
+      <div class="container">
+        <div class="section-intro">
+          <span class="eyebrow">Kombiner tjenester</span>
+          <h2 id="related-heading" class="section-title">Andre tjenester vi utfører i Oslo</h2>
+          <p class="section-desc">
+            Skal du gjøre en større oppussing? Vi koordinerer gjerne flere fagfelt i samme prosjekt.
+          </p>
+        </div>
+
+        <div class="related-services-grid">
+          {otherServices.map((item) => (
+            <a href={item.href} class="related-service-card">
+              <h3 class="related-service-title">{item.title}</h3>
+              <p class="related-service-desc">{item.shortDesc}</p>
+              <span class="related-link-arrow">Les mer →</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Conversion CTA Banner -->
   <DirectContactBanner
     heading={`Ønsker du tilbud på ${service.title.toLowerCase()}?`}
-    subheading={`Kontakt Waldemar Kudla for en uforpliktende prat og gratis befaring hjemme hos deg i Oslo.`}
+    subheading={`Ta direkte kontakt med ${siteConfig.owner} for en uforpliktende prat eller gratis befaring hjemme hos deg i Oslo og omegn.`}
     serviceName={service.title}
   />
 </BaseLayout>
 
 <style>
-  .service-detail-hero {
+  /* Breadcrumb Navigation */
+  .breadcrumb-nav {
+    background-color: var(--bg-canvas);
+    border-bottom: 1px solid var(--border-subtle);
+    padding: 0.75rem 0;
+    font-size: 0.875rem;
+  }
+  .breadcrumb-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-muted);
+  }
+  .breadcrumb-list a {
+    color: var(--text-muted);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .breadcrumb-list a:hover {
+    color: var(--accent-primary);
+  }
+  .breadcrumb-list [aria-current="page"] {
+    color: var(--text-main);
+    font-weight: 600;
+  }
+  .separator {
+    color: var(--border-subtle);
+  }
+
+  /* Service Hero */
+  .service-hero {
     background-color: var(--bg-canvas);
     border-bottom: 1px solid var(--border-subtle);
   }
-  .service-detail-grid {
+  .service-hero-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: 2.5rem;
     align-items: center;
   }
-  @media (min-width: 900px) {
-    .service-detail-grid {
-      grid-template-columns: 1.15fr 1fr;
+  @media (min-width: 992px) {
+    .service-hero-grid {
+      grid-template-columns: 1.15fr 0.85fr;
       gap: 3.5rem;
     }
   }
   .service-title {
-    font-size: clamp(2rem, 3.5vw, 2.75rem);
+    font-size: clamp(2rem, 3.5vw, 2.85rem);
     margin-bottom: 1.25rem;
+    line-height: 1.15;
   }
   .service-lead {
-    font-size: 1.1rem;
+    font-size: 1.125rem;
     color: var(--text-muted);
     line-height: 1.6;
     margin-bottom: 1.5rem;
   }
-  .service-highlights-list {
+  .service-highlights-pills {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.75rem 1.5rem;
-    font-weight: 600;
+    gap: 0.625rem 0.875rem;
+    margin-bottom: 1.75rem;
+  }
+  .highlight-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background-color: var(--accent-trust-bg);
     color: var(--accent-trust);
-    margin-bottom: 2rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    padding: 0.35rem 0.75rem;
+    border-radius: var(--radius-sm);
+  }
+  .pill-check {
+    font-weight: 800;
   }
   .service-meta-box {
     background-color: var(--bg-surface);
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius-md);
     padding: 1.25rem 1.5rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  @media (min-width: 600px) {
+    .service-meta-box {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem 1.5rem;
+    }
   }
   .meta-item {
     display: flex;
@@ -124,51 +450,503 @@ const { service } = Astro.props;
     gap: 0.2rem;
   }
   .meta-label {
-    font-size: 0.8125rem;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
     color: var(--text-muted);
+    font-weight: 600;
   }
-  .service-media-card {
+  .meta-value {
+    font-size: 0.9375rem;
+    color: var(--text-main);
+  }
+  .service-hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .btn-primary {
+    background-color: var(--accent-primary);
+    color: #ffffff;
+    font-weight: 600;
+    padding: 0.875rem 1.5rem;
+    border-radius: var(--radius-sm);
+    display: inline-flex;
+    align-items: center;
+    transition: background-color 0.15s ease;
+  }
+  .btn-primary:hover {
+    background-color: var(--accent-primary-hover);
+  }
+  .btn-secondary {
+    background-color: var(--bg-surface);
+    color: var(--text-main);
+    border: 1px solid var(--border-subtle);
+    font-weight: 600;
+    padding: 0.875rem 1.5rem;
+    border-radius: var(--radius-sm);
+    display: inline-flex;
+    align-items: center;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+  }
+  .btn-secondary:hover {
+    background-color: #ffffff;
+    border-color: var(--text-muted);
+  }
+  .media-card {
+    position: relative;
     border-radius: var(--radius-lg);
     overflow: hidden;
     box-shadow: var(--shadow-card);
     border: 1px solid var(--border-subtle);
   }
-  .service-hero-img {
+  .service-img {
     width: 100%;
-    height: 380px;
+    height: 420px;
     object-fit: cover;
     display: block;
   }
+  .media-badge {
+    position: absolute;
+    bottom: 1.25rem;
+    left: 1.25rem;
+    background-color: rgba(24, 43, 54, 0.9);
+    backdrop-filter: blur(8px);
+    color: #ffffff;
+    padding: 0.5rem 0.875rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .badge-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #4ade80;
+    border-radius: 50%;
+  }
+
+  /* Section Intro shared */
+  .section-intro {
+    max-width: 68ch;
+    margin-bottom: 2.5rem;
+  }
+  .section-title {
+    font-size: clamp(1.65rem, 2.75vw, 2.25rem);
+    margin-top: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+  .section-desc {
+    font-size: 1.0625rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 0;
+  }
+
+  /* 2-Column "Vi utfører" Scope Section */
   .scope-section {
     background-color: var(--bg-surface);
+    border-bottom: 1px solid var(--border-subtle);
   }
-  .section-subtitle {
-    font-size: clamp(1.5rem, 2.5vw, 2rem);
-    margin-bottom: 2rem;
-  }
-  .scope-grid {
+  .scope-grid-2col {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 1rem;
+    gap: 1.25rem;
   }
   @media (min-width: 768px) {
-    .scope-grid {
+    .scope-grid-2col {
       grid-template-columns: repeat(2, 1fr);
-      gap: 1.25rem;
+      gap: 1.5rem;
     }
   }
-  .scope-item {
+  .scope-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .scope-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-card);
+  }
+  .scope-icon-wrap {
+    flex-shrink: 0;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 50%;
+    background-color: var(--accent-trust-bg);
+    color: var(--accent-trust);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.125rem;
+  }
+  .scope-text {
+    flex: 1;
+  }
+  .scope-item-title {
+    font-size: 1.0625rem;
+    font-weight: 700;
+    margin-bottom: 0.35rem;
+    color: var(--text-main);
+  }
+  .scope-item-desc {
+    font-size: 0.9375rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin-bottom: 0;
+  }
+
+  /* Oslo-bygård callout */
+  .bygard-callout {
+    margin-top: 2.5rem;
+    background-color: var(--bg-card);
+    border-left: 4px solid var(--accent-trust);
+    border-radius: var(--radius-sm);
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25rem;
+    border-top: 1px solid var(--border-subtle);
+    border-right: 1px solid var(--border-subtle);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .bygard-icon {
+    font-size: 1.75rem;
+    line-height: 1;
+  }
+  .bygard-title {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+    color: var(--text-main);
+  }
+  .bygard-desc {
+    font-size: 0.9375rem;
+    color: var(--text-muted);
+    margin-bottom: 0;
+    line-height: 1.5;
+  }
+
+  /* Pricing Factors Section */
+  .pricing-factors-section {
+    background-color: var(--bg-canvas);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    margin-bottom: 2.5rem;
+  }
+  @media (min-width: 600px) {
+    .pricing-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+  }
+  @media (min-width: 992px) {
+    .pricing-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  .pricing-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  .pricing-factor-num {
+    font-size: 0.8125rem;
+    font-weight: 800;
+    color: var(--accent-primary);
+    background-color: #fbeee9;
+    padding: 0.2rem 0.5rem;
+    border-radius: var(--radius-sm);
+    align-self: flex-start;
+    margin-bottom: 1rem;
+    font-family: monospace;
+  }
+  .pricing-card-title {
+    font-size: 1.0625rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+  }
+  .pricing-card-desc {
+    font-size: 0.9375rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+    margin-bottom: 0;
+  }
+
+  /* Pricing Advice Callout */
+  .pricing-advice-banner {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 1.5rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    align-items: flex-start;
+  }
+  @media (min-width: 768px) {
+    .pricing-advice-banner {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+  .advice-title {
+    font-size: 1.125rem;
+    margin-bottom: 0.25rem;
+  }
+  .advice-text {
+    font-size: 0.9375rem;
+    color: var(--text-muted);
+    margin-bottom: 0;
+    max-width: 65ch;
+  }
+  .btn-advice {
+    background-color: var(--accent-primary);
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    padding: 0.75rem 1.25rem;
+    border-radius: var(--radius-sm);
+    white-space: nowrap;
+    display: inline-block;
+    transition: background-color 0.15s ease;
+  }
+  .btn-advice:hover {
+    background-color: var(--accent-primary-hover);
+  }
+
+  /* Typical Timeline Section */
+  .timeline-section {
+    background-color: var(--bg-surface);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .timeline-meta-card {
+    display: inline-flex;
+    flex-direction: column;
     background-color: var(--bg-card);
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius-sm);
-    padding: 1.25rem;
-    display: flex;
-    align-items: flex-start;
-    gap: 0.85rem;
-    font-weight: 500;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 2rem;
   }
-  .scope-icon {
+  .timeline-badge-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+  .timeline-badge-value {
+    font-size: 1.0625rem;
+    font-weight: 700;
     color: var(--accent-trust);
-    font-weight: 800;
+  }
+  .timeline-stepper {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  @media (min-width: 600px) {
+    .timeline-stepper {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 992px) {
+    .timeline-stepper {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+  }
+  .timeline-step-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+  }
+  .step-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+  .step-pill {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    background-color: var(--bg-surface);
+    color: var(--text-main);
+    padding: 0.25rem 0.6rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-subtle);
+  }
+  .step-num-circle {
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 50%;
+    background-color: var(--accent-trust-bg);
+    color: var(--accent-trust);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.875rem;
+    font-weight: 700;
+  }
+  .step-title {
+    font-size: 1.0625rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  .step-desc {
+    font-size: 0.9375rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+    margin-bottom: 0;
+  }
+
+  /* FAQ Accordion Section */
+  .faq-section {
+    background-color: var(--bg-canvas);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .faq-container {
+    max-width: 860px;
+  }
+  .faq-accordion-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+  }
+  .faq-accordion-item {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+  .faq-accordion-item[open] {
+    border-color: var(--border-subtle);
+    box-shadow: var(--shadow-card);
+  }
+  .faq-question {
+    padding: 1.25rem 1.5rem;
+    font-family: var(--font-heading);
+    font-size: 1.0625rem;
+    font-weight: 700;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    color: var(--text-main);
+    user-select: none;
+  }
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+  .faq-question:hover {
+    color: var(--accent-primary);
+  }
+  .faq-toggle-icon {
+    flex-shrink: 0;
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 50%;
+    background-color: var(--bg-surface);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+  }
+  .faq-accordion-item[open] .faq-toggle-icon {
+    transform: rotate(180deg);
+    background-color: var(--accent-trust-bg);
+    color: var(--accent-trust);
+  }
+  .faq-answer {
+    padding: 0 1.5rem 1.25rem 1.5rem;
+    color: var(--text-muted);
+    font-size: 1rem;
+    line-height: 1.65;
+    border-top: 1px solid transparent;
+  }
+  .faq-answer p {
+    margin-bottom: 0;
+  }
+
+  /* Related Services Cross-linking */
+  .cross-services-section {
+    background-color: var(--bg-surface);
+  }
+  .related-services-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  @media (min-width: 640px) {
+    .related-services-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 1024px) {
+    .related-services-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  .related-service-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+  }
+  .related-service-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-card);
+    border-color: var(--accent-primary);
+  }
+  .related-service-title {
+    font-size: 1.0625rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  .related-service-desc {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin-bottom: 1.25rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .related-link-arrow {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--accent-primary);
+    align-self: flex-start;
   }
 </style>

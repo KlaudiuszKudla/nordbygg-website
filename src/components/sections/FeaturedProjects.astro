@@ -1,28 +1,9 @@
 ---
+import { projectsData } from '../../data/projects';
 import { path } from '../../utils/paths';
 
-const featuredProjects = [
-  {
-    title: 'Totalrenovering av bad og gang i klassisk bygård',
-    slug: path('/prosjekter/bad-st-hanshaugen/'),
-    image: path('/images/bad.jpg'),
-    location: 'St. Hanshaugen, Oslo',
-    buildingType: 'Bygård fra 1898',
-    duration: '4,5 uker',
-    services: ['Oppussing av bad', 'Gulvlegging'],
-    summary: 'Komplett riving, ny støp, membran, 60x60 fliser og baderomsinnredning.',
-  },
-  {
-    title: 'Nytt kjøkken og fiskebensparkett i leilighet',
-    slug: path('/prosjekter/kjokken-frogner/'),
-    image: path('/images/kjokken.jpg'),
-    location: 'Frogner, Oslo',
-    buildingType: 'Klassisk leilighet',
-    duration: '3 uker',
-    services: ['Kjøkkenoppussing', 'Gulvlegging'],
-    summary: 'Avretting av undergulv, legging av fiskebensparkett og kjøkkenmontering.',
-  },
-];
+// Feature the top 3 projects from the central projects dataset
+const featuredProjects = projectsData.slice(0, 3);
 ---
 
 <section class="projects-section section-padding">
@@ -39,20 +20,25 @@ const featuredProjects = [
       {featuredProjects.map((project) => (
         <article class="project-card">
           <div class="project-image">
-            <a href={project.slug} tabindex="-1" aria-hidden="true">
-              <img src={project.image} alt={project.title} loading="lazy" width="500" height="280" />
+            <a href={project.href} tabindex="-1" aria-hidden="true">
+              <img src={project.mainImage} alt={project.title} loading="lazy" width="500" height="280" />
             </a>
           </div>
           <div class="project-content">
             <div class="project-meta-top">
-              <span>📍 {project.location}</span>
+              <span>📍 {project.neighborhood}</span>
               <span>⏱ {project.duration}</span>
             </div>
             <h3 class="project-title">
-              <a href={project.slug}>{project.title}</a>
+              <a href={project.href}>{project.title}</a>
             </h3>
             <p class="project-building">{project.buildingType}</p>
-            <p class="project-summary">{project.summary}</p>
+            <p class="project-summary">{project.excerpt}</p>
+            <div class="project-tags">
+              {project.tags.map((tag) => (
+                <span class="tag-pill">{tag}</span>
+              ))}
+            </div>
           </div>
         </article>
       ))}

@@ -3,20 +3,472 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import CopyEmailButton from '../components/conversion/CopyEmailButton.astro';
 import { siteConfig } from '../data/siteConfig';
 import { buildSmartMailto } from '../utils/mailtoBuilder';
+import { path } from '../utils/paths';
 
-const pageTitle = `Kontakt ${siteConfig.companyName} | Gratis Befaring i Oslo`;
-const pageDescription = `Ring ${siteConfig.owner} på ${siteConfig.phoneDisplay} for gratis befaring.`;
+const pageTitle = `Kontakt ${siteConfig.companyName} | Gratis befaring i Oslo`;
+const pageDescription = `Ta direkte kontakt med ${siteConfig.owner} på telefon ${siteConfig.phoneDisplay} eller e-post for en uforpliktende prat og gratis befaring i Oslo og omegn.`;
 const defaultMailto = buildSmartMailto();
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
-  <section class="section-padding">
+  <!-- Breadcrumb Navigation -->
+  <nav class="breadcrumb-nav" aria-label="Brødsmulesti">
     <div class="container">
-      <h1>Kontakt oss</h1>
-      <p>Ring Waldemar på <a href={`tel:${siteConfig.phoneHref}`}><strong>{siteConfig.phoneDisplay}</strong></a> eller send e-post til <a href={defaultMailto}><strong>{siteConfig.email}</strong></a>.</p>
-      <div style="margin-top: 1.5rem;">
-        <CopyEmailButton />
+      <ol class="breadcrumb-list">
+        <li><a href={path('/')}>Hjem</a></li>
+        <li class="separator" aria-hidden="true">/</li>
+        <li aria-current="page">Kontakt</li>
+      </ol>
+    </div>
+  </nav>
+
+  <!-- Contact Hero Section -->
+  <section class="section-padding contact-hero-section">
+    <div class="container">
+      <div class="contact-header-box">
+        <span class="eyebrow">Direkte kontakt & gratis befaring</span>
+        <h1 class="page-title">Snakk direkte med håndverkeren</h1>
+        <p class="lead-text">
+          Hos {siteConfig.companyName} er det ingen fordyrende salgsledd, automatiske telefonsvarere eller kompliserte kontaktskjemaer.
+          Du snakker direkte med {siteConfig.owner}, som personlig utfører og leder oppussingsarbeidet i Oslo.
+        </p>
+      </div>
+
+      <!-- 3-Way Direct Contact Grid -->
+      <div class="contact-methods-grid">
+        <!-- Phone Card -->
+        <div class="method-card phone-card">
+          <div class="card-icon" aria-hidden="true">📞</div>
+          <h2 class="card-title">Ring direkte</h2>
+          <p class="card-desc">
+            For raskest avklaring eller akutt spørsmål om befaring i Oslo og Bærum.
+          </p>
+          <div class="card-action">
+            <a href={`tel:${siteConfig.phoneHref}`} class="btn-primary tabular-nums">
+              Ring {siteConfig.phoneDisplay}
+            </a>
+          </div>
+          <div class="card-meta">
+            <span>🕒 {siteConfig.workingHours}</span>
+          </div>
+        </div>
+
+        <!-- MMS / SMS Card -->
+        <div class="method-card mms-card">
+          <div class="card-icon" aria-hidden="true">📱</div>
+          <h2 class="card-title">Send bilder på MMS</h2>
+          <p class="card-desc">
+            Knips 2–4 bilder av rommet med mobilen og send direkte som MMS eller SMS for et raskt første overslag.
+          </p>
+          <div class="card-action">
+            <a href={`sms:${siteConfig.phoneHref}`} class="btn-secondary tabular-nums">
+              Send SMS/MMS til {siteConfig.phoneDisplay}
+            </a>
+          </div>
+          <div class="card-meta">
+            <span>⚡ Rask respons samme dag</span>
+          </div>
+        </div>
+
+        <!-- Email Card -->
+        <div class="method-card email-card">
+          <div class="card-icon" aria-hidden="true">✉️</div>
+          <h2 class="card-title">Send e-post</h2>
+          <p class="card-desc">
+            Har du prosjektbeskrivelse, plantegning eller anbudsdokumenter? Send en e-post direkte.
+          </p>
+          <div class="card-action-group">
+            <a href={defaultMailto} class="btn-primary">
+              Åpne e-postprogram
+            </a>
+            <CopyEmailButton />
+          </div>
+          <div class="card-meta">
+            <span class="email-address">{siteConfig.email}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4-Step Photo Checklist Guide -->
+  <section class="section-padding photo-guide-section" aria-labelledby="photo-heading">
+    <div class="container">
+      <div class="photo-guide-card">
+        <div class="guide-header">
+          <span class="eyebrow text-trust">Raskt pristilbud</span>
+          <h2 id="photo-heading" class="guide-title">
+            💡 4 tips når du sender bilder for prisestimat
+          </h2>
+          <p class="guide-subtitle">
+            Du trenger ikke vente på befaring for å få en god indikasjon. Sender du oss dette på e-post eller MMS, gir vi deg et raskt og realistisk prisanslag:
+          </p>
+        </div>
+
+        <div class="guide-steps-grid">
+          <div class="guide-step">
+            <span class="step-num">1</span>
+            <h3 class="step-title">Oversiktsbilde av rommet</h3>
+            <p class="step-text">
+              Ta bilde fra døråpningen eller hjørnet slik at vi ser hele flaten og rommets proporsjoner.
+            </p>
+          </div>
+
+          <div class="guide-step">
+            <span class="step-num">2</span>
+            <h3 class="step-title">Nærbilde av detaljer</h3>
+            <p class="step-text">
+              Vis eksisterende sluk, rørkasser, el-punkter, undergulv eller områder som krever spesiell oppretting.
+            </p>
+          </div>
+
+          <div class="guide-step">
+            <span class="step-num">3</span>
+            <h3 class="step-title">Rommål og boligtype</h3>
+            <p class="step-text">
+              Omtrentlig grunnflate (m²) og etasje (f.eks. 3. etasje bygård med eller uten heis for materialbæring).
+            </p>
+          </div>
+
+          <div class="guide-step">
+            <span class="step-num">4</span>
+            <h3 class="step-title">Ønsket oppstart & adresse</h3>
+            <p class="step-text">
+              Hvilken bydel i Oslo prosjektet ligger i, og når du ideelt sett ønsker at håndverkeren starter.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Areas & Office Location Info -->
+  <section class="section-padding location-section">
+    <div class="container location-grid">
+      <div class="location-card">
+        <h2 class="section-subtitle">Vårt virkeområde i Oslo</h2>
+        <p class="location-text">
+          Vi er lokalisert i {siteConfig.location.city} og utfører oppdrag i hele Oslo og nærliggende kommuner:
+        </p>
+        <div class="areas-pill-grid">
+          {siteConfig.location.serviceAreas.map((area) => (
+            <span class="area-pill">📍 {area}</span>
+          ))}
+        </div>
+        <p class="location-sub">
+          Bor du like utenfor dekkingsområdet? Ta kontakt likevel – vi vurderer oppdrag fortløpende.
+        </p>
+      </div>
+
+      <div class="company-facts-card">
+        <h2 class="section-subtitle">Firmaopplysninger & trygghet</h2>
+        <ul class="facts-list">
+          <li>
+            <span class="f-label">Foretak:</span>
+            <strong class="f-val">{siteConfig.legalName}</strong>
+          </li>
+          <li>
+            <span class="f-label">Organisasjonsnr:</span>
+            <strong class="f-val tabular-nums">{siteConfig.orgNr}</strong>
+          </li>
+          <li>
+            <span class="f-label">Adresse:</span>
+            <strong class="f-val">{siteConfig.location.street}, {siteConfig.location.postalCode} {siteConfig.location.city}</strong>
+          </li>
+          <li>
+            <span class="f-label">Betalingsbetingelser:</span>
+            <strong class="f-val">0 kr i forskudd – betaling først etter fullført og godkjent arbeid</strong>
+          </li>
+          <li>
+            <span class="f-label">Prisavtale:</span>
+            <strong class="f-val">Avtalt fastpris uten uforutsette tillegg</strong>
+          </li>
+        </ul>
       </div>
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  /* Breadcrumbs */
+  .breadcrumb-nav {
+    background-color: var(--bg-canvas);
+    border-bottom: 1px solid var(--border-subtle);
+    padding: 0.75rem 0;
+    font-size: 0.875rem;
+  }
+  .breadcrumb-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-muted);
+  }
+  .breadcrumb-list a {
+    color: var(--text-muted);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .breadcrumb-list a:hover {
+    color: var(--accent-primary);
+  }
+  .breadcrumb-list [aria-current="page"] {
+    color: var(--text-main);
+    font-weight: 600;
+  }
+  .separator {
+    color: var(--border-subtle);
+  }
+
+  /* Contact Hero */
+  .contact-hero-section {
+    background-color: var(--bg-canvas);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .contact-header-box {
+    max-width: 75ch;
+    margin-bottom: 3rem;
+  }
+  .page-title {
+    font-size: clamp(2rem, 3.5vw, 2.85rem);
+    line-height: 1.15;
+    margin-top: 0.5rem;
+    margin-bottom: 1.25rem;
+  }
+  .lead-text {
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 0;
+  }
+
+  /* Contact Methods Grid */
+  .contact-methods-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  @media (min-width: 768px) {
+    .contact-methods-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .method-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 2rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow-card);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .method-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(24, 43, 54, 0.08);
+  }
+  .card-icon {
+    font-size: 2.25rem;
+    line-height: 1;
+    margin-bottom: 1.25rem;
+  }
+  .card-title {
+    font-size: 1.25rem;
+    margin-bottom: 0.65rem;
+  }
+  .card-desc {
+    font-size: 0.9375rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+  }
+  .card-action {
+    margin-bottom: 1rem;
+  }
+  .card-action .btn-primary,
+  .card-action .btn-secondary {
+    width: 100%;
+    justify-content: center;
+    font-size: 0.9375rem;
+    padding: 0.8rem 1rem;
+  }
+  .card-action-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+  .card-action-group .btn-primary {
+    width: 100%;
+    justify-content: center;
+    font-size: 0.9375rem;
+    padding: 0.8rem 1rem;
+  }
+  .card-meta {
+    border-top: 1px solid var(--border-subtle);
+    padding-top: 0.75rem;
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+  .email-address {
+    font-weight: 600;
+    color: var(--text-main);
+  }
+
+  /* Photo Guide Section */
+  .photo-guide-section {
+    background-color: var(--bg-surface);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .photo-guide-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 2.5rem 2rem;
+    box-shadow: var(--shadow-card);
+  }
+  .guide-header {
+    max-width: 72ch;
+    margin-bottom: 2.5rem;
+  }
+  .guide-title {
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    margin-top: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+  .guide-subtitle {
+    font-size: 1.0625rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 0;
+  }
+  .guide-steps-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  @media (min-width: 600px) {
+    .guide-steps-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 1024px) {
+    .guide-steps-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  .guide-step {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+  }
+  .step-num {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background-color: var(--accent-trust-bg);
+    color: var(--accent-trust);
+    font-weight: 800;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+  .step-title {
+    font-size: 1.0625rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  .step-text {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+    margin-bottom: 0;
+  }
+
+  /* Location & Company Section */
+  .location-section {
+    background-color: var(--bg-canvas);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .location-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  @media (min-width: 900px) {
+    .location-grid {
+      grid-template-columns: 1.2fr 1fr;
+    }
+  }
+  .section-subtitle {
+    font-size: 1.35rem;
+    margin-bottom: 1rem;
+  }
+  .location-text {
+    font-size: 1rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+  }
+  .areas-pill-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .area-pill {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    padding: 0.35rem 0.75rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-main);
+  }
+  .location-sub {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    margin-bottom: 0;
+  }
+  .company-facts-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 2rem;
+  }
+  .facts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+  }
+  .facts-list li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    border-bottom: 1px solid var(--border-subtle);
+    padding-bottom: 0.65rem;
+    font-size: 0.9375rem;
+  }
+  .facts-list li:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  .f-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+  .f-val {
+    color: var(--text-main);
+  }
+</style>

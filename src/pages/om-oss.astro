@@ -4,59 +4,280 @@ import { siteConfig } from '../data/siteConfig';
 import { path } from '../utils/paths';
 import DirectContactBanner from '../components/conversion/DirectContactBanner.astro';
 
-const pageTitle = `Om oss | ${siteConfig.companyName}`;
-const pageDescription = `Møt ${siteConfig.owner}, håndverker og daglig leder i Satisfaction med ${siteConfig.experienceYears} års erfaring i Oslo.`;
+const pageTitle = `Om oss | ${siteConfig.companyName} – Håndverker i Oslo`;
+const pageDescription = `Møt ${siteConfig.owner}, håndverker og daglig leder i ${siteConfig.companyName} med ${siteConfig.experienceYears} års praktisk erfaring i Oslo-boliger, bygårder og borettslag.`;
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
-  <section class="section-padding om-oss-section">
-    <div class="container om-oss-grid">
-      <div class="om-oss-image-col">
-        <div class="om-oss-image-card">
+  <!-- Breadcrumb Navigation -->
+  <nav class="breadcrumb-nav" aria-label="Brødsmulesti">
+    <div class="container">
+      <ol class="breadcrumb-list">
+        <li><a href={path('/')}>Hjem</a></li>
+        <li class="separator" aria-hidden="true">/</li>
+        <li aria-current="page">Om oss</li>
+      </ol>
+    </div>
+  </nav>
+
+  <!-- Hero & Craftsman Bio Section -->
+  <section class="section-padding about-hero-section">
+    <div class="container about-grid">
+      <div class="about-image-col">
+        <div class="craftsman-card">
           <img
             src={path('/images/waldemar.jpg')}
-            alt="Waldemar Kudla, daglig leder i Satisfaction"
-            class="om-oss-photo"
+            alt={`${siteConfig.owner}, daglig leder og utførende håndverker i ${siteConfig.companyName}`}
+            class="craftsman-photo"
             width="600"
             height="500"
+            loading="eager"
           />
-          <div class="om-oss-badge">
-            <strong>{siteConfig.owner}</strong>
-            <span>Håndverker & daglig leder</span>
-            <span class="badge-exp">{siteConfig.experienceYears} års erfaring i Oslo</span>
+          <div class="craftsman-badge">
+            <span class="badge-role">Utførende håndverker</span>
+            <strong class="badge-name">{siteConfig.owner}</strong>
+            <span class="badge-exp">{siteConfig.experienceYears} års erfaring i Oslo-boliger</span>
           </div>
         </div>
       </div>
 
-      <div class="om-oss-copy">
-        <span class="eyebrow">Om Satisfaction</span>
+      <div class="about-copy-col">
+        <span class="eyebrow">Hvem vi er</span>
         <h1 class="page-title">Din personlige håndverker i Oslo</h1>
         <p class="lead-text">
-          Satisfaction ledes av Waldemar Kudla, en erfaren håndverker med over 15 års praktisk bakgrunn
-          innen totalrenovering av bad, kjøkken, gulvlegging, maling og varierte monteringsoppdrag.
+          {siteConfig.companyName} eies og drives av {siteConfig.owner}. Med over {siteConfig.experienceYears} års
+          praktisk erfaring fra Oslo og omegn er målet alltid det samme: levere solid, varig håndverk med millimeterpresisjon,
+          ryddig byggeplass og én fast kontaktperson fra start til slutt.
         </p>
         <p>
-          Vi tror på enkel og direkte kommunikasjon. Når du velger Satisfaction, forholder du deg til én person
-          fra første uforpliktende befaring til prosjektet står ferdig overlevert. Ingen fordyrende mellomledd
-          eller uklar ansvarsfordeling.
-        </p>
-        <p>
-          Ved større prosjekter som krever autoriserte rørlegger- og elektrikerarbeider, koordinerer vi
-          pålitelige fagpartnere slik at du slipper å styre logistikken selv.
+          I motsetning til store entreprenørselskaper med lange kommandolinjer og skiftende prosjektledere,
+          forholder du deg utelukkende til {siteConfig.owner}. Det betyr kortere vei fra idé til ferdig løsning,
+          større fleksibilitet og full personlig stolthet i hvert eneste prosjekt.
         </p>
 
-        <div class="om-oss-highlights">
-          <div class="highlight-item">
-            <span class="highlight-num">15+</span>
-            <span class="highlight-label">Års erfaring i bransjen</span>
+        <div class="stats-row">
+          <div class="stat-card">
+            <span class="stat-number">15+</span>
+            <span class="stat-label">års erfaring</span>
           </div>
-          <div class="highlight-item">
-            <span class="highlight-num">100%</span>
-            <span class="highlight-label">Fokus på finish og ryddighet</span>
+          <div class="stat-card">
+            <span class="stat-number">1</span>
+            <span class="stat-label">fast kontaktperson</span>
           </div>
-          <div class="highlight-item">
-            <span class="highlight-num">1</span>
-            <span class="highlight-label">Fast kontaktperson</span>
+          <div class="stat-card">
+            <span class="stat-number">100%</span>
+            <span class="stat-label">fokus på finish</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Subcontractor Partner Ecosystem Section -->
+  <section class="section-padding ecosystem-section" aria-labelledby="ecosystem-heading">
+    <div class="container">
+      <div class="section-intro">
+        <span class="eyebrow">Sømløst samarbeid</span>
+        <h2 id="ecosystem-heading" class="section-title">
+          En helhetlig håndverker for hele prosjektet
+        </h2>
+        <p class="section-desc">
+          Når du pusser opp med {siteConfig.companyName}, slipper du å koordinere mange ulike håndverkere.
+          Waldemar Kudla utfører personlig alt av snekkerarbeid, gulv, flis og overflater, og samkjører med dyktige medhjelpere på rør og strøm.
+        </p>
+      </div>
+
+      <div class="ecosystem-grid">
+        <article class="ecosystem-card card-primary">
+          <div class="card-badge">Hovedutførelse & Finish</div>
+          <h3 class="ecosystem-card-title">Hva {siteConfig.owner} utfører personlig:</h3>
+          <ul class="ecosystem-checklist">
+            <li>✓ Riving, grunnarbeid og bortkjøring av avfall</li>
+            <li>✓ Snekkerarbeid, lettvegger, foringer og dørmontering</li>
+            <li>✓ Oppretting og avretting av skjeve underlag med flytsparkel</li>
+            <li>✓ Legging av 1-stavs parkett, laminat og fiskebensgulv</li>
+            <li>✓ Påføring av membran og presis flislegging</li>
+            <li>✓ Helsparkling med armeringsbånd og støvfri sliping</li>
+            <li>✓ Innvendig maling med Jotun Lady og utvendig husmaling</li>
+            <li>✓ Montering av kjøkkeninnredning, baderomsmøbler og garderober</li>
+          </ul>
+        </article>
+
+        <article class="ecosystem-card card-secondary">
+          <div class="card-badge">Praktisk samkjøring</div>
+          <h3 class="ecosystem-card-title">Smidig koordinering av rør og strøm:</h3>
+          <p class="partner-lead">
+            Ved baderoms- og kjøkkenoppussing kreves det rør- og elektroarbeid. Vi samarbeider med faste, erfarne kontakter:
+          </p>
+          <div class="subcontractor-box">
+            <h4 class="sub-title">🔧 Rørarbeid (VVS):</h4>
+            <p class="sub-text">
+              Klargjøring og tilkobling av vann, avløp, sluk og montering av armaturer og sanitærutstyr.
+            </p>
+          </div>
+          <div class="subcontractor-box">
+            <h4 class="sub-title">⚡ Elektro & belysning:</h4>
+            <p class="sub-text">
+              Opplegg til stikkontakter, varmekabler i gulv og pen belysning tilpasset rommet.
+            </p>
+          </div>
+          <p class="partner-benefit">
+            <strong>Fordelen for deg:</strong> {siteConfig.owner} er på plassen hver dag og passer på at rør og strøm plasseres nøyaktig der innredningen skal stå.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dedicated Borettslag og Sameier Section -->
+  <section class="section-padding borettslag-section" aria-labelledby="borettslag-heading">
+    <div class="container">
+      <div class="borettslag-box">
+        <div class="borettslag-copy">
+          <span class="eyebrow">Oslo-spesialist</span>
+          <h2 id="borettslag-heading" class="borettslag-title">
+            Trygg oppussing i Borettslag og Sameier
+          </h2>
+          <p class="borettslag-lead">
+            Å pusse opp i en Oslo-bygård eller et borettslag stiller spesielle krav til nabovarsel,
+            støyregler, vannavstenging og beskyttelse av fellesarealer. Vi kjenner rutinene godt:
+          </p>
+
+          <div class="rules-grid">
+            <div class="rule-item">
+              <span class="rule-icon" aria-hidden="true">📋</span>
+              <div>
+                <h3 class="rule-title">Nabovarsel & stilletider</h3>
+                <p class="rule-desc">
+                  Vi henger opp nabovarsel i oppgangen i god tid før støyende riving påbegynnes, og respekterer borettslagets regler for arbeidstid.
+                </p>
+              </div>
+            </div>
+
+            <div class="rule-item">
+              <span class="rule-icon" aria-hidden="true">🛗</span>
+              <div>
+                <h3 class="rule-title">Tildekking av heis & trappeoppgang</h3>
+                <p class="rule-desc">
+                  Vi dekker til felles heis og gulv med beskyttelsespapp eller filt, og feier og vasker fellesarealer daglig for å unngå klager fra naboer.
+                </p>
+              </div>
+            </div>
+
+            <div class="rule-item">
+              <span class="rule-icon" aria-hidden="true">🚰</span>
+              <div>
+                <h3 class="rule-title">Koordinert vannavstenging</h3>
+                <p class="rule-desc">
+                  Ved behov for å stenge hovedstoppekran varsler vi beboerne i god tid, og gjør inngrepet så kortvarig som overhodet mulig.
+                </p>
+              </div>
+            </div>
+
+            <div class="rule-item">
+              <span class="rule-icon" aria-hidden="true">🔇</span>
+              <div>
+                <h3 class="rule-title">Trinnlydsisolering ved gulvlegging</h3>
+                <p class="rule-desc">
+                  Vi legger trykkfaste trinnlydsplater under parketten for å dempe trinnlyd til naboen under, tilpasset kravene i bygården.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Customer Trust Signals Section -->
+  <section class="section-padding trust-section" aria-labelledby="trust-heading">
+    <div class="container">
+      <div class="section-intro text-center">
+        <span class="eyebrow">Trygghet for deg</span>
+        <h2 id="trust-heading" class="section-title">
+          Hvorfor våre kunder føler seg trygge
+        </h2>
+        <p class="section-desc">
+          Vi bygger tillit gjennom ærlig arbeid, ryddig kommunikasjon og full trygghet for din økonomi.
+        </p>
+      </div>
+
+      <div class="trust-cards-grid">
+        <div class="trust-card">
+          <div class="trust-icon" aria-hidden="true">💳</div>
+          <h3 class="trust-card-title">0 kr i forskudd</h3>
+          <p class="trust-card-desc">
+            Du betaler ingenting på forskudd. Vi fakturerer først etter at arbeidet er fullført og du har godkjent resultatet.
+          </p>
+        </div>
+
+        <div class="trust-card">
+          <div class="trust-icon" aria-hidden="true">🤝</div>
+          <h3 class="trust-card-title">Avtalt fastpris</h3>
+          <p class="trust-card-desc">
+            Vi avtaler en fast og tydelig pris før vi starter, slik at du har full kontroll over budsjettet uten uventede tillegg.
+          </p>
+        </div>
+
+        <div class="trust-card">
+          <div class="trust-icon" aria-hidden="true">🧹</div>
+          <h3 class="trust-card-title">Ryddig hver dag</h3>
+          <p class="trust-card-desc">
+            Vi dekker grundig til gulv og inventar, rydder opp etter oss hver dag, og holder støv og rot under streng kontroll.
+          </p>
+        </div>
+
+        <div class="trust-card">
+          <div class="trust-icon" aria-hidden="true">👤</div>
+          <h3 class="trust-card-title">Én fast håndverker</h3>
+          <p class="trust-card-desc">
+            Du forholder deg kun til {siteConfig.owner} fra gratis befaring til overlevering. Direkte dialog og personlig ansvar.
+          </p>
+        </div>
+      </div>
+
+      <!-- Statutory Company Facts Card -->
+      <div class="company-statutory-card">
+        <div class="statutory-header">
+          <h3 class="statutory-title">Foretaksinformasjon</h3>
+          <span class="statutory-pill">Offentlig registrert i Brønnøysund</span>
+        </div>
+        <div class="statutory-details-grid">
+          <div>
+            <span class="stat-meta-label">Foretak:</span>
+            <strong class="stat-meta-val">{siteConfig.legalName}</strong>
+          </div>
+          <div>
+            <span class="stat-meta-label">Organisasjonsnummer:</span>
+            <strong class="stat-meta-val tabular-nums">{siteConfig.orgNr}</strong>
+          </div>
+          <div>
+            <span class="stat-meta-label">Forretningsadresse:</span>
+            <strong class="stat-meta-val">{siteConfig.location.street}, {siteConfig.location.postalCode} {siteConfig.location.city}</strong>
+          </div>
+          <div>
+            <span class="stat-meta-label">Innehaver:</span>
+            <strong class="stat-meta-val">{siteConfig.owner}</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+          <div>
+            <span class="stat-meta-label">Juridisk navn:</span>
+            <strong class="stat-meta-val">{siteConfig.legalName}</strong>
+          </div>
+          <div>
+            <span class="stat-meta-label">Organisasjonsnummer:</span>
+            <strong class="stat-meta-val tabular-nums">{siteConfig.orgNr}</strong>
+          </div>
+          <div>
+            <span class="stat-meta-label">Forretningsadresse:</span>
+            <strong class="stat-meta-val">{siteConfig.location.street}, {siteConfig.location.postalCode} {siteConfig.location.city}</strong>
+          </div>
+          <div>
+            <span class="stat-meta-label">Daglig leder:</span>
+            <strong class="stat-meta-val">{siteConfig.owner}</strong>
           </div>
         </div>
       </div>
@@ -64,28 +285,60 @@ const pageDescription = `Møt ${siteConfig.owner}, håndverker og daglig leder i
   </section>
 
   <DirectContactBanner
-    heading="Har du et prosjekt på gang?"
-    subheading={`Ta direkte kontakt med Waldemar Kudla for en uforpliktende befaring i Oslo og omegn.`}
+    heading={`Ønsker du en uforpliktende prat med ${siteConfig.owner}?`}
+    subheading={`Ta direkte kontakt på telefon ${siteConfig.phoneDisplay} eller send en e-post for å avtale gratis befaring hjemme hos deg i Oslo.`}
   />
 </BaseLayout>
 
 <style>
-  .om-oss-section {
+  /* Breadcrumbs */
+  .breadcrumb-nav {
     background-color: var(--bg-canvas);
+    border-bottom: 1px solid var(--border-subtle);
+    padding: 0.75rem 0;
+    font-size: 0.875rem;
   }
-  .om-oss-grid {
+  .breadcrumb-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-muted);
+  }
+  .breadcrumb-list a {
+    color: var(--text-muted);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .breadcrumb-list a:hover {
+    color: var(--accent-primary);
+  }
+  .breadcrumb-list [aria-current="page"] {
+    color: var(--text-main);
+    font-weight: 600;
+  }
+  .separator {
+    color: var(--border-subtle);
+  }
+
+  /* About Hero Section */
+  .about-hero-section {
+    background-color: var(--bg-canvas);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .about-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: 3rem;
     align-items: center;
   }
   @media (min-width: 900px) {
-    .om-oss-grid {
-      grid-template-columns: 1fr 1.25fr;
+    .about-grid {
+      grid-template-columns: 0.95fr 1.25fr;
       gap: 4rem;
     }
   }
-  .om-oss-image-card {
+  .craftsman-card {
     position: relative;
     border-radius: var(--radius-lg);
     overflow: hidden;
@@ -93,76 +346,351 @@ const pageDescription = `Møt ${siteConfig.owner}, håndverker og daglig leder i
     border: 1px solid var(--border-subtle);
     background-color: var(--bg-dark);
   }
-  .om-oss-photo {
+  .craftsman-photo {
     width: 100%;
-    height: 440px;
+    height: 480px;
     object-fit: cover;
     object-position: center 20%;
     display: block;
   }
-  .om-oss-badge {
+  .craftsman-badge {
     position: absolute;
     bottom: 1.25rem;
     left: 1.25rem;
     right: 1.25rem;
     background-color: rgba(250, 248, 245, 0.96);
-    padding: 1rem 1.25rem;
+    backdrop-filter: blur(8px);
+    padding: 1.25rem 1.5rem;
     border-radius: var(--radius-md);
     display: flex;
     flex-direction: column;
-    gap: 0.15rem;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    gap: 0.2rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
   }
-  .om-oss-badge strong {
+  .badge-role {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--accent-primary);
+    font-weight: 700;
+  }
+  .badge-name {
     font-family: var(--font-heading);
-    font-size: 1.2rem;
+    font-size: 1.25rem;
     color: var(--text-main);
-  }
-  .om-oss-badge span {
-    font-size: 0.875rem;
-    color: var(--text-muted);
   }
   .badge-exp {
-    font-size: 0.8rem !important;
-    font-weight: 700;
-    color: var(--accent-primary) !important;
+    font-size: 0.85rem;
+    color: var(--accent-trust);
+    font-weight: 600;
   }
-  .page-title {
+
+  .about-copy-col .page-title {
     font-size: clamp(2rem, 3.5vw, 2.75rem);
+    line-height: 1.15;
+    margin-top: 0.5rem;
     margin-bottom: 1.25rem;
   }
-  .lead-text {
-    font-size: 1.125rem;
+  .about-copy-col .lead-text {
+    font-size: 1.15rem;
     color: var(--text-main);
     line-height: 1.6;
-    margin-bottom: 1rem;
+    margin-bottom: 1.25rem;
   }
-  .om-oss-copy p {
-    font-size: 1rem;
+  .about-copy-col p {
+    font-size: 1.0625rem;
     color: var(--text-muted);
     line-height: 1.65;
     margin-bottom: 1.25rem;
   }
-  .om-oss-highlights {
+  .stats-row {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
+    gap: 1.25rem;
     margin-top: 2rem;
-    padding-top: 1.5rem;
+    padding-top: 1.75rem;
     border-top: 1px solid var(--border-subtle);
   }
-  .highlight-item {
+  .stat-card {
     display: flex;
     flex-direction: column;
   }
-  .highlight-num {
+  .stat-number {
     font-family: var(--font-heading);
-    font-size: 1.85rem;
+    font-size: 2rem;
     font-weight: 800;
-    color: var(--accent-primary);
+    color: var(--accent-trust);
+    line-height: 1.1;
   }
-  .highlight-label {
+  .stat-label {
     font-size: 0.8125rem;
     color: var(--text-muted);
+    font-weight: 600;
+  }
+
+  /* Subcontractor Ecosystem Section */
+  .ecosystem-section {
+    background-color: var(--bg-surface);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .section-intro {
+    max-width: 72ch;
+    margin-bottom: 3rem;
+  }
+  .section-intro.text-center {
+    text-align: center;
+    margin-inline: auto;
+  }
+  .section-title {
+    font-size: clamp(1.75rem, 3vw, 2.35rem);
+    margin-top: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+  .section-desc {
+    font-size: 1.0625rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 0;
+  }
+  .ecosystem-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  @media (min-width: 860px) {
+    .ecosystem-grid {
+      grid-template-columns: 1.1fr 1fr;
+    }
+  }
+  .ecosystem-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 2.25rem 2rem;
+    box-shadow: var(--shadow-card);
+    display: flex;
+    flex-direction: column;
+  }
+  .card-primary {
+    border-top: 4px solid var(--accent-trust);
+  }
+  .card-secondary {
+    border-top: 4px solid var(--accent-primary);
+  }
+  .card-badge {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    margin-bottom: 0.75rem;
+  }
+  .ecosystem-card-title {
+    font-size: 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+  .ecosystem-checklist {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .ecosystem-checklist li {
+    font-size: 0.95rem;
+    color: var(--text-main);
+    line-height: 1.5;
+  }
+  .partner-lead {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin-bottom: 1.25rem;
+  }
+  .subcontractor-box {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    padding: 1rem 1.25rem;
+    margin-bottom: 1rem;
+  }
+  .sub-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+    color: var(--text-main);
+  }
+  .sub-text {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin-bottom: 0;
+  }
+  .partner-benefit {
+    font-size: 0.9375rem;
+    color: var(--text-main);
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  /* Borettslag Section */
+  .borettslag-section {
+    background-color: var(--bg-canvas);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .borettslag-box {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 3rem 2.5rem;
+    box-shadow: var(--shadow-card);
+  }
+  .borettslag-title {
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  .borettslag-lead {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    max-width: 75ch;
+    margin-bottom: 2.5rem;
+  }
+  .rules-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+  @media (min-width: 640px) {
+    .rules-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+  }
+  .rule-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .rule-icon {
+    font-size: 1.75rem;
+    line-height: 1;
+    flex-shrink: 0;
+    margin-top: 0.2rem;
+  }
+  .rule-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.35rem;
+  }
+  .rule-desc {
+    font-size: 0.9375rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+    margin-bottom: 0;
+  }
+
+  /* Trust Signals Section */
+  .trust-section {
+    background-color: var(--bg-surface);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .trust-cards-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+  @media (min-width: 600px) {
+    .trust-cards-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 1024px) {
+    .trust-cards-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  .trust-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow-card);
+  }
+  .trust-icon {
+    font-size: 2rem;
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+  .trust-card-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  .trust-card-desc {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+    margin-bottom: 0;
+  }
+
+  /* Statutory Card */
+  .company-statutory-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 2rem 2.25rem;
+  }
+  .statutory-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-subtle);
+    padding-bottom: 1rem;
+  }
+  .statutory-title {
+    font-size: 1.2rem;
+    margin-bottom: 0;
+  }
+  .statutory-pill {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--accent-trust);
+    background-color: var(--accent-trust-bg);
+    padding: 0.25rem 0.65rem;
+    border-radius: var(--radius-sm);
+  }
+  .statutory-details-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  @media (min-width: 640px) {
+    .statutory-details-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 992px) {
+    .statutory-details-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  .stat-meta-label {
+    display: block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+  }
+  .stat-meta-val {
+    font-size: 0.9375rem;
+    color: var(--text-main);
   }
 </style>

@@ -1,13 +1,203 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { siteConfig } from '../data/siteConfig';
+import { path } from '../utils/paths';
+
+const pageTitle = `Personvernerklæring & vilkår | ${siteConfig.companyName}`;
+const pageDescription = `Les om hvordan ${siteConfig.companyName} ivaretar ditt personvern. 100 % fri for informasjonskapsler (cookies), ingen tredjeparts sporing og full etterlevelse av GDPR og Ekomloven.`;
 ---
 
-<BaseLayout title="Personvern" description="Personvernerklæring">
-  <section class="section-padding">
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <!-- Breadcrumb Navigation -->
+  <nav class="breadcrumb-nav" aria-label="Brødsmulesti">
     <div class="container">
-      <h1>Personvern</h1>
-      <p>Ingen cookies eller sporing.</p>
+      <ol class="breadcrumb-list">
+        <li><a href={path('/')}>Hjem</a></li>
+        <li class="separator" aria-hidden="true">/</li>
+        <li aria-current="page">Personvernerklæring</li>
+      </ol>
     </div>
-  </section>
+  </nav>
+
+  <article class="section-padding privacy-section">
+    <div class="container privacy-container">
+      <div class="privacy-header">
+        <span class="zero-cookie-badge">🛡️ 100 % fri for informasjonskapsler & sporing</span>
+        <h1 class="page-title">Personvernerklæring & vilkår</h1>
+        <p class="privacy-lead">
+          {siteConfig.companyName} respekterer ditt personvern fullt ut. Dette nettstedet er bygget etter prinsippet om minimal datainnsamling (Privacy by Design).
+        </p>
+      </div>
+
+      <div class="privacy-content">
+        <section class="privacy-block">
+          <h2>1. 100 % fri for informasjonskapsler (Zero-Cookie Guarantee)</h2>
+          <p>
+            Dette nettstedet benytter <strong>ingen informasjonskapsler (cookies)</strong> eller lokal lagring (localStorage), hverken til teknisk sporing, markedsføring eller analyse.
+          </p>
+          <p>
+            I henhold til <strong>Ekomloven § 2-7b</strong> kreves det samtykke fra brukeren kun dersom nettstedet lagrer eller henter opplysninger i brukerens utstyr. Fordi vi overhodet ikke plasserer informasjonskapsler, trenger du ikke å ta stilling til et irriterende «cookie-banner» eller samtykkevindu.
+          </p>
+        </section>
+
+        <section class="privacy-block">
+          <h2>2. Ingen analyseverktøy, skript eller tredjeparts sporing</h2>
+          <p>
+            Vi laster ingen analyseverktøy (som Google Analytics eller Hotjar) og ingen sporingspiksler (som Meta Pixel). Nettsiden leveres som 100 % rene, statiske HTML- og CSS-filer via et sikkert innholdsnettverk (Cloudflare Pages/Netlify CDN). IP-adresser lagres kun i anonymiserte serverlogger for å avverge overbelastningsangrep (DDoS) og slettes automatisk etter kort tid.
+          </p>
+        </section>
+
+        <section class="privacy-block">
+          <h2>3. Behandling av henvendelser og lovlig grunnlag (GDPR art. 6)</h2>
+          <p>
+            All kontakt med {siteConfig.companyName} skjer formløst og direkte via telefon (`tel:`), SMS/MMS eller e-post (`mailto:`). Når du tar kontakt, oppgir du frivillig opplysninger som navn, kontaktinformasjon og detaljer om boligen din.
+          </p>
+          <p>
+            Behandlingen av disse personopplysningene skjer i henhold til <strong>GDPR art. 6</strong>:
+          </p>
+          <ul>
+            <li>
+              <strong>GDPR art. 6 nr. 1 bokstav b:</strong> Behandlingen er nødvendig for å oppfylle en avtale som den registrerte er part i, eller for å gjennomføre tiltak på den registrertes anmodning før en avtaleinngåelse (f.eks. gratis befaring, svar på henvendelse og utarbeidelse av pristilbud).
+            </li>
+            <li>
+              <strong>GDPR art. 6 nr. 1 bokstav c:</strong> Behandlingen er nødvendig for å oppfylle rettslige forpliktelser etter norsk lov, herunder <em>Bokføringsloven</em> (oppbevaring av fakturaer og regnskapsbilag i henhold til lovens krav).
+            </li>
+          </ul>
+        </section>
+
+        <section class="privacy-block">
+          <h2>4. Dine rettigheter</h2>
+          <p>
+            I henhold til personopplysningsloven og GDPR har du rett til:
+          </p>
+          <ul>
+            <li>Innsyn i hvilke opplysninger vi har lagret om deg.</li>
+            <li>Å kreve retting av feilaktige eller ufullstendige opplysninger.</li>
+            <li>Å kreve sletting av opplysninger som ikke lenger er nødvendige for regnskap eller lovpålagte formål.</li>
+          </ul>
+        </section>
+
+        <section class="privacy-block">
+          <h2>5. Behandlingsansvarlig & kontaktinformasjon</h2>
+          <p>
+            Behandlingsansvarlig for opplysninger behandlet av dette foretaket er:
+          </p>
+          <div class="company-legal-box">
+            <strong>{siteConfig.legalName}</strong><br />
+            Org.nr: {siteConfig.orgNr}<br />
+            Adresse: {siteConfig.location.street}, {siteConfig.location.postalCode} {siteConfig.location.city}<br />
+            Telefon: <a href={`tel:${siteConfig.phoneHref}`}>{siteConfig.phoneDisplay}</a><br />
+            E-post: <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
+          </div>
+        </section>
+      </div>
+    </div>
+  </article>
 </BaseLayout>
+
+<style>
+  /* Breadcrumbs */
+  .breadcrumb-nav {
+    background-color: var(--bg-canvas);
+    border-bottom: 1px solid var(--border-subtle);
+    padding: 0.75rem 0;
+    font-size: 0.875rem;
+  }
+  .breadcrumb-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-muted);
+  }
+  .breadcrumb-list a {
+    color: var(--text-muted);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .breadcrumb-list a:hover {
+    color: var(--accent-primary);
+  }
+  .breadcrumb-list [aria-current="page"] {
+    color: var(--text-main);
+    font-weight: 600;
+  }
+  .separator {
+    color: var(--border-subtle);
+  }
+
+  .privacy-section {
+    background-color: var(--bg-canvas);
+  }
+  .privacy-container {
+    max-width: 780px;
+  }
+  .privacy-header {
+    margin-bottom: 3rem;
+  }
+  .zero-cookie-badge {
+    display: inline-block;
+    background-color: var(--accent-trust-bg);
+    color: var(--accent-trust);
+    font-size: 0.875rem;
+    font-weight: 700;
+    padding: 0.4rem 0.85rem;
+    border-radius: 999px;
+    margin-bottom: 1rem;
+    border: 1px solid #c2ded1;
+  }
+  .page-title {
+    font-size: clamp(2rem, 3.5vw, 2.75rem);
+    margin-bottom: 1rem;
+    line-height: 1.15;
+  }
+  .privacy-lead {
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+  .privacy-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2.25rem;
+  }
+  .privacy-block h2 {
+    font-size: 1.35rem;
+    margin-bottom: 0.75rem;
+    color: var(--text-main);
+  }
+  .privacy-block p {
+    font-size: 1.0625rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+    margin-bottom: 1rem;
+  }
+  .privacy-block ul {
+    list-style: disc;
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-muted);
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .privacy-block li {
+    font-size: 1rem;
+    line-height: 1.55;
+  }
+  .company-legal-box {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    padding: 1.25rem 1.5rem;
+    margin-top: 1rem;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--text-main);
+  }
+  .company-legal-box a {
+    color: var(--accent-primary);
+    text-decoration: underline;
+    font-weight: 600;
+  }
+</style>

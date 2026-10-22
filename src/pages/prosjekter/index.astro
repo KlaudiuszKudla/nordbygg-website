@@ -1,86 +1,98 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { siteConfig } from '../../data/siteConfig';
+import { projectsData } from '../../data/projects';
 import { path } from '../../utils/paths';
 import DirectContactBanner from '../../components/conversion/DirectContactBanner.astro';
 
-const projects = [
-  {
-    title: 'Totalrenovering av bad og gang i klassisk bygård',
-    location: 'St. Hanshaugen, Oslo',
-    buildingType: 'Klassisk bygård',
-    duration: '4,5 uker',
-    image: path('/images/bad.jpg'),
-    summary: 'Riving, ny støp, membran, 60x60 fliser, montering av baderomsinnredning og armaturer.',
-    tags: ['Bad', 'Flislegging', 'Våtrom'],
-  },
-  {
-    title: 'Nytt kjøkken og fiskebensparkett i leilighet',
-    location: 'Frogner, Oslo',
-    buildingType: 'Klassisk leilighet',
-    duration: '3 uker',
-    image: path('/images/kjokken.jpg'),
-    summary: 'Avretting av undergulv, presis montering av kjøkkeninnredning, tilpasning av foringer og benkeplate.',
-    tags: ['Kjøkken', 'Gulvlegging', 'Montering'],
-  },
-  {
-    title: 'Oppretting av skjeve gulv og legging av 1-stavs eikeparkett',
-    location: 'Majorstuen, Oslo',
-    buildingType: 'Eldre bygård',
-    duration: '1 uke',
-    image: path('/images/gulv.jpg'),
-    summary: 'Flytsparkling og avretting av 75 m² gulvflate, trinnlydsisolering og legging av eikeparkett med nye gulvlister.',
-    tags: ['Gulvlegging', 'Avretting'],
-  },
-  {
-    title: 'Helsparkling, maling og listverk i 3-roms leilighet',
-    location: 'Grünerløkka, Oslo',
-    buildingType: 'Bygårdsleilighet',
-    duration: '1,5 uker',
-    image: path('/images/maling.jpg'),
-    summary: 'Helsparkling av gips- og murvegger, støvfri sliping og maling i tidsriktige farger samt nymalte dørkarmer.',
-    tags: ['Malerarbeid', 'Helsparkling'],
-  },
-  {
-    title: 'Plassbygd garderobeløsning og montering av innerdører',
-    location: 'Nordstrand, Oslo',
-    buildingType: 'Enebolig',
-    duration: '4 dager',
-    image: path('/images/montering.jpg'),
-    summary: 'Montering av skreddersydd skyvedørsgarderobe, tilpasning av foringer og utskifting av fem innerdører.',
-    tags: ['Montering', 'Garderobe', 'Dører'],
-  },
-];
+const pageTitle = `Utførte prosjekter og referanser i Oslo | ${siteConfig.companyName}`;
+const pageDescription = `Se et utvalg av våre utførte oppussingsprosjekter i Oslo – bad, kjøkken, gulvlegging, innvendig og utvendig maling av trehus på Frogner, St. Hanshaugen, Majorstuen og Nordstrand.`;
 ---
 
-<BaseLayout title={`Utførte prosjekter | ${siteConfig.companyName}`} description="Se et utvalg av våre utførte prosjekter innen oppussing og montering i Oslo.">
-  <section class="section-padding projects-page-hero">
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <!-- Breadcrumb Navigation -->
+  <nav class="breadcrumb-nav" aria-label="Brødsmulesti">
     <div class="container">
-      <span class="eyebrow">Referanser & Prosjekter</span>
-      <h1 class="page-title">Utvalgte prosjekter i Oslo</h1>
-      <p class="lead-text">
-        Her er et lite utvalg av utførte oppussings- og monteringsarbeider i Oslo, Bærum og omegn.
-        Hvert prosjekt er utført med fokus på nøyaktighet, ryddighet og god dialog underveis.
-      </p>
+      <ol class="breadcrumb-list">
+        <li><a href={path('/')}>Hjem</a></li>
+        <li class="separator" aria-hidden="true">/</li>
+        <li aria-current="page">Prosjekter</li>
+      </ol>
+    </div>
+  </nav>
 
-      <div class="projects-list-grid">
-        {projects.map((project) => (
+  <!-- Projects Hub Hero -->
+  <section class="projects-hero section-padding">
+    <div class="container">
+      <div class="hero-header-box">
+        <span class="eyebrow">Referanser & håndverk</span>
+        <h1 class="page-title">Utvalgte oppussingsprosjekter i Oslo</h1>
+        <p class="lead-text">
+          Her kan du utforske et utvalg av våre nylig ferdigstilte prosjekter i Oslo, Bærum og omegn.
+          Fra totalrenovering av våtrom i klassiske 1800-talls bygårder på Frogner og St. Hanshaugen,
+          til presis gulvavretting, kjøkkenmontering og utvendig maling av norske trehus.
+        </p>
+
+        <!-- Trust Signals Bar -->
+        <div class="portfolio-trust-bar">
+          <div class="trust-stat">
+            <span class="stat-number">15+</span>
+            <span class="stat-label">års erfaring i Oslo-boliger</span>
+          </div>
+          <div class="trust-stat">
+            <span class="stat-number">100%</span>
+            <span class="stat-label">fastpris etter avtale</span>
+          </div>
+          <div class="trust-stat">
+            <span class="stat-number">1</span>
+            <span class="stat-label">fast kontaktperson under hele oppdraget</span>
+          </div>
+          <div class="trust-stat">
+            <span class="stat-number">0 kr</span>
+            <span class="stat-label">i forskudd – betal etter godkjent arbeid</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project Cards Grid -->
+      <div class="projects-grid">
+        {projectsData.map((project) => (
           <article class="project-card">
-            <div class="project-img-wrapper">
-              <img src={project.image} alt={project.title} loading="lazy" width="500" height="300" />
-            </div>
-            <div class="project-info">
-              <div class="project-meta-top">
-                <span>📍 {project.location}</span>
-                <span>⏱ {project.duration}</span>
+            <a href={project.href} class="project-card-image-link" tabindex="-1" aria-hidden="true">
+              <img
+                src={project.mainImage}
+                alt={project.title}
+                loading="lazy"
+                width="600"
+                height="360"
+                class="project-card-img"
+              />
+              <span class="neighborhood-badge">📍 {project.neighborhood}</span>
+            </a>
+
+            <div class="project-card-content">
+              <div class="project-meta-row">
+                <span class="meta-pill">{project.buildingType}</span>
+                <span class="meta-duration">⏱ {project.duration}</span>
               </div>
-              <h2 class="project-card-title">{project.title}</h2>
-              <p class="project-building">{project.buildingType}</p>
-              <p class="project-desc">{project.summary}</p>
-              <div class="project-tags">
+
+              <h2 class="project-card-title">
+                <a href={project.href}>{project.title}</a>
+              </h2>
+
+              <p class="project-card-excerpt">{project.excerpt}</p>
+
+              <div class="project-tags-row">
                 {project.tags.map((tag) => (
                   <span class="tag-pill">{tag}</span>
                 ))}
+              </div>
+
+              <div class="project-card-footer">
+                <a href={project.href} class="read-case-link">
+                  <span>Les hele prosjektet</span>
+                  <span class="arrow" aria-hidden="true">→</span>
+                </a>
               </div>
             </div>
           </article>
@@ -89,102 +101,286 @@ const projects = [
     </div>
   </section>
 
+  <!-- Quote Showcase Section -->
+  <section class="section-padding quote-strip-section" aria-label="Kundetilfredshet">
+    <div class="container">
+      <div class="quote-strip-box">
+        <div class="quote-symbol" aria-hidden="true">«</div>
+        <blockquote class="quote-text">
+          Vårt mål er alltid det samme: Ryddig byggeplass, transparent kommunikasjon og et håndverk du er stolt av å vise frem i mange år fremover.
+        </blockquote>
+        <div class="quote-author-info">
+          <strong>{siteConfig.owner}</strong> – Utførende håndverker & daglig leder i {siteConfig.companyName}
+        </div>
+      </div>
+    </div>
+  </section>
+
   <DirectContactBanner
-    heading="Vil du ha lignende resultat hjemme hos deg?"
-    subheading="Ta kontakt for en uforpliktende prat og gratis befaring."
+    heading="Har du et oppussingsprosjekt i Oslo eller omegn?"
+    subheading="Ta direkte kontakt med oss for en uforpliktende prat eller avtal gratis befaring på din adresse."
   />
 </BaseLayout>
 
 <style>
-  .projects-page-hero {
+  /* Breadcrumb Navigation */
+  .breadcrumb-nav {
     background-color: var(--bg-canvas);
+    border-bottom: 1px solid var(--border-subtle);
+    padding: 0.75rem 0;
+    font-size: 0.875rem;
+  }
+  .breadcrumb-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-muted);
+  }
+  .breadcrumb-list a {
+    color: var(--text-muted);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .breadcrumb-list a:hover {
+    color: var(--accent-primary);
+  }
+  .breadcrumb-list [aria-current="page"] {
+    color: var(--text-main);
+    font-weight: 600;
+  }
+  .separator {
+    color: var(--border-subtle);
+  }
+
+  /* Projects Hero & Header */
+  .projects-hero {
+    background-color: var(--bg-canvas);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .hero-header-box {
+    max-width: 80ch;
+    margin-bottom: 3.5rem;
   }
   .page-title {
-    font-size: clamp(2rem, 3.5vw, 2.75rem);
-    margin-bottom: 1rem;
+    font-size: clamp(2rem, 3.5vw, 2.85rem);
+    margin-top: 0.5rem;
+    margin-bottom: 1.25rem;
+    line-height: 1.15;
   }
   .lead-text {
     font-size: 1.125rem;
     color: var(--text-muted);
-    max-width: 65ch;
-    margin-bottom: 3rem;
+    line-height: 1.6;
+    margin-bottom: 2.25rem;
   }
-  .projects-list-grid {
+
+  /* Trust Stat Bar */
+  .portfolio-trust-bar {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+  }
+  @media (min-width: 768px) {
+    .portfolio-trust-bar {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+  }
+  .trust-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+  .stat-number {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--accent-trust);
+    font-family: var(--font-heading);
+    line-height: 1.1;
+  }
+  .stat-label {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+  }
+
+  /* Projects Grid */
+  .projects-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: 2rem;
   }
   @media (min-width: 768px) {
-    .projects-list-grid {
+    .projects-grid {
       grid-template-columns: repeat(2, 1fr);
+      gap: 2.5rem;
     }
   }
+  @media (min-width: 1080px) {
+    .projects-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  /* Project Card */
   .project-card {
     background-color: var(--bg-card);
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius-md);
     overflow: hidden;
-    box-shadow: var(--shadow-card);
     display: flex;
     flex-direction: column;
-    transition: transform 0.2s ease;
+    box-shadow: var(--shadow-card);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
   }
   .project-card:hover {
-    transform: translateY(-2px);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(24, 43, 54, 0.08);
+    border-color: var(--accent-primary);
   }
-  .project-img-wrapper {
-    width: 100%;
-    height: 240px;
+  .project-card-image-link {
+    position: relative;
+    display: block;
     overflow: hidden;
     background-color: var(--bg-surface);
   }
-  .project-img-wrapper img {
+  .project-card-img {
     width: 100%;
-    height: 100%;
+    height: 240px;
     object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
   }
-  .project-info {
+  .project-card:hover .project-card-img {
+    transform: scale(1.03);
+  }
+  .neighborhood-badge {
+    position: absolute;
+    bottom: 0.875rem;
+    left: 0.875rem;
+    background-color: rgba(24, 43, 54, 0.88);
+    backdrop-filter: blur(6px);
+    color: #ffffff;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    padding: 0.35rem 0.65rem;
+    border-radius: var(--radius-sm);
+  }
+
+  .project-card-content {
     padding: 1.5rem;
     display: flex;
     flex-direction: column;
     flex: 1;
   }
-  .project-meta-top {
+  .project-meta-row {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
     font-size: 0.8125rem;
-    font-weight: 700;
-    color: var(--accent-trust);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+  .meta-pill {
+    background-color: var(--bg-surface);
+    color: var(--text-main);
+    padding: 0.2rem 0.5rem;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 65%;
+  }
+  .meta-duration {
+    color: var(--text-muted);
+    font-weight: 600;
+    white-space: nowrap;
   }
   .project-card-title {
-    font-size: 1.25rem;
-    margin-bottom: 0.35rem;
+    font-size: 1.2rem;
+    line-height: 1.3;
+    margin-bottom: 0.75rem;
   }
-  .project-building {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    margin-bottom: 0.85rem;
+  .project-card-title a {
+    color: var(--text-main);
+    transition: color 0.15s ease;
   }
-  .project-desc {
+  .project-card-title a:hover {
+    color: var(--accent-primary);
+  }
+  .project-card-excerpt {
     font-size: 0.9375rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+    margin-bottom: 1.25rem;
+    flex-grow: 1;
+  }
+  .project-tags-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-bottom: 1.5rem;
+  }
+  .tag-pill {
+    font-size: 0.75rem;
+    font-weight: 600;
+    background-color: var(--accent-trust-bg);
+    color: var(--accent-trust);
+    padding: 0.2rem 0.5rem;
+    border-radius: var(--radius-sm);
+  }
+  .project-card-footer {
+    border-top: 1px solid var(--border-subtle);
+    padding-top: 1rem;
+    margin-top: auto;
+  }
+  .read-case-link {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: var(--accent-primary);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    transition: gap 0.15s ease;
+  }
+  .read-case-link:hover {
+    color: var(--accent-primary-hover);
+    gap: 0.6rem;
+  }
+
+  /* Quote Strip Section */
+  .quote-strip-section {
+    background-color: var(--bg-surface);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .quote-strip-box {
+    max-width: 760px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .quote-symbol {
+    font-size: 3rem;
+    line-height: 1;
+    color: var(--accent-primary);
+    font-family: Georgia, serif;
+    margin-bottom: 0.5rem;
+  }
+  .quote-text {
+    font-size: clamp(1.15rem, 2vw, 1.35rem);
+    font-family: var(--font-heading);
     color: var(--text-main);
     line-height: 1.5;
     margin-bottom: 1.25rem;
-    flex: 1;
-  }
-  .project-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-  }
-  .tag-pill {
-    background-color: var(--bg-surface);
-    border: 1px solid var(--border-subtle);
-    font-size: 0.75rem;
     font-weight: 600;
-    padding: 0.2rem 0.55rem;
-    border-radius: var(--radius-sm);
+  }
+  .quote-author-info {
+    font-size: 0.9375rem;
     color: var(--text-muted);
   }
 </style>

@@ -6,10 +6,10 @@ import { path } from '../../utils/paths';
 <header class="site-header">
   <div class="container header-inner">
     <a href={path('/')} class="brand-logo" aria-label={`${siteConfig.companyName} - Til forsiden`}>
-      <span class="logo-mark" aria-hidden="true">S</span>
+      <span class="logo-mark" aria-hidden="true">{siteConfig.companyName.charAt(0)}</span>
       <div class="logo-text">
         <span class="logo-name">{siteConfig.companyName}</span>
-        <span class="logo-sub">Oppussing & Wykończenia i Oslo</span>
+        <span class="logo-sub">Oppussing & Håndverk i Oslo</span>
       </div>
     </a>
 
@@ -58,23 +58,32 @@ import { path } from '../../utils/paths';
     position: sticky;
     top: 0;
     z-index: 40;
-    background-color: rgba(250, 248, 245, 0.96);
-    backdrop-filter: blur(8px);
+    background-color: rgba(250, 248, 245, 0.98);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border-subtle);
   }
   .header-inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    min-height: 4.75rem;
-    gap: 1rem;
-    flex-wrap: wrap;
-    padding-block: 0.5rem;
+    min-height: 4.5rem;
+    gap: 1.5rem;
+    padding-block: 0.75rem;
+  }
+  @media (max-width: 899px) {
+    .header-inner {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0.65rem;
+      padding-block: 0.65rem;
+    }
   }
   .brand-logo {
     display: flex;
     align-items: center;
     gap: 0.75rem;
+    text-decoration: none;
   }
   .logo-mark {
     display: grid;
@@ -85,8 +94,9 @@ import { path } from '../../utils/paths';
     color: var(--text-on-dark);
     font-family: var(--font-heading);
     font-weight: 800;
-    font-size: 1rem;
+    font-size: 1.1rem;
     border-radius: var(--radius-sm);
+    flex-shrink: 0;
   }
   .logo-text {
     display: flex;
@@ -94,29 +104,54 @@ import { path } from '../../utils/paths';
   }
   .logo-name {
     font-family: var(--font-heading);
-    font-weight: 700;
-    font-size: 1.125rem;
+    font-weight: 800;
+    font-size: 1.15rem;
     color: var(--text-main);
-    line-height: 1.1;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
   }
   .logo-sub {
     font-size: 0.75rem;
     color: var(--text-muted);
+    font-weight: 500;
+  }
+  .main-nav {
+    display: flex;
+    align-items: center;
+  }
+  @media (max-width: 899px) {
+    .main-nav {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding-bottom: 0.25rem;
+    }
+    .main-nav::-webkit-scrollbar {
+      display: none;
+    }
   }
   .nav-list {
     display: flex;
     align-items: center;
     gap: 1.25rem;
-    flex-wrap: wrap;
+  }
+  @media (max-width: 899px) {
+    .nav-list {
+      gap: 1rem;
+      flex-wrap: nowrap;
+      white-space: nowrap;
+    }
   }
   .nav-link {
     font-family: var(--font-heading);
     font-size: 0.9375rem;
     font-weight: 600;
     color: var(--text-main);
-    padding: 0.375rem 0.25rem;
+    padding: 0.35rem 0.25rem;
     cursor: pointer;
     transition: color 0.15s ease;
+    text-decoration: none;
   }
   .nav-link:hover {
     color: var(--accent-primary);
@@ -129,29 +164,45 @@ import { path } from '../../utils/paths';
     display: inline-flex;
     align-items: center;
     gap: 0.35rem;
+    user-select: none;
   }
   .nav-summary::-webkit-details-marker {
     display: none;
+  }
+  .nav-summary svg {
+    transition: transform 0.2s ease;
+  }
+  .nav-details[open] .nav-summary svg {
+    transform: rotate(180deg);
   }
   .dropdown-menu {
     position: absolute;
     top: calc(100% + 0.5rem);
     left: 0;
-    min-width: 240px;
+    min-width: 270px;
+    max-width: calc(100vw - 2rem);
     background-color: var(--bg-card);
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius-md);
-    box-shadow: 0 12px 24px rgba(24, 43, 54, 0.12);
+    box-shadow: 0 14px 32px rgba(24, 43, 54, 0.15);
     padding: 0.5rem;
-    z-index: 50;
+    z-index: 100;
+  }
+  @media (max-width: 639px) {
+    .dropdown-menu {
+      left: 0;
+      width: 280px;
+    }
   }
   .dropdown-link {
     display: block;
-    padding: 0.6rem 0.85rem;
+    padding: 0.65rem 0.85rem;
     font-size: 0.9rem;
     font-weight: 500;
     color: var(--text-main);
     border-radius: var(--radius-sm);
+    text-decoration: none;
+    transition: background-color 0.15s ease, color 0.15s ease;
   }
   .dropdown-link:hover {
     background-color: var(--bg-surface);
@@ -168,6 +219,7 @@ import { path } from '../../utils/paths';
   }
   .header-cta {
     display: none;
+    flex-shrink: 0;
   }
   @media (min-width: 900px) {
     .header-cta {
@@ -185,6 +237,7 @@ import { path } from '../../utils/paths';
     font-size: 0.9375rem;
     padding: 0.65rem 1.15rem;
     border-radius: var(--radius-sm);
+    text-decoration: none;
     transition: background-color 0.15s ease;
   }
   .header-phone-btn:hover {

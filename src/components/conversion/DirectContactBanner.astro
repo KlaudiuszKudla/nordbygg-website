@@ -28,7 +28,7 @@ const mailtoHref = buildSmartMailto({ serviceName });
 
         <div class="cta-actions">
           <a href={`tel:${siteConfig.phoneHref}`} class="btn-cta-phone tabular-nums">
-            📞 Ring Waldemar: {siteConfig.phoneDisplay}
+            📞 Ring {siteConfig.owner.split(' ')[0]}: {siteConfig.phoneDisplay}
           </a>
           <a href={mailtoHref} class="btn-cta-email">
             ✉️ Send forespørsel på e-post

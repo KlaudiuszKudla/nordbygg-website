@@ -1,5 +1,43 @@
 import { path } from '../utils/paths';
 
+export interface ServiceScopeItem {
+  title: string;
+  description: string;
+}
+
+export interface ServicePricingFactor {
+  title: string;
+  description: string;
+}
+
+export interface ServiceTimelineStep {
+  phase: string;
+  title: string;
+  description: string;
+}
+
+export interface ServiceFAQ {
+  question: string;
+  answer: string;
+}
+
+export interface ServiceItem {
+  title: string;
+  slug: string;
+  href: string;
+  image: string;
+  shortDesc: string;
+  heroIntro?: string;
+  highlights: string[];
+  scopeOfWork: ServiceScopeItem[];
+  pricingIntro?: string;
+  pricingFactors: ServicePricingFactor[];
+  typicalTimeline: string;
+  timelineSteps: ServiceTimelineStep[];
+  faqs: ServiceFAQ[];
+  bygardNote?: string;
+}
+
 export const siteConfig = {
   companyName: 'Satisfaction',
   legalName: 'Satisfaction Waldemar Kudla ENK',
@@ -35,94 +73,624 @@ export const siteConfig = {
       slug: 'oppussing-av-bad-oslo',
       href: path('/tjenester/oppussing-av-bad-oslo/'),
       image: path('/images/bad.jpg'),
-      shortDesc: 'Totalrenovering av bad og våtrom i Oslo – riving, membran, flislegging og montering av innredning, i samarbeid med rørlegger og elektriker.',
-      highlights: ['Riving & grunnarbeid', 'Flislegging & membran', 'Komplett ferdigstillelse'],
+      shortDesc: 'Totalrenovering av bad og våtrom i Oslo – riving, oppbygging med vanntett membran, avretting med fall mot sluk og presis flislegging.',
+      heroIntro: 'Fra eldre bygårdsbad til moderne og funksjonelle baderom. Waldemar Kudla utfører arbeidet med stor nøyaktighet og koordinerer fremdriften slik at resultatet blir pent, solid og holdbart.',
+      highlights: ['Riving & grundig forarbeid', 'Støp med fall til sluk', 'Membran & presis flislegging', 'Ingen forskuddsbetaling'],
       scopeOfWork: [
-        'Riving av gammelt bad og bortkjøring av avfall',
-        'Avretting og støp med riktig fall til sluk',
-        'Påføring av godkjent membran (våtromssystem)',
-        'Flislegging av gulv og vegger (også storformat)',
-        'Montering av baderomsinnredning og dusjvegger',
-        'Koordinering av rørlegger og elektriker',
+        {
+          title: 'Skånsom riving og avfallshåndtering',
+          description: 'Fjerning av eksisterende fliser, innredning og underlag. Kildesortering og bortkjøring av alt avfall til godkjent gjenvinningsstasjon i Oslo.'
+        },
+        {
+          title: 'Oppretting og støp med fall til sluk',
+          description: 'Etablering av stabilt underlag og støping av avrettingsmasse med korrekt fall mot sluk for trygg og effektiv vannavrenning.'
+        },
+        {
+          title: 'Smøremembran og fuktsikring',
+          description: 'Påføring av godkjent smøremembran med solide forsterkningsbånd i alle hjørneoverganger og tette mansjetter rundt rørgjennomføringer.'
+        },
+        {
+          title: 'Presis flislegging og fuging',
+          description: 'Flislegging av vegger og gulv med rette linjer og jevne fuger. Vi behersker alt fra klassiske fliser til 60x60 storformat og 45° gjæring (jolly-kutt) i utvendige hjørner.'
+        },
+        {
+          title: 'Praktisk koordinering av rør og belysning',
+          description: 'Tett samkjøring med erfarne samarbeidspartnere på rør og elektro, slik at rør, sluk, varmekabler og belysning monteres til riktig tid.'
+        },
+        {
+          title: 'Montering av møbler og sanitærutstyr',
+          description: 'Nøyaktig montering av servantskap, speilskap med integrert lys, glassdusjvegger, toalett og baderomstilbehør med vanntett silikonering.'
+        },
+        {
+          title: 'Bygårdstilpasninger i Oslo',
+          description: 'Håndtering av felles soilrør, støydemping i etasjeskillere, nabovarsling og koordinert vannavstenging i borettslag og sameier.'
+        },
+        {
+          title: 'Sluttkontroll sammen med deg',
+          description: 'Grundig visuell sjekk og funksjonstesting sammen med deg i rommet, slik at du er 100 % fornøyd med overflatene og finishen.'
+        }
       ],
-      pricingFactors: ['Rommets størrelse (m²)', 'Behov for flytting av sluk', 'Valg av flistyper'],
-      typicalTimeline: '3 til 5 uker.',
-      faqs: [{ question: 'Får dere inn rørlegger?', answer: 'Ja, vi samarbeider med rørleggere.' }]
+      pricingIntro: 'Prisen på totalrenovering av bad avhenger av rommets utgangspunkt, tekniske krav og dine materialønsker. Her er de viktigste faktorene:',
+      pricingFactors: [
+        {
+          title: 'Romstørrelse og grunnforhold',
+          description: 'Et lite bad på 3–4 m² krever nesten samme tekniske installasjoner som et bad på 8 m², men materialkostnad for flis og membran øker med flatestørrelsen.'
+        },
+        {
+          title: 'Flytting av sluk og tekniske føringer',
+          description: 'Om rørføringer og sluk beholdes på samme sted er inngrepet enklere enn ved omdisponering av rommet i betong- eller trebjelkelag.'
+        },
+        {
+          title: 'Flisstørrelse og detaljnivå',
+          description: 'Storformatfliser (60x60 cm eller større) og 45-graders gjæring av utvendige hjørner krever spesialverktøy og vesentlig mer arbeidstid enn standardformater.'
+        },
+        {
+          title: 'Valg av innredning og armaturer',
+          description: 'Innebygde armaturer i vegg krever ekstra forarbeid sammenlignet med tradisjonelle utenpåliggende blandebatterier.'
+        }
+      ],
+      typicalTimeline: '3 til 5 uker for et standard baderom i Oslo.',
+      timelineSteps: [
+        {
+          phase: 'Fase 1',
+          title: 'Befaring & tilbud (Dag 1–3)',
+          description: 'Gratis befaring hjemme hos deg, gjennomgang av ønsker og utarbeidelse av et detaljert, uforpliktende pristilbud.'
+        },
+        {
+          phase: 'Fase 2',
+          title: 'Riving & rør/elektro (Uke 1)',
+          description: 'Tildekking av fellesarealer, skånsom riving, bortkjøring av avfall og oppstart for rørlegger og elektriker.'
+        },
+        {
+          phase: 'Fase 3',
+          title: 'Støp, fall & membran (Uke 2)',
+          description: 'Avretting av gulv med korrekt fall, montering av våtromsplater og påføring av vanntett smøremembran.'
+        },
+        {
+          phase: 'Fase 4',
+          title: 'Flislegging, montering & sluttkontroll (Uke 3–5)',
+          description: 'Presis flislegging, fuging, montering av baderomsmøbler, samt felles sluttbefaring av badet.'
+        }
+      ],
+      bygardNote: 'Vi har omfattende erfaring med bad i eldre Oslo-bygårder med trebjelkelag, etasjeskillere og felles soil- og avløpsstammer.',
+      faqs: [
+        {
+          question: 'Må jeg betale noe på forskudd?',
+          answer: 'Nei, for din trygghet betaler du ingenting på forskudd. Vi fakturerer først etter at arbeidet er ferdigstilt og vi har gått gjennom resultatet sammen på sluttbefaringen.'
+        },
+        {
+          question: 'Hvem har ansvaret for koordinering av rørlegger og elektriker?',
+          answer: 'Waldemar Kudla tar det praktiske koordineringsansvaret. Du forholder deg kun til én kontaktperson, og vi sørger for at dyktige fagfolk på rør og strøm kommer inn til riktig tidspunkt.'
+        },
+        {
+          question: 'Må jeg varsle styret og naboer i borettslaget før oppstart?',
+          answer: 'Ja, i de fleste borettslag og sameier i Oslo skal styret informeres om oppussing, og naboer skal varsles om støyende arbeid og eventuell vannavstenging. Vi bistår med standard nabovarsel.'
+        },
+        {
+          question: 'Gir dere fastpris på oppussing av bad?',
+          answer: 'Ja, etter en grundig gratis befaring leverer vi et forutsigbart og uforpliktende fastpristilbud som spesifiserer alle inkluderte arbeidsoperasjoner.'
+        }
+      ]
     },
     {
       title: 'Kjøkkenoppussing',
       slug: 'kjokkenoppussing-oslo',
       href: path('/tjenester/kjokkenoppussing-oslo/'),
       image: path('/images/kjokken.jpg'),
-      shortDesc: 'Demontering av gammelt kjøkken, oppretting av skjeve vegger i eldre bygårder, og presis montering av IKEA-, HTH- og Sigdal-kjøkken.',
-      highlights: ['Komplett kjøkkenmontering', 'Tilpasning av foringer', 'Benkeplater & flis'],
+      shortDesc: 'Demontering av gammelt kjøkken, oppretting av skjeve vegger og gulv i eldre bygårder, samt presis montering av IKEA-, HTH-, Sigdal- og Kvik-kjøkken.',
+      heroIntro: 'Et nytt kjøkken krever millimeterpresisjon. Vi retter opp skjeve overflater, monterer skrog og foringer sømløst mot tak og vegg, og tilpasser benkeplater og hvitevarer for et varig resultat.',
+      highlights: ['Demontering & avretting', 'IKEA-, HTH- & Kvik-spesialist', 'Skreddersøm av tak- og veggforinger', 'Samarbeid med rør og elektro'],
       scopeOfWork: [
-        'Demontering og bortkjøring av eksisterende kjøkken',
-        'Oppretting av skjeve vegger og gulv før montering',
-        'Montering av skrog, fronter og skuffesystemer',
-        'Presis tilpasning av tak- og veggforinger',
-        'Tilpasning og montering av benkeplater',
-        'Montering av integrerte hvitevarer og fliser',
+        {
+          title: 'Demontering og bortkjøring av gammelt kjøkken',
+          description: 'Trygg frakobling og fjerning av eksisterende innredning, fliser og hvitevarer med miljøvennlig avfallssortering.'
+        },
+        {
+          title: 'Oppretting av skjeve vegger og underlag',
+          description: 'Eldre Oslo-leiligheter har ofte skjeve vegger og hjørner. Vi lektrer ut, retter opp og forsterker veggene før skapene monteres i vater.'
+        },
+        {
+          title: 'Montering av skrog og overskap',
+          description: 'Nøyaktig oppmåling, forankring i vegg og presis montering av benkeskap, høyskap og overskap for optimal stabilitet.'
+        },
+        {
+          title: 'Skuffesystemer, fronter og innmat',
+          description: 'Montering og finjustering av skuffeskinner, dempere, dørhengsler og smarte hjørne- og avfallsløsninger med helt jevne spalter.'
+        },
+        {
+          title: 'Skreddersydde foringer til tak og vegger',
+          description: 'Eksakt tilpasning av toppforinger mot tak og sideforinger mot vegger, slik at kjøkkenet fremstår helintegrert og plassbygd.'
+        },
+        {
+          title: 'Benkeplater og utskjæring',
+          description: 'Presis tilskjæring, sammenføying og montering av benkeplater i laminat eller heltre, inkludert utsparing til koketopp og vask.'
+        },
+        {
+          title: 'Flislegging eller sprutplate over benk',
+          description: 'Montering og fuging av fliser, komposittplater eller herdet glass over kjøkkenbenken for god fukt- og fettsikring.'
+        },
+        {
+          title: 'Klargjøring for VVS og elektriker',
+          description: 'Tett samkjøring med rørlegger for tilkobling av oppvaskmaskin, vann og avløp, samt elektriker for platetopp, stekeovn og benkebelysning.'
+        }
       ],
-      pricingFactors: ['Kjøkkenets størrelse', 'Behov for riving og tilpasning', 'Type benkeplate'],
-      typicalTimeline: '1 til 3 uker.',
-      faqs: [{ question: 'Monterer dere kjøkken fra alle leverandører?', answer: 'Ja, blant annet IKEA, HTH, Sigdal og Kvik.' }]
+      pricingIntro: 'Kostnaden for kjøkkenoppussing påvirkes av rommets kompleksitet, grunnarbeid og valg av innredning:',
+      pricingFactors: [
+        {
+          title: 'Kjøkkenets layout og størrelse',
+          description: 'Ett rettlinjet kjøkken er raskere å montere enn L-kjøkken, U-kjøkken eller løsninger med frittstående kjøkkenøy og barløsning.'
+        },
+        {
+          title: 'Veggforhold og forarbeid',
+          description: 'I klassiske bygårder kreves det ofte oppretting med stendere og gips for at skapene skal henge snorrett og tåle vekten av fylte skap.'
+        },
+        {
+          title: 'Materialvalg for benkeplate',
+          description: 'Heltre og kompaktlaminat krever nøyaktig oljing eller spesialkutt, mens underlimte vasker stiller høyere krav til presisjon.'
+        },
+        {
+          title: 'Integrerte hvitevarer',
+          description: 'Montering av helintegrert oppvaskmaskin, kjøleskap og ventilator med integrerte dører krever ekstra justering for perfekt spalteavstand.'
+        }
+      ],
+      typicalTimeline: '1 til 3 uker avhengig av omfang og leveringstid på benkeplate.',
+      timelineSteps: [
+        {
+          phase: 'Fase 1',
+          title: 'Befaring & planlegging (Dag 1–2)',
+          description: 'Vi kontrollerer kontrollmål fra leverandør (f.eks. IKEA tegning), sjekker rør/el-punkter og gir et bindende fastpristilbud.'
+        },
+        {
+          phase: 'Fase 2',
+          title: 'Riving & grunnarbeid (Dag 1–3 i uke 1)',
+          description: 'Gammelt kjøkken demonteres og kjøres bort. Skjeve vegger rettes opp og rør/elektro klargjøres.'
+        },
+        {
+          phase: 'Fase 3',
+          title: 'Montering av innredning (Uke 2)',
+          description: 'Skrog, overskap, høyskap, skuffer og tilpassede foringer monteres i vater.'
+        },
+        {
+          phase: 'Fase 4',
+          title: 'Benkeplate, flis & tilkobling (Uke 3)',
+          description: 'Montering av benkeplate, sprutfliser, rør- og strømtilkobling, samt finjustering av fronter og sluttbefaring.'
+        }
+      ],
+      bygardNote: 'Vi kjenner godt til utfordringene i Oslo-bygårder med gamle rørkasser, skjeve vegger og krav om lekkasjestopper (Waterguard).',
+      faqs: [
+        {
+          question: 'Monterer dere kjøkken fra alle leverandører?',
+          answer: 'Ja, vi har bred erfaring med montering av IKEA (Metod), HTH, Sigdal, Norema, Kvik, Epoq og Aubo.'
+        },
+        {
+          question: 'Kan dere hjelpe med kontrollmåling før jeg bestiller kjøkkenet?',
+          answer: 'Ja! På gratis befaring hjelper vi gjerne med å kontrollmåle rommet, sjekke vinkler på vegger og verifisere at tegningen passer eksakt med rommets faktiske mål.'
+        },
+        {
+          question: 'Hva gjør dere om veggene er svært skjeve?',
+          answer: 'I eldre Oslo-leiligheter er skjeve vegger regelen snarere enn unntaket. Vi forer ut eller lektrer opp veggene slik at skapene henger 100% i vater og foringene mot tak og vegger blir jevne.'
+        },
+        {
+          question: 'Monterer dere integrert ventilator og hvitevarer?',
+          answer: 'Ja, vi tilpasser skrog og foringer for alle typer integrerte hvitevarer, og koordinerer med rørlegger og elektriker for forskriftsmessig tilkobling.'
+        }
+      ]
     },
     {
-      title: 'Monteringsarbeid',
+      title: 'Snekker- og monteringsarbeid',
       slug: 'montering-oslo',
       href: path('/tjenester/montering-oslo/'),
       image: path('/images/montering.jpg'),
-      shortDesc: 'Allsidig monteringsarbeid – fra lettvegger og garderober til dører, listverk og innredninger. Presist og solid håndverk.',
-      highlights: ['Montering av innredninger', 'Lettvegger & garderober', 'Dører & listverk'],
+      shortDesc: 'Allsidig snekkerarbeid og presis montering i Oslo – fra lettvegger og plassbygde garderober til dører, listverk og skreddersydde innredninger.',
+      heroIntro: 'Solide snekkerløsninger og millimeterpresis montering. Enten du skal etablere et ekstra soverom med en lydisolert lettvegg, bygge inn garderobeskap til taket eller skifte innerdører og listverk i bygården.',
+      highlights: ['Lydisolerte lettvegger', 'Plassbygde garderober (IKEA Pax mm.)', 'Innerdører & karmsett', 'Profilert listverk & foringer'],
       scopeOfWork: [
-        'Oppsetting og flytting av lettvegger',
-        'Montering av garderobeskap og oppbevaringsløsninger',
-        'Montering og utskifting av innerdører og ytterdører',
-        'Montering av listverk, fotlister og taklister',
-        'Montering av hyller, skap og andre innredninger',
-        'Diverse monteringsoppdrag etter behov',
+        {
+          title: 'Oppsetting og flytting av lettvegger',
+          description: 'Bygging av stenderverk i tre eller stål, isolering med mineralull for lyddemping, og to lag gips eller OSB+gips for solide vegger som tåler oppheng.'
+        },
+        {
+          title: 'Plassbygde garderober og oppbevaring',
+          description: 'Montering av modulgarderober (f.eks. IKEA Pax) som bygges inn med skreddersydde sokler og foringer helt opp til taket for et eksklusivt, plassbygd uttrykk.'
+        },
+        {
+          title: 'Montering og utskifting av innerdører',
+          description: 'Utskifting av gamle eller skjeve dører, montering av nye karmsett med eksakt lodd og vater, samt justering av låskasser og dørvridere.'
+        },
+        {
+          title: 'Listverk og profilering',
+          description: 'Gjæring og montering av fotlister, dørkarmer, vindusforinger og taklister. Vi tilpasser både moderne glatte lister og klassiske bygårdsprofiler med hulkil.'
+        },
+        {
+          title: 'Akustikkplater og spilevegger',
+          description: 'Montering av trespiler og akustikkpaneler på vegger eller i tak med usynlig innfesting for et moderne uttrykk og lun akustikk.'
+        },
+        {
+          title: 'Kasser rundt rør og ventilasjon',
+          description: 'Bygging av diskrete og pene foringskasser rundt synlige sprinkler-, soil- og ventilasjonsrør i bygårdsleiligheter.'
+        },
+        {
+          title: 'Skreddersydde nisjer og hyllesystemer',
+          description: 'Oppbygging av spesialtilpassede hyller, sittebenker og nisjeløsninger tilpasset rommets naturlige arkitektur.'
+        },
+        {
+          title: 'Ryddig gjennomføring',
+          description: 'Alltid tildekking av gulv, støvbegrensende tiltak og fullstendig rydding og fjerning av materialrester etter endt arbeidsdag.'
+        }
       ],
-      pricingFactors: ['Omfang og kompleksitet', 'Materialvalg'],
-      typicalTimeline: '2 dager til 2 uker.',
-      faqs: [{ question: 'Tar dere mindre oppdrag?', answer: 'Ja, vi hjelper gjerne med småjobber i Oslo.' }]
+      pricingIntro: 'Snekker- og monteringsoppdrag varierer i omfang fra enkle halvdagsoppdrag til omfattende ombygginger:',
+      pricingFactors: [
+        {
+          title: 'Omfang og detaljeringsgrad',
+          description: 'En rett lettvegg med standard døråpning går raskere enn en spesialtilpasset garderobeinnbygging med integrert LED-belysning og takforinger.'
+        },
+        {
+          title: 'Materialer og listprofiler',
+          description: 'Bruk av massiv eik, spesialbestilte klassiske bygårdsprofiler eller ferdigmalte standardlister påvirker både materialpris og arbeidstid.'
+        },
+        {
+          title: 'Lydkrav ved romdeling',
+          description: 'Bygging av skillevegg mellom soverom med lydbøyler og elastisk fuge for maksimal trinn- og luftlydisolasjon krever mer materialer og presisjon.'
+        },
+        {
+          title: 'Kombinasjonsarbeid',
+          description: 'Det er ofte mer kostnadseffektivt å kombinere dørbytte og snekkerarbeid med påfølgende maling og listing i samme oppdrag.'
+        }
+      ],
+      typicalTimeline: 'Fra 2 dager for dør- og listingsoppdrag til 1–2 uker for større ombygginger.',
+      timelineSteps: [
+        {
+          phase: 'Fase 1',
+          title: 'Befaring & oppmåling (Dag 1)',
+          description: 'Vi måler opp, ser på rommets bæring og vinkler, og gir råd om optimale løsninger og materialvalg.'
+        },
+        {
+          phase: 'Fase 2',
+          title: 'Klargjøring & materialleveranse (Dag 2)',
+          description: 'Tildekking av gulv og fellesarealer, samt innkjøring og bæring av materialer og verktøy.'
+        },
+        {
+          phase: 'Fase 3',
+          title: 'Snekring & montering (Dag 3–5)',
+          description: 'Oppsetting av stendere, isolasjon, plating, dørkarmmontering og innbygging av møbler/garderober.'
+        },
+        {
+          phase: 'Fase 4',
+          title: 'Listverk, foringer & finish (Dag 6+)',
+          description: 'Presis tilskjæring og gjæring av lister, akrylforsegling og rydding før felles befaring.'
+        }
+      ],
+      bygardNote: 'Vi har spesialisert oss på å tilpasse snekkerarbeid til eldre Oslo-bygårder hvor ingen vinkler er 90 grader og takhøyden krever ekstra høye foringer.',
+      faqs: [
+        {
+          question: 'Tar dere på dere mindre snekkeroppdrag i Oslo?',
+          answer: 'Ja, absolutt! Vi hjelper gjerne med å skifte tre innerdører, sette opp fotlister i en leilighet eller bygge inn en garderobe. Ingen jobb er for liten for godt håndverk.'
+        },
+        {
+          question: 'Hvordan kan dere få en IKEA Pax-garderobe til å se plassbygd ut?',
+          answer: 'Vi bygger en tilpasset sokkel, fester skrogene bunnsolid til veggen og lager skreddersydde foringer mot sidevegger og tak. Med matchende lister ser skapet ut som en integrert del av rommet.'
+        },
+        {
+          question: 'Må jeg søke kommunen for å sette opp en ny lettvegg?',
+          answer: 'Å sette opp en ikke-bærende lettvegg innenfor egen bruksenhet er normalt unntatt søknadsplikt. Men dersom du skal endre bruken av rommet til varig opphold (f.eks. nytt soverom), må krav til rømningsvei og dagslys være oppfylt.'
+        },
+        {
+          question: 'Kjøper jeg materialer selv, eller ordner dere alt?',
+          answer: 'Du bestemmer selv. Vi kan stå for innkjøp, rabatterte håndverkerpriser og transport av trelast, gips og festemidler, eller jobbe med materialer du allerede har kjøpt.'
+        }
+      ]
     },
     {
-      title: 'Gulvlegging',
+      title: 'Gulvlegging og avretting',
       slug: 'gulvlegging-oslo',
       href: path('/tjenester/gulvlegging-oslo/'),
       image: path('/images/gulv.jpg'),
-      shortDesc: 'Avretting av undergulv med flytsparkel, trinnlydsplater for borettslag, og legging av 1-stavs parkett, fiskebensparkett og laminat.',
-      highlights: ['Avretting av skjeve gulv', 'Parkett & fiskeben', 'Trinnlydsisolering'],
+      shortDesc: 'Avretting av undergulv med flytsparkel, godkjente trinnlydsplater for borettslag, og presis legging av parkett, fiskeben og laminat i Oslo.',
+      heroIntro: 'Et vakkert gulv starter under overflaten. Vi retter opp ujevne undergulv med fiberarmert flytsparkel, monterer godkjent trinnlydsisolasjon tilpasset borettslagets krav, og legger 1-stavs eikeparkett eller fiskebensmønster med perfekt finish.',
+      highlights: ['Avretting med flytsparkel', '1-stavs & fiskebensparkett', 'Godkjent trinnlydsdemping', 'Underskjæring av karmer & nye fotlister'],
       scopeOfWork: [
-        'Kontroll og sliping av eksisterende undergulv',
-        'Avretting av skjeve gulv med flytsparkel',
-        'Legging av trinnlydsplater (krav i borettslag)',
-        'Legging av 1-stavs parkett og laminat',
-        'Hel-limt legging av fiskebensparkett',
-        'Montering av nye fotlister',
+        {
+          title: 'Kontroll og klargjøring av undergulv',
+          description: 'Fjerning av gammelt gulvbelegg, tepper eller slitt parkett. Kontroll av underliggende trebjelkelag eller betongsåle for svikt og knirk.'
+        },
+        {
+          title: 'Avretting og flytsparkling',
+          description: 'Priming av underlaget og påføring av hurtigtørkende, fiberarmert avrettingsmasse for å oppnå et 100% plant underlag uten svanker eller fall.'
+        },
+        {
+          title: 'Trinnlydsisolering (krav i borettslag)',
+          description: 'Legging av trykkfaste trinnlydsplater (f.eks. Hunton Silencio) som tilfredsstiller strenge krav til trinnlydsreduksjon mot underliggende leilighet.'
+        },
+        {
+          title: 'Legging av 1-stavs parkett og herdet tre',
+          description: 'Flytende legging av kvalitetsgulv med korrekt ekspansjonsavstand mot vegger og gjennomføringer, slik at gulvet kan bevege seg naturlig.'
+        },
+        {
+          title: 'Hel-limt legging av fiskebensparkett',
+          description: 'Presis oppmåling av referanselinjer og hel-liming av fiskebensstaver for maksimal stabilitet, lun klang og en eksklusiv klassisk stil.'
+        },
+        {
+          title: 'Underskjæring av dørkarmer',
+          description: 'Presis underskjæring av alle karmsett med multimaskin, slik at gulvet skyves sømløst inn under karmen uten skjemmende akrylfuger eller klumper.'
+        },
+        {
+          title: 'Fotlister og terskler',
+          description: 'Montering av nye eike- eller hvitmalte fotlister tilpasset gulvet, samt diskrete overgangsprofiler i messing eller børstet stål mellom rom.'
+        },
+        {
+          title: 'Etterkontroll og rengjøring',
+          description: 'Sluttbefaring for å sjekke planhet, fjerning av støv og emballasje, og rådgivning om optimalt vedlikehold av tregulvet.'
+        }
       ],
-      pricingFactors: ['Kvadratmeterstørrelse (m²)', 'Behov for avretting'],
-      typicalTimeline: '2 til 5 dager.',
-      faqs: [{ question: 'Kreve borettslaget trinnlydsdokumentasjon?', answer: 'Ja, vi sørger for godkjente plater.' }]
+      pricingIntro: 'Hva gulvlegging koster per kvadratmeter avhenger av underlagets beskaffenhet og valg av gulvtype:',
+      pricingFactors: [
+        {
+          title: 'Underlagets planhet og behov for sparkel',
+          description: 'Dersom undergulvet har store høydeforskjeller i en eldre bygård, kreves det mer avrettingsmasse og arbeid for å oppnå kravene til planhet (± 2–3 mm per 2 meter).'
+        },
+        {
+          title: 'Gulvtype og leggemetode',
+          description: 'Tradisjonell klikkparkett legges vesentlig raskere enn hel-limt fiskebensparkett, som krever millimeteroppmåling for hver eneste stav.'
+        },
+        {
+          title: 'Rommets geometri og hindringer',
+          description: 'Mange vinkler, søyler, radiatorrør og døråpninger krever mer skreddersydd tilskjæring enn et åpent, rektangulært rom.'
+        },
+        {
+          title: 'Trinnlydsplater og dokumentasjon',
+          description: 'I bygårder kreves det ofte dokumenterte trinnlydsplater (f.eks. 6 mm eller 12 mm Silencio) for å dempe lydoverføring.'
+        }
+      ],
+      typicalTimeline: '2 til 6 dager avhengig av romstørrelse og tørketid på flytsparkel.',
+      timelineSteps: [
+        {
+          phase: 'Fase 1',
+          title: 'Befaring & planhetsmåling (Dag 1)',
+          description: 'Vi måler rommets planhet med rettholt, sjekker fukt i undergulvet og anbefaler riktig oppbygging.'
+        },
+        {
+          phase: 'Fase 2',
+          title: 'Riving & flytsparkling (Dag 1–2)',
+          description: 'Gammelt gulv fjernes, underlaget primes og fiberarmert avrettingsmasse legges ut for en perfekt plan flate.'
+        },
+        {
+          phase: 'Fase 3',
+          title: 'Underlag & gulvlegging (Dag 3–4)',
+          description: 'Trinnlydsduk/plater legges ut, og parketten eller fiskebensmønsteret legges med millimeterpresisjon.'
+        },
+        {
+          phase: 'Fase 4',
+          title: 'Underskjæring, listing & terskler (Dag 5)',
+          description: 'Karmer underskjæres, fotlister og terskler monteres, og rommet støvsuges og overleveres klart til innflytting.'
+        }
+      ],
+      bygardNote: 'Vi har spesialisert oss på å rette opp ujevne trebjelkelag i Oslo-bygårder og levere godkjent trinnlydsdokumentasjon til styret i borettslaget.',
+      faqs: [
+        {
+          question: 'Hvorfor er avretting med flytsparkel så viktig før parkett legges?',
+          answer: 'Moderne klikkparkett krever et plant underlag med maks 2–3 mm avvik over 2 meter. Uten avretting vil gulvet svikte, skape knirkelyder og i verste fall knekke klikkskjøtene over tid.'
+        },
+        {
+          question: 'Krever borettslaget dokumentasjon på trinnlydsisolering?',
+          answer: 'Ja, de aller fleste borettslag og sameier i Oslo krever minimum 53 dB trinnlydisolering ved bytte til harde gulv. Vi bruker godkjente trinnlydsplater og gir deg nødvendig produktdokumentasjon til styret.'
+        },
+        {
+          question: 'Kan dere legge fiskebensparkett?',
+          answer: 'Ja, vi har solid erfaring med hel-liming av fiskebensparkett. Det gir et fantastisk resultat med massiv treklang, maksimal formstabilitet og ingen knirk.'
+        },
+        {
+          question: 'Må fotlistene tas av før gulvet legges?',
+          answer: 'Ja, for et profesjonelt og varig resultat må gamle lister fjernes så gulvet kan ekspandere under nye lister. Vi monterer nye lister som passer gulvet og stilen i rommet.'
+        }
+      ]
     },
     {
       title: 'Innvendig malerarbeid',
       slug: 'malerarbeid-oslo',
       href: path('/tjenester/malerarbeid-oslo/'),
       image: path('/images/maling.jpg'),
-      shortDesc: 'Grundig forarbeid med helsparkling, støvfri sliping og maling av slette vegger, himlinger, klassisk stukkatur, dører og listverk.',
-      highlights: ['Helsparkling av gips/mur', 'Maling av vegg & tak', 'Listverk & dørkarmer'],
+      shortDesc: 'Grundig forarbeid med helsparkling, støvfri sliping og maling av slette vegger, himlinger, klassisk stukkatur, dører og listverk i Oslo.',
+      heroIntro: '80 % av et godt maleresultat ligger i forarbeidet. Vi utfører helsparkling med armeringsbånd, benytter maskinsliping med HEPA-støvsuger for minimalt med støv, og maler med Jotun Lady for feilfrie overflater og rette linjer.',
+      highlights: ['Helsparkling & armeringsbånd', 'Støvfri maskinsliping med HEPA', 'Jotun Lady kvalitetsmaling', 'Maling av listverk, karmer & dører'],
       scopeOfWork: [
-        'Tildekking av gulv og inventar',
-        'Helsparkling av mur og gips',
-        'Støvfri sliping og grunning',
-        'Maling av vegger og himlinger',
-        'Maling av lister, dører og karmer',
+        {
+          title: 'Grundig tildekking og maskering',
+          description: 'Vi dekker til gulv med tykk filt/papp, maskerer stikkontakter, radiatorer og vinduskarmer, og setter opp støvsluse i dører for å skjerme resten av boligen.'
+        },
+        {
+          title: 'Fjerning av strietapet og forarbeid',
+          description: 'Riving eller fjerning av løs tapet, skraping av løs maling og påføring av sperregrunn på sugende underlag eller nikotin/vannflekker.'
+        },
+        {
+          title: 'Helsparkling i 2–3 lag',
+          description: 'Påføring av rullesparkel eller håndsparkel for å forvandle ujevne mur- eller strieverk til helt slette flater. Skjøter forsterkes med papirbånd mot oppsprekking.'
+        },
+        {
+          title: 'Støvfri maskinsliping',
+          description: 'Sliping med giraffsliper koblet direkte til industriell HEPA-støvsuger, som fjerner 99 % av slipestøvet og gir en silkemyk, plan overflate.'
+        },
+        {
+          title: 'Grunning av vegger og himling',
+          description: 'Påføring av grunning for å mette sparkelen og sikre at toppstrøket fester optimalt med jevn glans og uten skjolder.'
+        },
+        {
+          title: 'To strøk med Jotun Lady',
+          description: 'Toppstrøk med markedets beste interiørmaling (f.eks. Jotun Lady Pure Color eller Wonderwall) påført med ruller som sikrer minimal struktur og jevn dekning.'
+        },
+        {
+          title: 'Maling av listverk, vinduer og innerdører',
+          description: 'Pussing, flekksparkling og to strøk med spesialmaling for treverk (Jotun Supreme Finish) i ønsket glansgrad for slitesterke detaljer.'
+        },
+        {
+          title: 'Akrylfuging og feilfrie overganger',
+          description: 'Presis akrylfuging i alle hjørner, overganger mot tak og langs lister før siste malestrøk for snorrette og sprekkfrie overganger.'
+        }
       ],
-      pricingFactors: ['Forfatning på vegger', 'Takhøyde'],
-      typicalTimeline: '3 til 7 dager.',
-      faqs: [{ question: 'Hjelper dere med fargevalg?', answer: 'Ja, vi gir råd om farger fra Jotun Lady.' }]
+      pricingIntro: 'Prisen på malerarbeid beregnes basert på underlagets tilstand og detaljnivået i rommet:',
+      pricingFactors: [
+        {
+          title: 'Veggenes utgangspunkt og forarbeid',
+          description: 'En slett gipsvegg krever kun skjøtesparkling, mens eldre murvegger eller strietapet i bygårder krever 2–3 omganger med helsparkling og armering.'
+        },
+        {
+          title: 'Takhøyde og stukkatur',
+          description: 'Klassiske bygårdsleiligheter i Oslo med over 3 meter takhøyde og profilerte stukkaturer krever stillas og tidkrevende penselarbeid.'
+        },
+        {
+          title: 'Treverk og dører',
+          description: 'Maling av profilerte bygårdsdører, speilkarmer og høye fotlister krever grundig sliping og penselarbeid sammenlignet med slette flater.'
+        },
+        {
+          title: 'Fargevalg og antall nyanser',
+          description: 'Maling i én helhetlig farge er rimeligere enn kombinasjoner med flere fargeskift i samme rom som krever ekstra nøyaktig maskering.'
+        }
+      ],
+      typicalTimeline: '3 til 8 dager avhengig av leilighetens areal og tørketid mellom sparkelstrøkene.',
+      timelineSteps: [
+        {
+          phase: 'Fase 1',
+          title: 'Befaring & fargerådgivning (Dag 1)',
+          description: 'Vi vurderer veggenes tilstand, lysforhold og takhøyde, og gir råd om farger og nødvendig forarbeid.'
+        },
+        {
+          phase: 'Fase 2',
+          title: 'Tildekking & helsparkling (Dag 1–3)',
+          description: 'Komplett maskering av rommet, sparkling av første og andre lag, og tørketid.'
+        },
+        {
+          phase: 'Fase 3',
+          title: 'Støvfri sliping & grunning (Dag 4)',
+          description: 'Plansliping med HEPA-avtrekk, støvtørking og påføring av grunning samt akrylforsegling i hjørner.'
+        },
+        {
+          phase: 'Fase 4',
+          title: 'Maling av tak, vegg & treverk (Dag 5–7)',
+          description: 'To toppstrøk med Lady-maling, maling av karmer og lister, fjerning av maskering og grundig opprydding.'
+        }
+      ],
+      bygardNote: 'Vi har spesialisert oss på maling av eldre bygårdsleiligheter på Frogner, St. Hanshaugen og Grünerløkka med høyt under taket, stukkatur og murvegger.',
+      faqs: [
+        {
+          question: 'Blir hele leiligheten full av støv når dere helsparkler og sliper?',
+          answer: 'Nei! Vi benytter profesjonelle planslipere koblet direkte til industrielle HEPA-støvsugere. I tillegg tetter vi døråpninger med støvsluser og dekker ventilasjon så slipestøv holdes under streng kontroll.'
+        },
+        {
+          question: 'Hvilken malingstype anbefaler dere?',
+          answer: 'Vi benytter primært Jotun Lady Pure Color for en supermatt, elegant overflate på stue og soverom, Lady Wonderwall på kjøkken og gang for ekstra vaskbarhet, og Lady Supreme Finish på listverk og dører.'
+        },
+        {
+          question: 'Kan dere helsparkle over gammel glassfiberstrie?',
+          answer: 'Ja, det er en svært vanlig løsning. Vi fjerner eventuelle løse partier, grunner ved behov, og helsparkler 2–3 strøk med armeringsbånd slik at du får helt slette og moderne vegger.'
+        },
+        {
+          question: 'Må rommet tømmes helt for møbler før dere starter?',
+          answer: 'Det beste og mest effektive er om rommet er tømt. Har du større møbler som er vanskelige å flytte ut, kan de samles midt i rommet slik at vi kan pakke dem forsvarlig inn i plast.'
+        }
+      ]
     },
+    {
+      title: 'Utvendig malerarbeid',
+      slug: 'utvendig-maling-oslo',
+      href: path('/tjenester/utvendig-maling-oslo/'),
+      image: path('/images/utvendig-maling.jpg'),
+      shortDesc: 'Profesjonell husmaling og fasadebehandling i Oslo og omegn – grundig fasadevask, sopp- og algedreper, skraping, grunning og to fyldige strøk på trehus og eneboliger.',
+      heroIntro: 'Norske trehus krever kompromissløs beskyttelse mot skiftende vær, fukt, sol og kulde. Vi utfører grundig forarbeid med fasadevask, soppdreper, skraping av løs maling og grunning av bart treverk før vi påfører markedets beste utendørsmaling (f.eks. Jotun Drygolin Nordic Extreme).',
+      highlights: ['Fasadevask & sopp-/algebehandling', 'Skraping, sliping & impregnering', 'Jotun Drygolin & Optimal', 'Eneboliger, tomannsboliger & rekkehus'],
+      scopeOfWork: [
+        {
+          title: 'Grundig husvask og sopp-/algedreper',
+          description: 'Skånsom og effektiv vask av trekledningen med spesialtilpasset kraftvask og sopp- og algedreper som fjerner skitt, svertesopp og grønske uten å flise opp treverket.'
+        },
+        {
+          title: 'Mekanisk skraping og børsting',
+          description: 'Fjerning av all løs og flakende maling med skarpe skraper og stålbørster ned til fast, bærekraftig tre for å forhindre fremtidig avflassing og fuktfeller.'
+        },
+        {
+          title: 'Kledningssjekk og enkle utskiftinger',
+          description: 'Gjennomgang av kledningsbord, vindskier og vannbrett. Vi utfører snekkerutskifting av eventuelt råteskadet treverk før maling påbegynnes.'
+        },
+        {
+          title: 'Grunning av bart treverk og endeved',
+          description: 'Påføring av impregnerende visirgrunning på alle snittflater, endeved og avskrapte felter for optimal heft og dyp råtebeskyttelse.'
+        },
+        {
+          title: 'Presis maskering og tildekking',
+          description: 'Nøye tildekking av vindusglass, grunnmur, takrenner, terrassegulv og nærliggende vegetasjon for å unngå malingssøl og sprut.'
+        },
+        {
+          title: 'To strøk med kvalitetsmaling',
+          description: 'Påføring av to fulle strøk med premium utendørsmaling (f.eks. Jotun Drygolin Nordic Extreme eller Optimal) for maksimal farge- og glansholdbarhet og lang levetid.'
+        },
+        {
+          title: 'Maling av vinduer, dører og staffasje',
+          description: 'Nøyaktig presisjonsmaling av vinduskarmer, dørrammer, vindskier, hjørnekasser og gesimser med spesialmaling for utendørs høvlet treverk.'
+        },
+        {
+          title: 'Opprydding og felles sluttbefaring',
+          description: 'Fjerning av all maskering, grundig opprydding av malingsflak og emballasje på tomten, samt felles gjennomgang av hele fasaden.'
+        }
+      ],
+      pricingIntro: 'Hva det koster å male et trehus utvendig avhenger av boligens høyde, kledningens tilstand og behovet for stillas:',
+      pricingFactors: [
+        {
+          title: 'Boligens størrelse og etasjehøyde',
+          description: 'En enetasjes enebolig med enkel adkomst krever mindre rigging enn en 2- eller 3-etasjers tomannsbolig med bratt terreng rundt.'
+        },
+        {
+          title: 'Behov for stillas eller lift',
+          description: 'Sikker og forskriftsmessig adkomst i høyden krever godkjent fasadestillas eller lift, som spesifiseres tydelig i tilbudet.'
+        },
+        {
+          title: 'Kledningens tilstand og forarbeid',
+          description: 'Et hus hvor malingen har flasset mye eller som ikke er vasket på over ti år krever betydelig mer skrapearbeid, pussing og flekkgrunning.'
+        },
+        {
+          title: 'Detaljrikdom og staffasje',
+          description: 'Store slette kledningsflater males raskere enn hus med mange sprosser, utskjæringer, vindusomramminger og ulike farger på kledning og detaljer.'
+        }
+      ],
+      typicalTimeline: '1 til 2,5 uker avhengig av husets størrelse, tørkeforhold og vær.',
+      timelineSteps: [
+        {
+          phase: 'Fase 1',
+          title: 'Befaring & fuktmåling (Dag 1)',
+          description: 'Vi kontrollerer fuktnivået i kledningen (må være under 16–18 %), vurderer kledningsbord og gir et bindende fastpristilbud.'
+        },
+        {
+          phase: 'Fase 2',
+          title: 'Fasadevask & soppbehandling (Dag 1–3)',
+          description: 'Rengjøring med kraftvask, påføring av sopp- og algedreper og nødvendig tørketid før videre arbeid.'
+        },
+        {
+          phase: 'Fase 3',
+          title: 'Stillas, skraping & grunning (Dag 4–6)',
+          description: 'Montering av godkjent stillas, grundig skraping av flakende maling, sliping og grunning av bart treverk og endeved.'
+        },
+        {
+          phase: 'Fase 4',
+          title: 'Toppstrøk & sluttkontroll (Uke 2)',
+          description: 'To strøk med kledningsmaling, maling av vinduer og staffasje, demontering av stillas og felles sluttbefaring.'
+        }
+      ],
+      bygardNote: 'Vi maler kun når treverket er tørt nok (digital fuktmåling) og under optimale værforhold, slik at du er sikret et holdbart resultat som tåler norsk vær og vind i mange år.',
+      faqs: [
+        {
+          question: 'Hvor ofte bør et trehus males i Oslo og omegn?',
+          answer: 'Normalt anbefales det å male trehuset hvert 8. til 12. år, avhengig av malingstype, soleksponering og værforhold. Fasader mot sør og vest er ofte mer utsatt for solbleking og slagregn enn nordveggen.'
+        },
+        {
+          question: 'Hvilken maling anbefaler dere til norske trehus?',
+          answer: 'Vi benytter primært Jotun Drygolin Nordic Extreme og Jotun Optimal. Disse produktene er spesialutviklet for det krevende nordiske klimaet og gir ekstrem beskyttelse mot overflatesopp, fukt og UV-stråler.'
+        },
+        {
+          question: 'Hva gjør dere hvis det regner eller treverket er fuktig?',
+          answer: 'Vi maler aldri på fuktig treverk. Før oppstart måler vi alltid fuktnivået med en profesjonell fuktmåler. Fuktinnholdet i kledningen må ligge under 16–18 % for å hindre at fukt sperres inne og skaper blæring eller råteskader.'
+        },
+        {
+          question: 'Sørger dere for stillas og sikkerhet på plassen?',
+          answer: 'Ja, vi ordner med godkjent og forskriftsmessig fasadestillas eller lift tilpasset eiendommen, og sørger for trygg sikring av arbeidsplassen under hele maleoppdraget.'
+        }
+      ]
+    }
   ],
 } as const;

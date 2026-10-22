@@ -13,7 +13,7 @@ export function buildSmartMailto(options: MailtoOptions = {}): string {
       : 'Forespørsel om gratis befaring – Oslo');
 
   const bodyLines = [
-    'Hei Waldemar,',
+    `Hei ${siteConfig.owner},`,
     '',
     'Jeg ønsker en uforpliktende prat / befaring angående følgende prosjekt:',
     '',

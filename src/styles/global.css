@@ -102,3 +102,100 @@ img, svg {
 .tabular-nums {
   font-variant-numeric: tabular-nums;
 }
+
+/* Global Button Styles */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: var(--accent-primary);
+  color: #ffffff !important;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 0.85rem 1.5rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--accent-primary);
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+  text-decoration: none !important;
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-primary-hover);
+  border-color: var(--accent-primary-hover);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: var(--bg-surface);
+  color: var(--text-main) !important;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 0.85rem 1.5rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+  text-decoration: none !important;
+}
+
+.btn-secondary:hover {
+  background-color: #ffffff;
+  border-color: var(--text-muted);
+  transform: translateY(-1px);
+}
+
+/* Text utility classes */
+.text-accent {
+  color: var(--accent-primary);
+}
+
+.text-trust {
+  color: var(--accent-trust);
+}
+
+.text-muted {
+  color: var(--text-muted);
+}
+
+/* Global Breadcrumb Navigation */
+.breadcrumb-nav {
+  background-color: var(--bg-canvas);
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 0.75rem 0;
+  font-size: 0.875rem;
+}
+
+.breadcrumb-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-muted);
+}
+
+.breadcrumb-list a {
+  color: var(--text-muted);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.breadcrumb-list a:hover {
+  color: var(--accent-primary);
+}
+
+.breadcrumb-list [aria-current="page"] {
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+.separator {
+  color: var(--border-subtle);
+}

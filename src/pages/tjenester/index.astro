@@ -1,11 +1,112 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { siteConfig } from '../../data/siteConfig';
+import { path } from '../../utils/paths';
 import ServiceGrid from '../../components/sections/ServiceGrid.astro';
 import DirectContactBanner from '../../components/conversion/DirectContactBanner.astro';
+
+const pageTitle = `Våre håndverkstjenester i Oslo | ${siteConfig.companyName}`;
+const pageDescription = `Komplett oversikt over våre tjenester innen oppussing av bad, kjøkken, gulvlegging, innvendig og utvendig malerarbeid og snekkerarbeid i Oslo og omegn.`;
 ---
 
-<BaseLayout title={`Våre tjenester | ${siteConfig.companyName}`} description="Oversikt over våre tjenester innen oppussing av bad, kjøkken, gulvlegging, malerarbeid og montering i Oslo.">
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <!-- Breadcrumb Navigation -->
+  <nav class="breadcrumb-nav" aria-label="Brødsmulesti">
+    <div class="container">
+      <ol class="breadcrumb-list">
+        <li><a href={path('/')}>Hjem</a></li>
+        <li class="separator" aria-hidden="true">/</li>
+        <li aria-current="page">Tjenester</li>
+      </ol>
+    </div>
+  </nav>
+
+  <!-- Services Hero Intro -->
+  <section class="services-hero-section section-padding">
+    <div class="container">
+      <div class="services-hero-copy">
+        <span class="eyebrow">Fagområder & håndverk</span>
+        <h1 class="page-title">Håndverkstjenester og oppussing i Oslo</h1>
+        <p class="lead-text">
+          Vi tilbyr helhetlige oppussings- og håndverkstjenester for leiligheter, bygårder og eneboliger i Oslo, Bærum og Asker.
+          Fra totalrenovering av bad og våtrom etter TEK17, til nøyaktig kjøkkenmontering, gulvavretting og utvendig fasadebeskyttelse av trehus.
+        </p>
+
+        <div class="hero-trust-badges">
+          <span class="trust-badge">✓ Alltid gratis og uforpliktende befaring</span>
+          <span class="trust-badge">✓ Tydelig og forutsigbar avtalt fastpris</span>
+          <span class="trust-badge">✓ Ingen forskudd – betal etter godkjent arbeid</span>
+          <span class="trust-badge">✓ Én fast erfaren håndverker fra start til mål</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <ServiceGrid />
   <DirectContactBanner />
 </BaseLayout>
+
+<style>
+  /* Breadcrumbs */
+  .breadcrumb-nav {
+    background-color: var(--bg-canvas);
+    border-bottom: 1px solid var(--border-subtle);
+    padding: 0.75rem 0;
+    font-size: 0.875rem;
+  }
+  .breadcrumb-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-muted);
+  }
+  .breadcrumb-list a {
+    color: var(--text-muted);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .breadcrumb-list a:hover {
+    color: var(--accent-primary);
+  }
+  .breadcrumb-list [aria-current="page"] {
+    color: var(--text-main);
+    font-weight: 600;
+  }
+  .separator {
+    color: var(--border-subtle);
+  }
+
+  .services-hero-section {
+    background-color: var(--bg-canvas);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .services-hero-copy {
+    max-width: 78ch;
+  }
+  .page-title {
+    font-size: clamp(2rem, 3.5vw, 2.85rem);
+    line-height: 1.15;
+    margin-top: 0.5rem;
+    margin-bottom: 1.25rem;
+  }
+  .lead-text {
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 1.75rem;
+  }
+  .hero-trust-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.25rem;
+  }
+  .trust-badge {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--accent-trust);
+    background-color: var(--accent-trust-bg);
+    padding: 0.3rem 0.65rem;
+    border-radius: var(--radius-sm);
+  }
+</style>
