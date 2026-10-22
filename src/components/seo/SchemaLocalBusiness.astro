@@ -38,7 +38,7 @@ const schema = {
         '@type': 'Service',
         name: service.title,
         description: service.shortDesc,
-        url: `${siteConfig.siteUrl}${service.href}`,
+        url: new URL(service.href, siteConfig.siteUrl).toString(),
       },
     })),
   },

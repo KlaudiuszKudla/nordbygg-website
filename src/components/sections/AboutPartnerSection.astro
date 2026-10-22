@@ -1,5 +1,6 @@
 ---
 import { siteConfig } from '../../data/siteConfig';
+import { path } from '../../utils/paths';
 ---
 
 <section class="partner-section section-padding" aria-labelledby="partner-heading">
@@ -16,7 +17,7 @@ import { siteConfig } from '../../data/siteConfig';
       <p>
         Våre <strong>lokale samarbeidspartnere</strong> på rør og elektro sørger for at alt arbeid utføres av fagfolk.
       </p>
-      <a href="/om-oss/" class="link-arrow">Les mer om Waldemar Kudla →</a>
+      <a href={path('/om-oss/')} class="link-arrow">Les mer om Waldemar Kudla →</a>
     </div>
 
     <div class="scope-overview-box">

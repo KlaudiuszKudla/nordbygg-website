@@ -1,5 +1,6 @@
 ---
 import { siteConfig } from '../../data/siteConfig';
+import { path } from '../../utils/paths';
 const currentYear = new Date().getFullYear();
 ---
 
@@ -23,7 +24,7 @@ const currentYear = new Date().getFullYear();
         {siteConfig.services.map((service) => (
           <li><a href={service.href}>{service.title}</a></li>
         ))}
-        <li><a href="/prosjekter/">Utført arbeid / Referanser</a></li>
+        <li><a href={path('/prosjekter/')}>Utført arbeid / Referanser</a></li>
       </ul>
     </div>
 
@@ -62,7 +63,7 @@ const currentYear = new Date().getFullYear();
     <p>© {currentYear} {siteConfig.legalName}. Alle rettigheter reservert.</p>
     <div class="footer-legal">
       <span class="zero-cookie-pill">🛡️ 100 % fri for informasjonskapsler (cookies) og sporing</span>
-      <a href="/personvern/">Personvern og vilkår</a>
+      <a href={path('/personvern/')}>Personvern og vilkår</a>
     </div>
   </div>
 </footer>

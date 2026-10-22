@@ -1,8 +1,10 @@
 ---
+import { path } from '../../utils/paths';
+
 const featuredProjects = [
   {
     title: 'Totalrenovering av bad og gang i klassisk bygård',
-    slug: '/prosjekter/bad-st-hanshaugen/',
+    slug: path('/prosjekter/bad-st-hanshaugen/'),
     location: 'St. Hanshaugen, Oslo',
     buildingType: 'Bygård fra 1898',
     duration: '4,5 uker',
@@ -11,7 +13,7 @@ const featuredProjects = [
   },
   {
     title: 'Nytt kjøkken og fiskebensparkett i leilighet',
-    slug: '/prosjekter/kjokken-frogner/',
+    slug: path('/prosjekter/kjokken-frogner/'),
     location: 'Frogner, Oslo',
     buildingType: 'Klassisk leilighet',
     duration: '3 uker',
@@ -28,7 +30,7 @@ const featuredProjects = [
         <span class="eyebrow">Utført arbeid i Oslo</span>
         <h2 class="section-title">Nylige prosjekter</h2>
       </div>
-      <a href="/prosjekter/" class="view-all-link">Se alle referanser →</a>
+      <a href={path('/prosjekter/')} class="view-all-link">Se alle referanser →</a>
     </div>
 
     <div class="projects-grid">

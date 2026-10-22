@@ -1,3 +1,5 @@
+import { path } from '../utils/paths';
+
 export const siteConfig = {
   companyName: 'Satisfaction',
   legalName: 'Satisfaction Waldemar Kudla ENK',
@@ -31,7 +33,7 @@ export const siteConfig = {
     {
       title: 'Oppussing av bad',
       slug: 'oppussing-av-bad-oslo',
-      href: '/tjenester/oppussing-av-bad-oslo/',
+      href: path('/tjenester/oppussing-av-bad-oslo/'),
       shortDesc: 'Totalrenovering av bad og våtrom i Oslo – riving, membran, flislegging og montering av innredning, i samarbeid med rørlegger og elektriker.',
       highlights: ['Riving & grunnarbeid', 'Flislegging & membran', 'Komplett ferdigstillelse'],
       scopeOfWork: [
@@ -49,7 +51,7 @@ export const siteConfig = {
     {
       title: 'Kjøkkenoppussing',
       slug: 'kjokkenoppussing-oslo',
-      href: '/tjenester/kjokkenoppussing-oslo/',
+      href: path('/tjenester/kjokkenoppussing-oslo/'),
       shortDesc: 'Demontering av gammelt kjøkken, oppretting av skjeve vegger i eldre bygårder, og presis montering av IKEA-, HTH- og Sigdal-kjøkken.',
       highlights: ['Komplett kjøkkenmontering', 'Tilpasning av foringer', 'Benkeplater & flis'],
       scopeOfWork: [
@@ -67,7 +69,7 @@ export const siteConfig = {
     {
       title: 'Monteringsarbeid',
       slug: 'montering-oslo',
-      href: '/tjenester/montering-oslo/',
+      href: path('/tjenester/montering-oslo/'),
       shortDesc: 'Allsidig monteringsarbeid – fra lettvegger og garderober til dører, listverk og innredninger. Presist og solid håndverk.',
       highlights: ['Montering av innredninger', 'Lettvegger & garderober', 'Dører & listverk'],
       scopeOfWork: [
@@ -85,7 +87,7 @@ export const siteConfig = {
     {
       title: 'Gulvlegging',
       slug: 'gulvlegging-oslo',
-      href: '/tjenester/gulvlegging-oslo/',
+      href: path('/tjenester/gulvlegging-oslo/'),
       shortDesc: 'Avretting av undergulv med flytsparkel, trinnlydsplater for borettslag, og legging av 1-stavs parkett, fiskebensparkett og laminat.',
       highlights: ['Avretting av skjeve gulv', 'Parkett & fiskeben', 'Trinnlydsisolering'],
       scopeOfWork: [
@@ -103,7 +105,7 @@ export const siteConfig = {
     {
       title: 'Innvendig malerarbeid',
       slug: 'malerarbeid-oslo',
-      href: '/tjenester/malerarbeid-oslo/',
+      href: path('/tjenester/malerarbeid-oslo/'),
       shortDesc: 'Grundig forarbeid med helsparkling, støvfri sliping og maling av slette vegger, himlinger, klassisk stukkatur, dører og listverk.',
       highlights: ['Helsparkling av gips/mur', 'Maling av vegg & tak', 'Listverk & dørkarmer'],
       scopeOfWork: [

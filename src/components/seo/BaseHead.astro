@@ -1,6 +1,7 @@
 ---
 import { siteConfig } from '../../data/siteConfig';
 import SchemaLocalBusiness from './SchemaLocalBusiness.astro';
+import { path } from '../../utils/paths';
 
 interface Props {
   title: string;
@@ -27,5 +28,5 @@ const canonicalUrl = new URL(canonicalPath, siteConfig.siteUrl).toString();
 <meta property="og:url" content={canonicalUrl} />
 <meta property="og:image" content={`${siteConfig.siteUrl}/og-default.jpg`} />
 
-<link rel="icon" type="image/svg+xml" href="/favicons/favicon.svg" />
+<link rel="icon" type="image/svg+xml" href={path('/favicons/favicon.svg')} />
 <SchemaLocalBusiness />
