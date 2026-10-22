@@ -1,0 +1,68 @@
+---
+import { siteConfig } from '../../data/siteConfig';
+---
+
+<button
+  type="button"
+  class="copy-email-btn"
+  data-email={siteConfig.email}
+  aria-label={`Kopier e-postadresse ${siteConfig.email}`}
+>
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+  </svg>
+  <span class="copy-label">Kopier {siteConfig.email}</span>
+</button>
+
+<script>
+  const buttons = document.querySelectorAll('.copy-email-btn');
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      const email = btn.getAttribute('data-email');
+      const label = btn.querySelector('.copy-label');
+      if (!email || !label) return;
+
+      const originalText = label.textContent;
+      try {
+        await navigator.clipboard.writeText(email);
+        label.textContent = '✓ E-postadresse kopiert!';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          label.textContent = originalText;
+          btn.classList.remove('copied');
+        }, 2500);
+      } catch {
+        window.location.href = `mailto:${email}`;
+      }
+    });
+  });
+</script>
+
+<style>
+  .copy-email-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: transparent;
+    color: inherit;
+    border: 1px solid currentColor;
+    font-family: var(--font-heading);
+    font-size: 0.875rem;
+    font-weight: 600;
+    padding: 0.65rem 1rem;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    opacity: 0.9;
+    transition: all 0.15s ease;
+  }
+  .copy-email-btn:hover {
+    opacity: 1;
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  .copy-email-btn.copied {
+    background-color: var(--accent-trust);
+    border-color: var(--accent-trust);
+    color: #FFFFFF;
+  }
+</style>

@@ -1,0 +1,106 @@
+---
+const featuredProjects = [
+  {
+    title: 'Totalrenovering av bad og gang i klassisk bygård',
+    slug: '/prosjekter/bad-st-hanshaugen/',
+    location: 'St. Hanshaugen, Oslo',
+    buildingType: 'Bygård fra 1898',
+    duration: '4,5 uker',
+    services: ['Oppussing av bad', 'Gulvlegging'],
+    summary: 'Komplett riving, ny støp, membran, 60x60 fliser og baderomsinnredning.',
+  },
+  {
+    title: 'Nytt kjøkken og fiskebensparkett i leilighet',
+    slug: '/prosjekter/kjokken-frogner/',
+    location: 'Frogner, Oslo',
+    buildingType: 'Klassisk leilighet',
+    duration: '3 uker',
+    services: ['Kjøkkenoppussing', 'Gulvlegging'],
+    summary: 'Avretting av undergulv, legging av fiskebensparkett og kjøkkenmontering.',
+  },
+];
+---
+
+<section class="projects-section section-padding">
+  <div class="container">
+    <div class="projects-header">
+      <div>
+        <span class="eyebrow">Utført arbeid i Oslo</span>
+        <h2 class="section-title">Nylige prosjekter</h2>
+      </div>
+      <a href="/prosjekter/" class="view-all-link">Se alle referanser →</a>
+    </div>
+
+    <div class="projects-grid">
+      {featuredProjects.map((project) => (
+        <article class="project-card">
+          <div class="project-meta-top">
+            <span>📍 {project.location}</span>
+            <span>⏱ {project.duration}</span>
+          </div>
+          <h3 class="project-title">
+            <a href={project.slug}>{project.title}</a>
+          </h3>
+          <p class="project-building">{project.buildingType}</p>
+          <p class="project-summary">{project.summary}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .projects-section {
+    background-color: var(--bg-surface);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .projects-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 2.5rem;
+  }
+  .section-title {
+    font-size: 2rem;
+  }
+  .view-all-link {
+    font-weight: 700;
+    color: var(--accent-primary);
+  }
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  @media (min-width: 768px) {
+    .projects-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  .project-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 1.75rem;
+  }
+  .project-meta-top {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: var(--accent-trust);
+    margin-bottom: 0.75rem;
+  }
+  .project-title {
+    font-size: 1.2rem;
+    margin-bottom: 0.25rem;
+  }
+  .project-title a:hover {
+    color: var(--accent-primary);
+  }
+  .project-building {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 0.85rem;
+  }
+</style>

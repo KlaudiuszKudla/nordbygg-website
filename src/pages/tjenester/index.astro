@@ -1,0 +1,15 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { siteConfig } from '../../data/siteConfig';
+---
+
+<BaseLayout title="Tjenester" description="Våre tjenester">
+  <section class="section-padding">
+    <div class="container">
+      <h1>Våre tjenester</h1>
+      <ul>
+        {siteConfig.services.map(s => <li><a href={s.href}>{s.title}</a></li>)}
+      </ul>
+    </div>
+  </section>
+</BaseLayout>

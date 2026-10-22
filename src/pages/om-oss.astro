@@ -1,0 +1,15 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { siteConfig } from '../data/siteConfig';
+const pageTitle = `Om oss | ${siteConfig.companyName}`;
+const pageDescription = `Møt ${siteConfig.owner}, håndverker og daglig leder.`;
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <section class="section-padding">
+    <div class="container">
+      <h1>Om Satisfaction</h1>
+      <p>Drives av Waldemar Kudla med 15 års erfaring i Oslo.</p>
+    </div>
+  </section>
+</BaseLayout>

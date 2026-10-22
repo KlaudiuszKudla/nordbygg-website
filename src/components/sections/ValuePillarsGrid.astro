@@ -1,0 +1,83 @@
+---
+const pillars = [
+  {
+    step: '01',
+    title: 'Gratis befaring i Oslo',
+    description: 'Vi kommer hjem til deg i Oslo og omegn for å se på rommet, ta nøyaktige mål og gi faglige råd.',
+  },
+  {
+    step: '02',
+    title: 'Ryddig tilbud & fastpris',
+    description: 'Du mottar et oversiktlig, skriftlig pristilbud og fremdriftsplan uten skjulte tillegg.',
+  },
+  {
+    step: '03',
+    title: 'Én fast kontaktperson',
+    description: 'Waldemar Kudla utfører arbeidet selv, og koordinerer samarbeidspartnere ved behov.',
+  },
+  {
+    step: '04',
+    title: 'Kvalitet i hver detalj',
+    description: 'Vi beskytter gulv underveis, rydder hver dag, og leverer et ferdig resultat du er fornøyd med.',
+  },
+];
+---
+
+<section class="pillars-section" aria-label="Slik jobber Satisfaction">
+  <div class="container">
+    <div class="pillars-grid">
+      {pillars.map((pillar) => (
+        <article class="pillar-card">
+          <span class="pillar-step tabular-nums">{pillar.step}</span>
+          <h2 class="pillar-title">{pillar.title}</h2>
+          <p class="pillar-text">{pillar.description}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .pillars-section {
+    background-color: var(--bg-surface);
+    padding-block: 3rem;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  @media (min-width: 640px) {
+    .pillars-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 1024px) {
+    .pillars-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  .pillar-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+  }
+  .pillar-step {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 0.85rem;
+    color: var(--accent-primary);
+    margin-bottom: 0.5rem;
+  }
+  .pillar-title {
+    font-size: 1.15rem;
+    margin-bottom: 0.6rem;
+  }
+  .pillar-text {
+    font-size: 0.9375rem;
+    margin: 0;
+  }
+</style>

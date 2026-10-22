@@ -1,0 +1,48 @@
+---
+import { siteConfig } from '../../data/siteConfig';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'HomeAndConstructionBusiness',
+  '@id': `${siteConfig.siteUrl}/#organization`,
+  name: siteConfig.companyName,
+  legalName: siteConfig.legalName,
+  taxID: siteConfig.orgNr,
+  founder: {
+    '@type': 'Person',
+    name: siteConfig.owner,
+    jobTitle: 'Håndverker og daglig leder',
+  },
+  url: siteConfig.siteUrl,
+  telephone: siteConfig.phoneHref,
+  email: siteConfig.email,
+  priceRange: '$$',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: siteConfig.location.street,
+    postalCode: siteConfig.location.postalCode,
+    addressLocality: siteConfig.location.city,
+    addressCountry: siteConfig.location.country,
+  },
+  areaServed: siteConfig.location.serviceAreas.map((area) => ({
+    '@type': 'Place',
+    name: `${area}, Oslo/Viken`,
+  })),
+  openingHours: 'Mo-Fr 07:00-17:00',
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Oppussing og håndverkstjenester i Oslo',
+    itemListElement: siteConfig.services.map((service) => ({
+      '@type': 'Offer',
+      itemOffered: {
+        '@type': 'Service',
+        name: service.title,
+        description: service.shortDesc,
+        url: `${siteConfig.siteUrl}${service.href}`,
+      },
+    })),
+  },
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

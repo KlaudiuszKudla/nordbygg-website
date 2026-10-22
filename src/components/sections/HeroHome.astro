@@ -1,0 +1,185 @@
+---
+import { siteConfig } from '../../data/siteConfig';
+import { buildSmartMailto } from '../../utils/mailtoBuilder';
+
+const mailtoHref = buildSmartMailto();
+---
+
+<section class="hero-home">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow">
+        ★ {siteConfig.experienceYears} års erfaring med oppussing i Oslo og omegn
+      </span>
+      <h1 class="hero-title">
+        Oppussing og wykończenia av bolig i Oslo
+      </h1>
+      <p class="hero-lead">
+        Vår lange erfaring innen håndverkstjenester gjør at vi kan hjelpe deg med alt fra
+        totalrenovering av bad og kjøkken til gulvlegging, maling og monteringsarbeid i Oslo, Bærum og Asker.
+      </p>
+
+      <div class="hero-cta-group">
+        <a href={`tel:${siteConfig.phoneHref}`} class="btn-primary tabular-nums">
+          📞 Ring Waldemar: {siteConfig.phoneDisplay}
+        </a>
+        <a href={mailtoHref} class="btn-secondary">
+          ✉️ Avtal gratis befaring (E-post)
+        </a>
+      </div>
+
+      <ul class="hero-trust-list">
+        <li>✓ Direkte dialog med utførende håndverker</li>
+        <li>✓ Gratis befaring og fastpris etter avtale</li>
+        <li>✓ Samarbeidspartnere på rør og elektro</li>
+      </ul>
+    </div>
+
+    <div class="hero-visual">
+      <div class="craftsman-card">
+        <div class="craftsman-image-placeholder" role="img" aria-label="Waldemar Kudla, håndverker og daglig leder i Satisfaction">
+          <div class="blueprint-badge">
+            <span class="bp-label">Utførende håndverker</span>
+            <strong class="bp-name">{siteConfig.owner}</strong>
+            <span class="bp-meta">15 års erfaring i Oslo-boliger</span>
+          </div>
+        </div>
+        <div class="craftsman-quote">
+          <p>
+            «Når du engasjerer Satisfaction, forholder du deg direkte til meg fra første befaring til ferdigstilt
+            prosjekt. Vi holder arbeidsplassen ryddig og leverer til avtalt tid.»
+          </p>
+          <span class="quote-author">— {siteConfig.owner}, Daglig leder i {siteConfig.companyName}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-home {
+    padding-block: 3rem 4rem;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  @media (min-width: 900px) {
+    .hero-home {
+      padding-block: 4.5rem 5.5rem;
+    }
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    align-items: center;
+  }
+  @media (min-width: 900px) {
+    .hero-grid {
+      grid-template-columns: 1.2fr 0.95fr;
+      gap: 3.5rem;
+    }
+  }
+  .hero-title {
+    font-size: clamp(2.1rem, 4.2vw, 3.25rem);
+    margin-bottom: 1.25rem;
+  }
+  .hero-lead {
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    max-width: 58ch;
+  }
+  .hero-cta-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.875rem;
+    margin-bottom: 2rem;
+  }
+  .btn-primary {
+    background-color: var(--accent-primary);
+    color: #FFFFFF;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 0.95rem 1.5rem;
+    border-radius: var(--radius-sm);
+    transition: background-color 0.15s ease;
+  }
+  .btn-primary:hover {
+    background-color: var(--accent-primary-hover);
+  }
+  .btn-secondary {
+    background-color: var(--bg-surface);
+    color: var(--text-main);
+    border: 1px solid var(--border-subtle);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 0.95rem 1.5rem;
+    border-radius: var(--radius-sm);
+  }
+  .btn-secondary:hover {
+    background-color: #E5DFD2;
+  }
+  .hero-trust-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--accent-trust);
+  }
+  .craftsman-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+  }
+  .craftsman-image-placeholder {
+    min-height: 300px;
+    background: linear-gradient(145deg, #213947 0%, #182B36 100%);
+    display: flex;
+    align-items: flex-end;
+    padding: 1.5rem;
+  }
+  .blueprint-badge {
+    background-color: rgba(250, 248, 245, 0.96);
+    padding: 1rem 1.25rem;
+    border-radius: var(--radius-md);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+  .bp-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--accent-primary);
+  }
+  .bp-name {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    color: var(--text-main);
+  }
+  .bp-meta {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+  .craftsman-quote {
+    padding: 1.5rem;
+    background-color: var(--bg-surface);
+  }
+  .craftsman-quote p {
+    font-size: 0.95rem;
+    font-style: italic;
+    color: var(--text-main);
+    margin-bottom: 0.5rem;
+  }
+  .quote-author {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-muted);
+  }
+</style>

@@ -1,0 +1,163 @@
+---
+import { siteConfig } from '../../data/siteConfig';
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-col">
+      <h2 class="footer-heading">{siteConfig.companyName}</h2>
+      <p class="footer-text">
+        Lokal håndverker i Oslo med {siteConfig.experienceYears} års erfaring. Vi utfører alt fra
+        totaloppussing av bad og kjøkken til gulvlegging, maling og monteringsarbeid.
+      </p>
+      <div class="trust-badges">
+        <span class="footer-badge">✓ Ansvarsforsikret</span>
+        <span class="footer-badge tabular-nums">Org.nr: {siteConfig.orgNr}</span>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h2 class="footer-heading">Våre tjenester</h2>
+      <ul class="footer-links">
+        {siteConfig.services.map((service) => (
+          <li><a href={service.href}>{service.title}</a></li>
+        ))}
+        <li><a href="/prosjekter/">Utført arbeid / Referanser</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h2 class="footer-heading">Dekningsområde</h2>
+      <p class="footer-text">
+        Vi holder til i Oslo og tar oppdrag i hele Oslo, Bærum, Asker og Lillestrøm:
+      </p>
+      <p class="footer-areas">
+        {siteConfig.location.serviceAreas.join(' • ')}
+      </p>
+    </div>
+
+    <div class="footer-col">
+      <h2 class="footer-heading">Kontakt oss</h2>
+      <ul class="footer-contact tabular-nums">
+        <li>
+          <strong>Telefon:</strong>{' '}
+          <a href={`tel:${siteConfig.phoneHref}`}>{siteConfig.phoneDisplay}</a>
+        </li>
+        <li>
+          <strong>E-post:</strong>{' '}
+          <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
+        </li>
+        <li>
+          <strong>Adresse:</strong> {siteConfig.location.street}, {siteConfig.location.postalCode} {siteConfig.location.city}
+        </li>
+        <li>
+          <strong>Åpningstid:</strong> {siteConfig.workingHours}
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="container footer-bottom">
+    <p>© {currentYear} {siteConfig.legalName}. Alle rettigheter reservert.</p>
+    <div class="footer-legal">
+      <span class="zero-cookie-pill">🛡️ 100 % fri for informasjonskapsler (cookies) og sporing</span>
+      <a href="/personvern/">Personvern og vilkår</a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background-color: var(--bg-dark);
+    color: var(--text-on-dark);
+    padding-top: 4rem;
+    padding-bottom: 2.5rem;
+    margin-top: auto;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid var(--border-dark);
+  }
+  @media (min-width: 768px) {
+    .footer-grid {
+      grid-template-columns: 1.4fr 1fr 1fr 1.1fr;
+    }
+  }
+  .footer-heading {
+    color: var(--text-on-dark);
+    font-size: 1.0625rem;
+    margin-bottom: 1rem;
+  }
+  .footer-text,
+  .footer-areas {
+    color: var(--text-on-dark-muted);
+    font-size: 0.9375rem;
+    line-height: 1.6;
+  }
+  .trust-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  .footer-badge {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    background-color: var(--bg-dark-elevated);
+    color: var(--text-on-dark);
+    padding: 0.3rem 0.65rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-dark);
+  }
+  .footer-links,
+  .footer-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    font-size: 0.9375rem;
+    color: var(--text-on-dark-muted);
+  }
+  .footer-links a:hover,
+  .footer-contact a:hover {
+    color: #FFFFFF;
+    text-decoration: underline;
+  }
+  .footer-bottom {
+    padding-top: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  @media (min-width: 768px) {
+    .footer-bottom {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+  .footer-bottom p {
+    color: var(--text-on-dark-muted);
+    font-size: 0.875rem;
+    margin: 0;
+  }
+  .footer-legal {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.25rem;
+    font-size: 0.875rem;
+  }
+  .zero-cookie-pill {
+    background-color: rgba(42, 92, 67, 0.35);
+    border: 1px solid #3D7A5B;
+    color: #E3F5EC;
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.8125rem;
+  }
+</style>

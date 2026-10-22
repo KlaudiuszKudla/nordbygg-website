@@ -1,0 +1,145 @@
+---
+import { siteConfig } from '../../data/siteConfig';
+import { buildSmartMailto } from '../../utils/mailtoBuilder';
+import CopyEmailButton from './CopyEmailButton.astro';
+
+interface Props {
+  heading?: string;
+  subheading?: string;
+  serviceName?: string;
+}
+
+const {
+  heading = 'Vi hjelper deg gjerne – kontakt en erfaren håndverker i dag!',
+  subheading = 'Satisfaction hjelper deg med alt fra totaloppussing av bad og kjøkken til gulvlegging, maling og monteringsarbeid i Oslo og omegn. Ta kontakt med Waldemar Kudla for en hyggelig prat eller gratis befaring.',
+  serviceName,
+} = Astro.props;
+
+const mailtoHref = buildSmartMailto({ serviceName });
+---
+
+<section class="cta-banner section-padding" aria-labelledby="cta-heading">
+  <div class="container">
+    <div class="cta-box">
+      <div class="cta-content">
+        <span class="cta-eyebrow">Gratis og uforpliktende befaring i Oslo</span>
+        <h2 id="cta-heading" class="cta-title">{heading}</h2>
+        <p class="cta-desc">{subheading}</p>
+
+        <div class="cta-actions">
+          <a href={`tel:${siteConfig.phoneHref}`} class="btn-cta-phone tabular-nums">
+            📞 Ring Waldemar: {siteConfig.phoneDisplay}
+          </a>
+          <a href={mailtoHref} class="btn-cta-email">
+            ✉️ Send forespørsel på e-post
+          </a>
+          <CopyEmailButton />
+        </div>
+      </div>
+
+      <aside class="cta-checklist-card" aria-label="Tips for raskt pristilbud">
+        <h3 class="checklist-title">💡 Slik får du raskest prisestimat:</h3>
+        <p class="checklist-intro">
+          Send gjerne en e-post eller MMS til <strong>{siteConfig.phoneDisplay}</strong> med:
+        </p>
+        <ul class="checklist-items">
+          <li><strong>1. Hvilken tjeneste</strong> (eller kombinasjon) du ønsker utført.</li>
+          <li><strong>2. Bydel i Oslo</strong> og type bolig (bygård, blokk, rekkehus).</li>
+          <li><strong>3. Ønsket oppstart</strong> for prosjektet.</li>
+          <li><strong>4. Legg ved 2–4 bilder</strong> av nåværende rom eller område!</li>
+        </ul>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta-box {
+    background-color: var(--bg-dark);
+    color: var(--text-on-dark);
+    border-radius: var(--radius-lg);
+    padding: 2.25rem 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.25rem;
+    align-items: center;
+  }
+  @media (min-width: 960px) {
+    .cta-box {
+      grid-template-columns: 1.35fr 1fr;
+      padding: 3.5rem;
+    }
+  }
+  .cta-eyebrow {
+    display: inline-block;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #F4A27E;
+    margin-bottom: 0.75rem;
+  }
+  .cta-title {
+    color: var(--text-on-dark);
+    font-size: clamp(1.65rem, 3vw, 2.25rem);
+    margin-bottom: 1rem;
+  }
+  .cta-desc {
+    color: var(--text-on-dark-muted);
+    font-size: 1.0625rem;
+    max-width: 60ch;
+    margin-bottom: 1.75rem;
+  }
+  .cta-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.875rem;
+  }
+  .btn-cta-phone {
+    background-color: var(--accent-primary);
+    color: #FFFFFF;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    padding: 0.85rem 1.4rem;
+    border-radius: var(--radius-sm);
+    transition: background-color 0.15s ease;
+  }
+  .btn-cta-phone:hover {
+    background-color: var(--accent-primary-hover);
+  }
+  .btn-cta-email {
+    background-color: var(--bg-card);
+    color: var(--text-main);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    padding: 0.85rem 1.4rem;
+    border-radius: var(--radius-sm);
+  }
+  .btn-cta-email:hover {
+    background-color: var(--bg-surface);
+  }
+  .cta-checklist-card {
+    background-color: var(--bg-dark-elevated);
+    border: 1px solid var(--border-dark);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+  }
+  .checklist-title {
+    color: var(--text-on-dark);
+    font-size: 1.0625rem;
+    margin-bottom: 0.5rem;
+  }
+  .checklist-intro {
+    color: var(--text-on-dark-muted);
+    font-size: 0.9375rem;
+    margin-bottom: 1rem;
+  }
+  .checklist-items {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    font-size: 0.9rem;
+    color: var(--text-on-dark);
+  }
+</style>

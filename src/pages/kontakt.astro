@@ -1,0 +1,22 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CopyEmailButton from '../components/conversion/CopyEmailButton.astro';
+import { siteConfig } from '../data/siteConfig';
+import { buildSmartMailto } from '../utils/mailtoBuilder';
+
+const pageTitle = `Kontakt ${siteConfig.companyName} | Gratis Befaring i Oslo`;
+const pageDescription = `Ring ${siteConfig.owner} på ${siteConfig.phoneDisplay} for gratis befaring.`;
+const defaultMailto = buildSmartMailto();
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <section class="section-padding">
+    <div class="container">
+      <h1>Kontakt oss</h1>
+      <p>Ring Waldemar på <a href={`tel:${siteConfig.phoneHref}`}><strong>{siteConfig.phoneDisplay}</strong></a> eller send e-post til <a href={defaultMailto}><strong>{siteConfig.email}</strong></a>.</p>
+      <div style="margin-top: 1.5rem;">
+        <CopyEmailButton />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

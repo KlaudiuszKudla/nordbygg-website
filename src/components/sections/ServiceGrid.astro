@@ -1,0 +1,107 @@
+---
+import { siteConfig } from '../../data/siteConfig';
+---
+
+<section class="services-section section-padding" aria-labelledby="services-heading">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Våre fagområder</span>
+      <h2 id="services-heading" class="section-title">
+        Oppussing, overflater og monteringsarbeid i Oslo
+      </h2>
+    </div>
+
+    <div class="service-cards-grid">
+      {siteConfig.services.map((service) => (
+        <article class="service-card">
+          <div class="service-card-body">
+            <h3 class="service-card-title">
+              <a href={service.href}>{service.title}</a>
+            </h3>
+            <p class="service-card-desc">{service.shortDesc}</p>
+            <ul class="service-highlights">
+              {service.highlights.map((item) => (
+                <li>✓ {item}</li>
+              ))}
+            </ul>
+          </div>
+          <div class="service-card-footer">
+            <a href={service.href} class="service-read-more">
+              Les mer om {service.title.toLowerCase()} →
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .services-section {
+    background-color: var(--bg-canvas);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .section-header {
+    max-width: 68ch;
+    margin-bottom: 3rem;
+  }
+  .section-title {
+    font-size: clamp(1.75rem, 3vw, 2.35rem);
+  }
+  .service-cards-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  @media (min-width: 768px) {
+    .service-cards-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 1024px) {
+    .service-cards-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .service-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .service-card-body {
+    padding: 1.75rem;
+  }
+  .service-card-title {
+    font-size: 1.3rem;
+    margin-bottom: 0.75rem;
+  }
+  .service-card-title a:hover {
+    color: var(--accent-primary);
+  }
+  .service-card-desc {
+    font-size: 0.95rem;
+    margin-bottom: 1.25rem;
+  }
+  .service-highlights {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--accent-trust);
+  }
+  .service-card-footer {
+    padding: 1rem 1.75rem;
+    background-color: var(--bg-surface);
+    border-top: 1px solid var(--border-subtle);
+  }
+  .service-read-more {
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--accent-primary);
+  }
+</style>

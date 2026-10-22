@@ -1,0 +1,24 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroHome from '../components/sections/HeroHome.astro';
+import ValuePillarsGrid from '../components/sections/ValuePillarsGrid.astro';
+import AboutPartnerSection from '../components/sections/AboutPartnerSection.astro';
+import ServiceGrid from '../components/sections/ServiceGrid.astro';
+import FeaturedProjects from '../components/sections/FeaturedProjects.astro';
+import TestimonialGrid from '../components/sections/TestimonialGrid.astro';
+import DirectContactBanner from '../components/conversion/DirectContactBanner.astro';
+import { siteConfig } from '../data/siteConfig';
+
+const pageTitle = `${siteConfig.companyName} | Oppussing og Wykończenia i Oslo`;
+const pageDescription = `Lokalt firma i Oslo med ${siteConfig.experienceYears} års erfaring. Totaloppussing av bad og kjøkken, gulvlegging, maling og monteringsarbeid.`;
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <HeroHome />
+  <ValuePillarsGrid />
+  <AboutPartnerSection />
+  <ServiceGrid />
+  <FeaturedProjects />
+  <TestimonialGrid />
+  <DirectContactBanner />
+</BaseLayout>
