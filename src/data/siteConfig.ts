@@ -6,7 +6,7 @@ export const siteConfig = {
   phoneDisplay: '+47 999 99 999',
   phoneHref: '+4799999999',
   email: 'kontakt@satisfaction.no',
-  siteUrl: 'https://satisfaction.no',
+  siteUrl: 'https://klaudiuszkudla.github.io/nordbygg-website',
   location: {
     street: 'Kirkeveien 64',
     postalCode: '0364',

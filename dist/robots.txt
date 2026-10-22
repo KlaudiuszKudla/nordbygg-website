@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://nordbygg.no/sitemap-index.xml
