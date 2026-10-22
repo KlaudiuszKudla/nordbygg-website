@@ -19,9 +19,9 @@ import { path } from '../../utils/paths';
       <ul class="nav-list">
         <li><a href={path('/')} class="nav-link">Hjem</a></li>
         <li class="nav-dropdown-wrapper">
-          <details class="nav-details">
+          <details class="nav-details" id="desktop-services-details">
             <summary class="nav-link nav-summary">
-              Tjenester
+              <span>Tjenester</span>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
                 <path d="m6 9 6 6 6-6"/>
               </svg>
@@ -63,14 +63,20 @@ import { path } from '../../utils/paths';
       aria-expanded="false"
       aria-controls="mobile-nav-drawer"
     >
-      <span class="hamburger-box" aria-hidden="true">
-        <span class="hamburger-inner"></span>
-      </span>
+      <svg class="hamburger-svg hamburger-icon-open" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="4" y1="6" x2="20" y2="6"></line>
+        <line x1="4" y1="12" x2="20" y2="12"></line>
+        <line x1="4" y1="18" x2="20" y2="18"></line>
+      </svg>
+      <svg class="hamburger-svg hamburger-icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
       <span class="menu-label" id="mobile-btn-label">Meny</span>
     </button>
   </div>
 
-  <!-- Mobile Drawer (< 900px) -->
+  <!-- Full-Screen Mobile Drawer (< 900px) -->
   <div id="mobile-nav-drawer" class="mobile-drawer" aria-hidden="true">
     <div class="mobile-drawer-inner">
       <nav class="mobile-nav" aria-label="Mobil navigasjon">
@@ -78,7 +84,7 @@ import { path } from '../../utils/paths';
           <li>
             <a href={path('/')} class="mobile-nav-link">
               <span>Hjem</span>
-              <span class="mobile-nav-chevron">→</span>
+              <span class="nav-chevron" aria-hidden="true">→</span>
             </a>
           </li>
 
@@ -86,10 +92,10 @@ import { path } from '../../utils/paths';
           <li class="mobile-nav-group">
             <details class="mobile-services-accordion" open>
               <summary class="mobile-nav-link mobile-services-summary">
-                <span class="services-title-wrap">
+                <div class="services-title-wrap">
                   <span>Tjenester</span>
                   <span class="services-count-badge">6 fagområder</span>
-                </span>
+                </div>
                 <svg class="accordion-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
                   <path d="m6 9 6 6 6-6"/>
                 </svg>
@@ -116,25 +122,25 @@ import { path } from '../../utils/paths';
           <li>
             <a href={path('/prosjekter/')} class="mobile-nav-link">
               <span>Prosjekter & Referanser</span>
-              <span class="mobile-nav-chevron">→</span>
+              <span class="nav-chevron" aria-hidden="true">→</span>
             </a>
           </li>
           <li>
             <a href={path('/om-oss/')} class="mobile-nav-link">
               <span>Om oss & Waldemar</span>
-              <span class="mobile-nav-chevron">→</span>
+              <span class="nav-chevron" aria-hidden="true">→</span>
             </a>
           </li>
           <li>
             <a href={path('/kontakt/')} class="mobile-nav-link">
               <span>Kontakt</span>
-              <span class="mobile-nav-chevron">→</span>
+              <span class="nav-chevron" aria-hidden="true">→</span>
             </a>
           </li>
         </ul>
       </nav>
 
-      <!-- Drawer Bottom CTA & Quick Trust Signals -->
+      <!-- Drawer Bottom Direct CTA & Trust Pills -->
       <div class="mobile-drawer-bottom">
         <a href={`tel:${siteConfig.phoneHref}`} class="mobile-drawer-phone-card">
           <div class="drawer-phone-icon" aria-hidden="true">
@@ -173,13 +179,11 @@ import { path } from '../../utils/paths';
   </div>
 </header>
 
-<div id="mobile-nav-backdrop" class="mobile-nav-backdrop" aria-hidden="true"></div>
-
 <style>
   .site-header {
     position: sticky;
     top: 0;
-    z-index: 50;
+    z-index: 100;
     background-color: rgba(250, 248, 245, 0.98);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
@@ -190,18 +194,18 @@ import { path } from '../../utils/paths';
     display: flex;
     align-items: center;
     justify-content: space-between;
-    min-height: 4.5rem;
-    gap: 1.5rem;
-    padding-block: 0.75rem;
+    height: 4.5rem;
+    gap: 1.25rem;
   }
 
-  /* Brand Logo */
+  /* Brand / Logo */
   .brand-logo {
     display: flex;
     align-items: center;
     gap: 0.75rem;
     text-decoration: none;
-    z-index: 52;
+    flex-shrink: 0;
+    z-index: 102;
   }
   .logo-mark {
     display: grid;
@@ -232,6 +236,12 @@ import { path } from '../../utils/paths';
     font-size: 0.75rem;
     color: var(--text-muted);
     font-weight: 500;
+    white-space: nowrap;
+  }
+  @media (max-width: 420px) {
+    .logo-sub {
+      display: none;
+    }
   }
 
   /* Desktop Navigation */
@@ -249,16 +259,21 @@ import { path } from '../../utils/paths';
     display: flex;
     align-items: center;
     gap: 1.35rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
   }
   .nav-link {
     font-family: var(--font-heading);
     font-size: 0.9375rem;
     font-weight: 600;
     color: var(--text-main);
-    padding: 0.35rem 0.25rem;
+    padding: 0.4rem 0.25rem;
     cursor: pointer;
     transition: color 0.15s ease;
     text-decoration: none;
+    background: transparent;
+    border: none;
   }
   .nav-link:hover {
     color: var(--accent-primary);
@@ -277,9 +292,14 @@ import { path } from '../../utils/paths';
     align-items: center;
     gap: 0.35rem;
     user-select: none;
+    outline: none;
   }
   .nav-summary::-webkit-details-marker {
     display: none;
+  }
+  .nav-summary::marker {
+    display: none;
+    content: "";
   }
   .nav-summary svg {
     transition: transform 0.2s ease;
@@ -289,15 +309,17 @@ import { path } from '../../utils/paths';
   }
   .dropdown-menu {
     position: absolute;
-    top: calc(100% + 0.5rem);
+    top: calc(100% + 0.6rem);
     left: 0;
     min-width: 270px;
     background-color: var(--bg-card);
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius-md);
-    box-shadow: 0 14px 32px rgba(24, 43, 54, 0.15);
+    box-shadow: 0 16px 36px rgba(24, 43, 54, 0.16);
     padding: 0.5rem;
-    z-index: 100;
+    z-index: 110;
+    list-style: none;
+    margin: 0;
   }
   .dropdown-link {
     display: block;
@@ -355,17 +377,17 @@ import { path } from '../../utils/paths';
   .mobile-menu-btn {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.45rem;
     background-color: var(--bg-surface);
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius-sm);
-    padding: 0.6rem 0.85rem;
+    padding: 0.5rem 0.75rem;
     cursor: pointer;
     color: var(--text-main);
     font-family: var(--font-heading);
     font-weight: 700;
-    font-size: 0.9rem;
-    z-index: 52;
+    font-size: 0.875rem;
+    z-index: 102;
     transition: background-color 0.15s ease, border-color 0.15s ease;
   }
   .mobile-menu-btn:hover,
@@ -378,74 +400,46 @@ import { path } from '../../utils/paths';
     }
   }
 
-  /* Hamburger Bars Animation */
-  .hamburger-box {
-    width: 20px;
-    height: 14px;
-    position: relative;
-    display: inline-block;
+  /* SVG Icons for Hamburger */
+  .hamburger-svg {
+    display: block;
+    flex-shrink: 0;
   }
-  .hamburger-inner,
-  .hamburger-inner::before,
-  .hamburger-inner::after {
-    width: 20px;
-    height: 2px;
-    background-color: var(--text-main);
-    border-radius: 2px;
-    position: absolute;
-    transition: transform 0.22s cubic-bezier(0.4, 0, 0.2, 1),
-                opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1),
-                background-color 0.2s ease;
+  .hamburger-icon-close {
+    display: none;
   }
-  .hamburger-inner {
-    top: 50%;
-    transform: translateY(-50%);
+  .mobile-menu-btn.is-active .hamburger-icon-open {
+    display: none;
   }
-  .hamburger-inner::before {
-    content: '';
-    top: -6px;
-  }
-  .hamburger-inner::after {
-    content: '';
-    bottom: -6px;
+  .mobile-menu-btn.is-active .hamburger-icon-close {
+    display: block;
+    color: var(--accent-primary);
   }
 
-  /* Active 'X' transformation */
-  .mobile-menu-btn.is-active .hamburger-inner {
-    background-color: transparent;
-  }
-  .mobile-menu-btn.is-active .hamburger-inner::before {
-    transform: translateY(6px) rotate(45deg);
-  }
-  .mobile-menu-btn.is-active .hamburger-inner::after {
-    transform: translateY(-6px) rotate(-45deg);
-  }
-
-  /* Mobile Drawer Container */
+  /* Full-Screen Mobile Drawer (< 900px) */
   .mobile-drawer {
     display: none;
-    position: absolute;
-    top: 100%;
+    position: fixed;
+    top: 4.5rem;
     left: 0;
     right: 0;
-    background-color: var(--bg-main);
-    border-bottom: 2px solid var(--accent-primary);
-    box-shadow: 0 24px 48px rgba(15, 23, 42, 0.18);
-    max-height: calc(100vh - 4.5rem);
+    bottom: 0;
+    background-color: #FAF8F5; /* var(--bg-canvas) */
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
-    z-index: 51;
+    z-index: 101;
+    border-top: 1px solid var(--border-subtle);
   }
 
   .mobile-drawer.is-open {
     display: block;
-    animation: drawerSlideDown 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation: drawerFadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 
-  @keyframes drawerSlideDown {
+  @keyframes drawerFadeIn {
     from {
       opacity: 0;
-      transform: translateY(-8px);
+      transform: translateY(-6px);
     }
     to {
       opacity: 1;
@@ -457,14 +451,11 @@ import { path } from '../../utils/paths';
     .mobile-drawer {
       display: none !important;
     }
-    .mobile-nav-backdrop {
-      display: none !important;
-    }
   }
 
   .mobile-drawer-inner {
-    padding: 1rem 1.25rem 2.25rem;
-    max-width: 600px;
+    padding: 1.25rem 1.25rem 5rem;
+    max-width: 560px;
     margin: 0 auto;
   }
 
@@ -474,7 +465,7 @@ import { path } from '../../utils/paths';
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 0.35rem;
+    gap: 0.5rem;
   }
 
   .mobile-nav-link {
@@ -491,7 +482,7 @@ import { path } from '../../utils/paths';
     font-size: 1.05rem;
     color: var(--text-main);
     text-decoration: none;
-    transition: background-color 0.15s ease, border-color 0.15s ease;
+    transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
   }
   .mobile-nav-link:hover,
   .mobile-nav-link:active {
@@ -499,7 +490,7 @@ import { path } from '../../utils/paths';
     border-color: var(--accent-primary);
     color: var(--accent-primary);
   }
-  .mobile-nav-chevron {
+  .nav-chevron {
     color: var(--text-muted);
     font-weight: 400;
   }
@@ -518,9 +509,14 @@ import { path } from '../../utils/paths';
     border: none;
     border-radius: 0;
     margin: 0;
+    user-select: none;
   }
   .mobile-services-summary::-webkit-details-marker {
     display: none;
+  }
+  .mobile-services-summary::marker {
+    display: none;
+    content: "";
   }
   .services-title-wrap {
     display: flex;
@@ -567,7 +563,7 @@ import { path } from '../../utils/paths';
   }
   .mobile-subnav-link:hover,
   .mobile-subnav-link:active {
-    background-color: rgba(184, 80, 52, 0.08);
+    background-color: rgba(196, 85, 45, 0.08);
     color: var(--accent-primary);
   }
   .subnav-dot {
@@ -666,44 +662,22 @@ import { path } from '../../utils/paths';
   .trust-pill svg {
     color: var(--accent-primary);
   }
-
-  /* Backdrop Overlay */
-  .mobile-nav-backdrop {
-    display: none;
-    position: fixed;
-    top: 4.5rem;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(15, 23, 42, 0.45);
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(2px);
-    z-index: 49;
-    opacity: 0;
-    transition: opacity 0.2s ease;
-  }
-  .mobile-nav-backdrop.is-open {
-    display: block;
-    opacity: 1;
-  }
 </style>
 
 <script>
-  function setupMobileNav() {
+  function setupHeaderNav() {
     const toggleBtn = document.getElementById('mobile-nav-toggle');
     const drawer = document.getElementById('mobile-nav-drawer');
-    const backdrop = document.getElementById('mobile-nav-backdrop');
     const btnLabel = document.getElementById('mobile-btn-label');
+    const desktopDetails = document.getElementById('desktop-services-details') as HTMLDetailsElement | null;
 
-    if (!toggleBtn || !drawer || !backdrop) return;
+    if (!toggleBtn || !drawer) return;
 
     function openMenu() {
       toggleBtn.classList.add('is-active');
       toggleBtn.setAttribute('aria-expanded', 'true');
       drawer.classList.add('is-open');
       drawer.setAttribute('aria-hidden', 'false');
-      backdrop.classList.add('is-open');
-      backdrop.setAttribute('aria-hidden', 'false');
       if (btnLabel) btnLabel.textContent = 'Lukk';
       document.body.style.overflow = 'hidden';
     }
@@ -713,8 +687,6 @@ import { path } from '../../utils/paths';
       toggleBtn.setAttribute('aria-expanded', 'false');
       drawer.classList.remove('is-open');
       drawer.setAttribute('aria-hidden', 'true');
-      backdrop.classList.remove('is-open');
-      backdrop.setAttribute('aria-hidden', 'true');
       if (btnLabel) btnLabel.textContent = 'Meny';
       document.body.style.overflow = '';
     }
@@ -728,37 +700,54 @@ import { path } from '../../utils/paths';
       }
     }
 
-    toggleBtn.addEventListener('click', toggleMenu);
-    backdrop.addEventListener('click', closeMenu);
+    // Toggle mobile drawer
+    toggleBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleMenu();
+    });
 
-    // Close menu when clicking navigation links inside drawer
+    // Close mobile drawer when clicking navigation links inside drawer
     drawer.querySelectorAll('a').forEach((link) => {
       link.addEventListener('click', () => {
         closeMenu();
       });
     });
 
-    // Close on Escape key
+    // Close mobile menu on Escape key
     window.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && drawer.classList.contains('is-open')) {
-        closeMenu();
-        toggleBtn.focus();
+      if (e.key === 'Escape') {
+        if (drawer.classList.contains('is-open')) {
+          closeMenu();
+          toggleBtn.focus();
+        }
+        if (desktopDetails && desktopDetails.open) {
+          desktopDetails.open = false;
+        }
       }
     });
 
-    // Close if resized to desktop viewport >= 900px
+    // Close mobile menu if resized to desktop viewport >= 900px
     window.addEventListener('resize', () => {
       if (window.innerWidth >= 900 && drawer.classList.contains('is-open')) {
         closeMenu();
       }
     });
+
+    // Close desktop details dropdown if clicked outside
+    document.addEventListener('click', (e) => {
+      if (desktopDetails && desktopDetails.open) {
+        if (!desktopDetails.contains(e.target as Node)) {
+          desktopDetails.open = false;
+        }
+      }
+    });
   }
 
-  // Support both normal load and view transitions if applicable
+  // Run on first load and on astro page navigation
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', setupMobileNav);
+    document.addEventListener('DOMContentLoaded', setupHeaderNav);
   } else {
-    setupMobileNav();
+    setupHeaderNav();
   }
-  document.addEventListener('astro:page-load', setupMobileNav);
+  document.addEventListener('astro:page-load', setupHeaderNav);
 </script>
