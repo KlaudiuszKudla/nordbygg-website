@@ -26,6 +26,80 @@ export interface ProjectCaseStudy {
 
 export const projectsData: ProjectCaseStudy[] = [
   {
+    id: 'fasaderenovering-frogner-bygard',
+    slug: 'fasaderenovering-frogner-bygard',
+    href: path('/prosjekter/fasaderenovering-frogner-bygard/'),
+    title: 'Fasaderenovering og vedlikehold av ærverdig bygård',
+    neighborhood: 'Frogner, Oslo',
+    buildingType: 'Klassisk bygård fra 1890-tallet',
+    year: 2024,
+    duration: '4 uker',
+    mainImage: path('/images/bygard-fasade-osteklokken.jpg'),
+    serviceSlugs: ['vaktmester-oslo', 'utvendig-maling-oslo'],
+    tags: ['Bygård', 'Fasademaling', 'Sztukateria', 'Sameie', 'Vaktmester', 'Frogner'],
+    excerpt: 'Helhetlig fasadeoppgradering, murpuss, gesimsreparasjoner og presisjonsmaling av klassisk hjørnebygård på Frogner med næringslokaler på gateplan.',
+    challenge: 'Bygården på hjørnet hadde slitt murpuss, sprekker i fasaden etter frostsprengning og værslitte gesimser. Med serveringssted og butikk på gateplan samt tett trafikk i gaten var det avgjørende med trygg sikring av fotgjengere, streng overholdelse av støyregler og koordinert fremdrift med bydel og beboere.',
+    solution: 'Vi utførte skånsom fasadevask, hugget bort løs puss og utbedret murverket med diffusjonsåpen kalkmørtel tilpasset bygningens alder. Gesimser, vindusomramminger og balkonger ble nennsomt restaurert. Deretter ble hele fasaden grunnet og malt med to strøk høykvalitets silikatmaling i klassiske Oslo-nyanser. Dziedziniec wewnętrzny (bakgård) ble samtidig inspisert og vedlikeholdt.',
+    scopeList: [
+      'Rigging av godkjent stillas med tildekking og fotgjengersikring',
+      'Skånsom fasaderens og sopp-/algebehandling',
+      'Uthugging av bom og sprekker i historisk murpuss',
+      'Pussreparasjoner med pustende kalkbasert mørtel',
+      'Restaurering av profilerte gesimser, bånd og balkongsåler',
+      'Maling av vinduer, staffasje og gesimser med presisjon',
+      'Påføring av to strøk diffusjonsåpen silikatmaling på fasadeflatene',
+      'Tilsyn og opprydding av bakgård og felles inngangspartier'
+    ],
+    materialsUsed: [
+      'Diffusjonsåpen silikatmaling for historiske murfasader',
+      'Kalkmørtel NHL tilpasset 1890-talls teglsteinsmur',
+      'Jotun Drygolin vindusmaling for utvendig høvlet treverk',
+      'Elastiske overmalbare fugemasser for fasadeskjøter'
+    ],
+    clientQuote: {
+      quote: 'Gården fremstår nå i all sin prakt! Waldemar og teamet håndterte både beboere, næringsdrivende og forbipasserende på en forbilledlig måte under hele fasadearbeidet.',
+      author: 'Styreleder Sameiet',
+      neighborhood: 'Frogner, Oslo'
+    }
+  },
+  {
+    id: 'rodt-trehus-fasademaling',
+    slug: 'rodt-trehus-fasademaling',
+    href: path('/prosjekter/rodt-trehus-fasademaling/'),
+    title: 'Fasademaling og fornyelse av klassisk trehus',
+    neighborhood: 'Holmenkollen / Vestre Aker, Oslo',
+    buildingType: 'Klassisk enebolig i tre med glassveranda',
+    year: 2024,
+    duration: '2 uker',
+    mainImage: path('/images/rodt-trehus-fasademaling-stillas.jpg'),
+    serviceSlugs: ['utvendig-maling-oslo'],
+    tags: ['Husmaling', 'Trehus', 'Glassveranda', 'Drygolin', 'Stillas', 'Holmenkollen'],
+    excerpt: 'Komplett utvendig fornyelse av staselig trehus med glassveranda – grundig forarbeid, stillasrigging og to strøk tradisjonsrik rød kledningsmaling med hvite detaljer.',
+    challenge: 'Trekledningen bar preg av værslitasje, soltørke og flassing på sør- og vestveggene. Den detaljrike glassverandaen med mange småruter i vinduene krevde ekstrem nøyaktighet, skraping for hånd og spesialpensler for å unngå malingssøl på glassflatene.',
+    solution: 'Vi monterte komplett fasadestillas rundt hele boligen, utførte grundig kraftvask med soppdreper, skrapte bort all løs maling ned til bærekraftig treverk og impregnerte bart tre med visirgrunning. Deretter påførte vi to fyldige strøk Jotun Drygolin Nordic Extreme i dyp rød farge, mens vinduer, gesimser og glassveranda ble malt i silkematt hvit for maksimal kontrast og holdbarhet.',
+    scopeList: [
+      'Montering og sertifisering av godkjent fasadestillas',
+      'Fasadevask med sopp- og algedreper og påfølgende tørking',
+      'Mekanisk skraping av all flakende og løs maling',
+      'Pussing av overganger og grunning av endeved og bart treverk',
+      'Presisjonsmaling av glassveranda med smårutede vinduer',
+      'To strøk med premium Jotun Drygolin kledningsmaling',
+      'Maling av grunnmur, takskjegg og vindskier',
+      'Demontering av stillas, opprydding og felles sluttbefaring'
+    ],
+    materialsUsed: [
+      'Jotun Drygolin Nordic Extreme i tradisjonell rød farge',
+      'Jotun Drygolin Vindu og Dør i klassisk hvit',
+      'Jotun Visir Oljegrunning Pigmentert',
+      'Jotun Kraftvask og Sopp- og Algedreper'
+    ],
+    clientQuote: {
+      quote: 'Huset har fått nytt liv! Glassverandaen er nydelig utført, og fargekombinasjonen skinner i nabolaget. Svært ryddig og dyktig håndverker.',
+      author: 'Huseier',
+      neighborhood: 'Holmenkollen, Oslo'
+    }
+  },
+  {
     id: 'bakgard-skifer-belegningsstein',
     slug: 'bakgard-skifer-belegningsstein',
     href: path('/prosjekter/bakgard-skifer-belegningsstein/'),
