@@ -36,8 +36,8 @@ const pageDescription = `Se et utvalg av våre utførte oppussingsprosjekter i O
         <!-- Trust Signals Bar -->
         <div class="portfolio-trust-bar">
           <div class="trust-stat">
-            <span class="stat-number">15+</span>
-            <span class="stat-label">års erfaring i Oslo-boliger</span>
+            <span class="stat-number">20+</span>
+            <span class="stat-label">års erfaring med drift & håndverk</span>
           </div>
           <div class="trust-stat">
             <span class="stat-number">100%</span>
@@ -68,6 +68,9 @@ const pageDescription = `Se et utvalg av våre utførte oppussingsprosjekter i O
                 class="project-card-img"
               />
               <span class="neighborhood-badge">📍 {project.neighborhood}</span>
+              {project.gallery && project.gallery.length > 1 && (
+                <span class="gallery-count-badge">📷 {project.gallery.length} bilder</span>
+              )}
             </a>
 
             <div class="project-card-content">
@@ -271,6 +274,19 @@ const pageDescription = `Se et utvalg av våre utførte oppussingsprosjekter i O
     padding: 0.35rem 0.65rem;
     border-radius: var(--radius-sm);
   }
+  .gallery-count-badge {
+    position: absolute;
+    bottom: 0.875rem;
+    right: 0.875rem;
+    background-color: rgba(24, 43, 54, 0.88);
+    backdrop-filter: blur(6px);
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.35rem 0.65rem;
+    border-radius: var(--radius-sm);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  }
 
   .project-card-content {
     padding: 1.5rem;
@@ -334,6 +350,19 @@ const pageDescription = `Se et utvalg av våre utførte oppussingsprosjekter i O
     color: var(--accent-trust);
     padding: 0.2rem 0.5rem;
     border-radius: var(--radius-sm);
+  }
+  .gallery-count-badge {
+    position: absolute;
+    bottom: 0.875rem;
+    right: 0.875rem;
+    background-color: rgba(24, 43, 54, 0.88);
+    backdrop-filter: blur(6px);
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.35rem 0.65rem;
+    border-radius: var(--radius-sm);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
   }
   .project-card-footer {
     border-top: 1px solid var(--border-subtle);

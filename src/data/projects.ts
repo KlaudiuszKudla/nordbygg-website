@@ -1,5 +1,12 @@
 import { path } from '../utils/paths';
 
+export interface ProjectGalleryImage {
+  src: string;
+  alt: string;
+  caption?: string;
+  phase?: 'Bygningen' | 'Før' | 'Under arbeid' | 'Ferdigstilt' | 'Detalj';
+}
+
 export interface ProjectCaseStudy {
   id: string;
   slug: string;
@@ -10,6 +17,7 @@ export interface ProjectCaseStudy {
   year: number;
   duration: string;
   mainImage: string;
+  gallery?: ProjectGalleryImage[];
   serviceSlugs: string[];
   tags: string[];
   excerpt: string;
@@ -26,40 +34,66 @@ export interface ProjectCaseStudy {
 
 export const projectsData: ProjectCaseStudy[] = [
   {
-    id: 'fasaderenovering-frogner-bygard',
-    slug: 'fasaderenovering-frogner-bygard',
-    href: path('/prosjekter/fasaderenovering-frogner-bygard/'),
-    title: 'Fasaderenovering og vedlikehold av ærverdig bygård',
-    neighborhood: 'Frogner, Oslo',
-    buildingType: 'Klassisk bygård fra 1890-tallet',
+    id: 'langsiktig-eiendomsdrift-frogner-bygard',
+    slug: 'langsiktig-eiendomsdrift-frogner-bygard',
+    href: path('/prosjekter/langsiktig-eiendomsdrift-frogner-bygard/'),
+    title: 'Langsiktig eiendomsdrift og oppgradering av klassisk bygård',
+    neighborhood: 'Frogner / Majorstuen, Oslo',
+    buildingType: 'Klassisk bygård fra 1890-tallet med næringseiendom og leiligheter',
     year: 2024,
-    duration: '4 uker',
+    duration: 'Flerårig driftsansvar & oppgraderingsprosjekter',
     mainImage: path('/images/bygard-fasade-osteklokken.jpg'),
-    serviceSlugs: ['vaktmester-oslo', 'utvendig-maling-oslo'],
-    tags: ['Bygård', 'Fasademaling', 'Sztukateria', 'Sameie', 'Vaktmester', 'Frogner'],
-    excerpt: 'Helhetlig fasadeoppgradering, murpuss, gesimsreparasjoner og presisjonsmaling av klassisk hjørnebygård på Frogner med næringslokaler på gateplan.',
-    challenge: 'Bygården på hjørnet hadde slitt murpuss, sprekker i fasaden etter frostsprengning og værslitte gesimser. Med serveringssted og butikk på gateplan samt tett trafikk i gaten var det avgjørende med trygg sikring av fotgjengere, streng overholdelse av støyregler og koordinert fremdrift med bydel og beboere.',
-    solution: 'Vi utførte skånsom fasadevask, hugget bort løs puss og utbedret murverket med diffusjonsåpen kalkmørtel tilpasset bygningens alder. Gesimser, vindusomramminger og balkonger ble nennsomt restaurert. Deretter ble hele fasaden grunnet og malt med to strøk høykvalitets silikatmaling i klassiske Oslo-nyanser. Dziedziniec wewnętrzny (bakgård) ble samtidig inspisert og vedlikeholdt.',
+    gallery: [
+      {
+        src: path('/images/bygard-fasade-osteklokken.jpg'),
+        alt: 'Klassisk hjørnebygård på Frogner med Osteklokken på gateplan',
+        caption: 'Bygningen: Typisk ærverdig Oslo-bygård hvor Waldemar Kudla har hatt helhetlig teknisk driftsansvar, tilsyn og oppfølging over mange år.',
+        phase: 'Bygningen'
+      },
+      {
+        src: path('/images/bygard-bakgard-fasade.jpg'),
+        alt: 'Bakgårdsfasader og fellesarealer i bygården',
+        caption: 'Fellesarealer & fasader: Løpende oppfølging av bakgårdsfasader, taknedløp, belysning og bygningsmasse for sameiet.',
+        phase: 'Detalj'
+      },
+      {
+        src: path('/images/bakgard-skifer-arbeid-ovenfra.jpg'),
+        alt: 'Under arbeid: mønsterlegging av bruddskifer og belegningsstein sett ovenfra',
+        caption: 'Under arbeid: Oppgradering av bakgård – presis mønsterlegging av naturstein/skifer og belegningsstein utført av Waldemar og teamet.',
+        phase: 'Under arbeid'
+      },
+      {
+        src: path('/images/bakgard-skifer-ferdig.jpg'),
+        alt: 'Ferdigstilt oppgradert bakgård med skifersirkel og belegningsstein',
+        caption: 'Ferdigstilt bakgård: Utemiljøet forvandlet til et representativt og trivelig samlingspunkt med sittegrupper til glede for alle beboere.',
+        phase: 'Ferdigstilt'
+      }
+    ],
+    serviceSlugs: ['vaktmester-oslo'],
+    tags: ['Eiendomsdrift', 'Vaktmester', 'Driftstekniker', 'Bygård', 'Bakgård', 'Skifer', 'Sameie', 'Frogner'],
+    excerpt: 'Helhetlig teknisk eiendomsdrift og praktisk forvaltning over mange år i ærverdig hjørnebygård på Frogner, inkludert totaloppgradering av bakgården med skifer og belegningsstein.',
+    challenge: 'Klassiske bygårder med kombinert næringsvirksomhet på gateplan og private boligleiligheter stiller strenge krav til pålitelig teknisk oppfølging. Bygget krevde kontinuerlig tilsyn med varmeanlegg, sanitær, avfallshåndtering, fellesarealer, samt en totalrenovering av den slitte og ujevne bakgården for å sikre god vannavrenning og trivsel.',
+    solution: 'Waldemar Kudla fungerte som fast teknisk driftspartner og vaktmesteransvarlig for eiendommen over en årrekke. Som en del av verdiskapingen utførte han en total oppgradering av bakgården: ny bærebunn, legging av håndtilpasset bruddskifer i sentersonen, belegningsstein langs ganglinjer, oppretting mot kumlokk og montering av sittegruppe. Waldemar håndterte løpende all koordinering mellom styret, næringsdrivende og beboere.',
     scopeList: [
-      'Rigging av godkjent stillas med tildekking og fotgjengersikring',
-      'Skånsom fasaderens og sopp-/algebehandling',
-      'Uthugging av bom og sprekker i historisk murpuss',
-      'Pussreparasjoner med pustende kalkbasert mørtel',
-      'Restaurering av profilerte gesimser, bånd og balkongsåler',
-      'Maling av vinduer, staffasje og gesimser med presisjon',
-      'Påføring av to strøk diffusjonsåpen silikatmaling på fasadeflatene',
-      'Tilsyn og opprydding av bakgård og felles inngangspartier'
+      'Fast teknisk tilsyn med tekniske rom, pumper, ventilasjon og fellesarealer',
+      'Løpende vedlikehold, mindre reparasjoner og koordinering ved akutte hendelser',
+      'Oppfølging av takrenner, sluk, overvann og fuktsikring av bygningsmassen',
+      'Totalrenovering av felles bakgård: utgraving, pukkfylling og fiberduk',
+      'Håndtilpasning og legging av uregelmessig bruddskifer med sentrert dekorativ steinsirkel',
+      'Presis legging av belegningsstein og granittkantstein mot fasader og inngangspartier',
+      'Fast kontaktledd for beboere og styret for trygg og ryddig drift'
     ],
     materialsUsed: [
-      'Diffusjonsåpen silikatmaling for historiske murfasader',
-      'Kalkmørtel NHL tilpasset 1890-talls teglsteinsmur',
-      'Jotun Drygolin vindusmaling for utvendig høvlet treverk',
-      'Elastiske overmalbare fugemasser for fasadeskjøter'
+      'Norsk bruddskifer (naturstein) med rustikk overflate',
+      'Tromlet belegningsstein i gråmix',
+      'Granittkantstein for solide overganger',
+      'Fiberduk klasse N2 og vasket settegrus 2–4 mm',
+      'Ugresshemmende fugesand for varig stabilitet'
     ],
     clientQuote: {
-      quote: 'Gården fremstår nå i all sin prakt! Waldemar og teamet håndterte både beboere, næringsdrivende og forbipasserende på en forbilledlig måte under hele fasadearbeidet.',
+      quote: 'Waldemar har vært en uvurderlig ressurs for gården vår i mange år. Han kjenner hver krik og krok av bygget, og bakgården han oppgraderte er nå gårdens flotteste samlingssted.',
       author: 'Styreleder Sameiet',
-      neighborhood: 'Frogner, Oslo'
+      neighborhood: 'Frogner / Majorstuen, Oslo'
     }
   },
   {
@@ -72,6 +106,20 @@ export const projectsData: ProjectCaseStudy[] = [
     year: 2024,
     duration: '2 uker',
     mainImage: path('/images/rodt-trehus-fasademaling-stillas.jpg'),
+    gallery: [
+      {
+        src: path('/images/rodt-trehus-fasademaling-stillas.jpg'),
+        alt: 'Maling av fasade med stillas på rødt trehus',
+        caption: 'Under arbeid: Sertifisert fasadestillas, grundig skraping, grunning og påføring av to fyldige strøk Jotun Drygolin Nordic Extreme.',
+        phase: 'Under arbeid'
+      },
+      {
+        src: path('/images/rodt-trehus-glassveranda.jpg'),
+        alt: 'Ferdigstilt glassveranda med smårutete vinduer og nymalt fasade',
+        caption: 'Ferdigstilt detalj: Oszklona weranda i inngangsparti med presisjonsmalte hvite vindusrammer og dyp rød kontrastvegg.',
+        phase: 'Ferdigstilt'
+      }
+    ],
     serviceSlugs: ['utvendig-maling-oslo'],
     tags: ['Husmaling', 'Trehus', 'Glassveranda', 'Drygolin', 'Stillas', 'Holmenkollen'],
     excerpt: 'Komplett utvendig fornyelse av staselig trehus med glassveranda – grundig forarbeid, stillasrigging og to strøk tradisjonsrik rød kledningsmaling med hvite detaljer.',
@@ -100,40 +148,61 @@ export const projectsData: ProjectCaseStudy[] = [
     }
   },
   {
-    id: 'bakgard-skifer-belegningsstein',
-    slug: 'bakgard-skifer-belegningsstein',
-    href: path('/prosjekter/bakgard-skifer-belegningsstein/'),
-    title: 'Oppgradering av bakgård med skifer og belegningsstein',
-    neighborhood: 'Majorstuen / Frogner, Oslo',
-    buildingType: 'Klassisk bygård / Sameie',
+    id: 'drenering-enebolig',
+    slug: 'drenering-enebolig',
+    href: path('/prosjekter/drenering-enebolig/'),
+    title: 'Komplett drenering og fuktsikring av grunnmur',
+    neighborhood: 'Nordstrand, Oslo',
+    buildingType: 'Enebolig med sokkeletasje',
     year: 2024,
-    duration: '3,5 uker',
-    mainImage: path('/images/bakgard-skifer-ferdig.jpg'),
+    duration: '3 uker',
+    mainImage: path('/images/drenering-grunnmur.jpg'),
+    gallery: [
+      {
+        src: path('/images/drenering-grunnmur.jpg'),
+        alt: 'Utgravd grunnmur med knasteplast (Platon) montert',
+        caption: 'Fase 1 – Avdekking & fuktsikring: Utgraving rundt hele fundamentet, rengjøring av muren og montering av grunnmursplate (knasteplast) med klemlist.',
+        phase: 'Under arbeid'
+      },
+      {
+        src: path('/images/drenering-grus-ror.jpg'),
+        alt: 'Rørgate med drensrør, pukk og fiberduk',
+        caption: 'Fase 2 – Drensrør & pukkfylling: Utlegging av slissede drensrør med fall, innpakket i fiberduk og vasket pukk for optimal vannbortledning.',
+        phase: 'Under arbeid'
+      },
+      {
+        src: path('/images/drenskum-infiltrasjon.jpg'),
+        alt: 'Montering av drens- og overvannskum i dypt utgravd grøft',
+        caption: 'Fase 3 – Teknisk overvannskum: Installasjon av inspeksjons- og sandfangkum for trygg håndtering av store nedbørsmengder.',
+        phase: 'Under arbeid'
+      }
+    ],
     serviceSlugs: ['vaktmester-oslo'],
-    tags: ['Bakgård', 'Skifer', 'Belegningsstein', 'Utemiljø', 'Sameie', 'Eiendomsdrift'],
-    excerpt: 'Totalrenovering av slitt felles bakgård i ærverdig bygård – mønsterlagt naturstein/skifer, belegningsstein, ny drenering og opprustning av fellesarealer.',
-    challenge: 'En tradisjonell Oslo-bygård hadde en nedslitt og ujevn bakgård med dårlig vannavrenning, setningsskader og slitt underlag. Sameiet ønsket et representativt, vedlikeholdsvennlig og trivelig fellesrom for beboerne, med soner for sittegrupper, sykkelparkering og trygg ferdsel.',
-    solution: 'Vi gravde ut og etablerte ny, stabil bærelagsbunn med fiberduk, drenerende pukk og settelag. I midten la vi håndtilpasset bruddskifer (naturstein) med en sentrert dekorativ steinsirkel rundt sluk. Langs fasader og gangveier la vi slitesterk belegningsstein med rette kanter og granittkantstein. Arbeidet ble utført med minimal forstyrrelse for beboerne.',
+    tags: ['Drenering', 'Fuktsikring', 'Grunnmur', 'Overvann', 'Platon', 'Nordstrand'],
+    excerpt: 'Total fornyelse av dreneringssystem og grunnmursbeskyttelse med knasteplast, drensrør, pukkfylling og inspeksjonskum for tørr og trygg kjeller.',
+    challenge: 'Eldre enebolig opplevde fuktinnsig og saltutslag på kjellerveggene etter kraftig nedbør. Eksisterende drensrør fra byggeåret var tette av jord og røtter, og grunnmuren manglet moderne fuktsikring og tilstrekkelig fall bort fra huset.',
+    solution: 'Vi gravde opp rundt hele grunnmuren, renset og utbedret murflaten, monterte grunnmursplate (knasteplast) med dekklist, la nye drensrør i filterduk omkranset av pukk, og etablerte ny inspeksjonskum for overvann.',
     scopeList: [
-      'Utgraving av gamle masser og bortkjøring av overskuddsjord',
-      'Etablering av drenerende bærelag med geotekstil og komprimert pukk',
-      'Høydejustering og tilpasning mot kumlokk og nedløp',
-      'Håndtilpasning og legging av uregelmessig bruddskifer i sentersonen',
-      'Presis legging av belegningsstein i gangsoner og mot innganger',
-      'Settekantstein i granitt for stabile og varige avgrensninger',
-      'Fuging med herdet ugresshemmende fugesand og felles sluttbefaring med styret'
+      'Graving og avdekking av grunnmur ned til fundament',
+      'Rengjøring av muren og sjekk av såleoverganger',
+      'Montering av grunnmursplate (knasteplast/Platon) med topplist',
+      'Isolering av grunnmur utvendig mot kuldebroer og tele',
+      'Utlegging av drensrør med jevnt fall mot overvannskum',
+      'Fylling med pukk og drenerende masser innpakket i fiberduk',
+      'Installasjon av korrugert drens- og overvannskum',
+      'Tilbakefylling og planering av terrenget med fall bort fra muren'
     ],
     materialsUsed: [
-      'Norsk bruddskifer (naturstein) med rustikk overflate',
-      'Tromlet belegningsstein i gråmix',
-      'Granittkantstein for overganger',
-      'Fiberduk klasse N2 og vasket settetegrus 2–4 mm',
-      'Spesialfugemasse som motvirker ugressvekst og maur'
+      'Grunnmursplate (knasteplast) med spikerfester og kantlister',
+      'Slissede drensrør 110 mm',
+      'Fiberduk klasse N2 / N3 mot gjenstopping',
+      'Vasket pukk 11/16 mm for optimal vanngjennomstrømning',
+      'XPS-isolasjonsplater for grunnmur'
     ],
     clientQuote: {
-      quote: 'Bakgården har blitt byggets nye samlingspunkt! Waldemar og teamet hans utførte steinarbeidet med en utrolig presisjon og holdt orden i oppgangen under hele prosjektet.',
-      author: 'Styret v/ Sameiet',
-      neighborhood: 'Majorstuen, Oslo'
+      quote: 'Kjelleren ble knusktørr med én gang. Grundig og ryddig utført fra utgraving til ferdig planert tomt.',
+      author: 'Familien Berg',
+      neighborhood: 'Nordstrand, Oslo'
     }
   },
   {
@@ -170,44 +239,6 @@ export const projectsData: ProjectCaseStudy[] = [
       quote: 'Terrassen ble fantastisk! Waldemar løste fundamenteringen i det bratte fjellet helt perfekt, og håndverket tåler både bølger og storm.',
       author: 'Eier av eiendom',
       neighborhood: 'Bekkelaget, Oslo'
-    }
-  },
-  {
-    id: 'drenering-enebolig',
-    slug: 'drenering-enebolig',
-    href: path('/prosjekter/drenering-enebolig/'),
-    title: 'Komplett drenering og fuktsikring av grunnmur',
-    neighborhood: 'Nordstrand, Oslo',
-    buildingType: 'Enebolig med sokkeletasje',
-    year: 2024,
-    duration: '3 uker',
-    mainImage: path('/images/drenering-grunnmur.jpg'),
-    serviceSlugs: ['vaktmester-oslo'],
-    tags: ['Drenering', 'Fuktsikring', 'Grunnmur', 'Overvann', 'Platon'],
-    excerpt: 'Total fornyelse av dreneringssystem og grunnmursbeskyttelse med knasteplast, drensrør, pukkfylling og inspeksjonskum for tørr og trygg kjeller.',
-    challenge: 'Eldre enebolig opplevde fuktinnsig og saltutslag på kjellerveggene etter kraftig nedbør. Eksisterende drensrør fra byggeåret var tette av jord og røtter, og grunnmuren manglet moderne fuktsikring og tilstrekkelig fall bort fra huset.',
-    solution: 'Vi gravde opp rundt hele grunnmuren, renset og utbedret murflaten, monterte grunnmursplate (knasteplast) med dekklist, la nye drensrør i filterduk omkranset av pukk, og etablerte ny inspeksjonskum for overvann.',
-    scopeList: [
-      'Graving og avdekking av grunnmur ned til fundament',
-      'Rengjøring av muren og sjekk av såleoverganger',
-      'Montering av grunnmursplate (knasteplast/Platon) med topplist',
-      'Isolering av grunnmur utvendig mot kuldebroer og tele',
-      'Utlegging av drensrør med jevnt fall mot overvannskum',
-      'Fylling med pukk og drenerende masser innpakket i fiberduk',
-      'Installasjon av korrugert drens- og overvannskum',
-      'Tilbakefylling og planering av terrenget med fall bort fra muren'
-    ],
-    materialsUsed: [
-      'Grunnmursplate (knasteplast) med spikerfester og kantlister',
-      'Slissede drensrør 110 mm',
-      'Fiberduk klasse N2 / N3 mot gjenstopping',
-      'Vasket pukk 11/16 mm for optimal vanngjennomstrømning',
-      'XPS-isolasjonsplater for grunnmur'
-    ],
-    clientQuote: {
-      quote: 'Kjelleren ble knusktørr med én gang. Grundig og ryddig utført fra utgraving til ferdig planert tomt.',
-      author: 'Familien Berg',
-      neighborhood: 'Nordstrand, Oslo'
     }
   },
   {

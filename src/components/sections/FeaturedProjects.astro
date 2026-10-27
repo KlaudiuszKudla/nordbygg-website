@@ -23,6 +23,9 @@ const featuredProjects = projectsData.slice(0, 3);
             <a href={project.href} tabindex="-1" aria-hidden="true">
               <img src={project.mainImage} alt={project.title} loading="lazy" width="500" height="280" />
             </a>
+            {project.gallery && project.gallery.length > 1 && (
+              <span class="gallery-count-badge">📷 {project.gallery.length} bilder</span>
+            )}
           </div>
           <div class="project-content">
             <div class="project-meta-top">
@@ -88,10 +91,24 @@ const featuredProjects = projectsData.slice(0, 3);
     box-shadow: var(--shadow-card);
   }
   .project-image {
+    position: relative;
     width: 100%;
     height: 220px;
     overflow: hidden;
     background-color: var(--bg-surface);
+  }
+  .gallery-count-badge {
+    position: absolute;
+    bottom: 0.75rem;
+    right: 0.75rem;
+    background-color: rgba(24, 43, 54, 0.88);
+    color: #ffffff;
+    padding: 0.25rem 0.6rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    font-weight: 700;
+    backdrop-filter: blur(4px);
+    pointer-events: none;
   }
   .project-image a {
     display: block;

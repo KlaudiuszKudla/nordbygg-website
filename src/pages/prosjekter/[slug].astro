@@ -147,6 +147,44 @@ const mailtoHref = buildSmartMailto({
           </ul>
         </section>
 
+        <!-- Project Photo Story / Gallery -->
+        {project.gallery && project.gallery.length > 0 && (
+          <section class="project-gallery-section" aria-labelledby="gallery-heading">
+            <div class="gallery-header">
+              <span class="eyebrow text-trust">Fotodokumentasjon</span>
+              <h2 id="gallery-heading" class="section-subtitle">Bilder fra prosjektet og utførelsen</h2>
+              <p class="gallery-lead">Se detaljer fra bygningen, arbeidet underveis og det ferdige resultatet:</p>
+            </div>
+
+            <div class="gallery-grid">
+              {project.gallery.map((img) => (
+                <figure class="gallery-item">
+                  <div class="gallery-image-wrapper">
+                    <img
+                      src={img.src}
+                      alt={img.alt}
+                      loading="lazy"
+                      width="700"
+                      height="460"
+                      class="gallery-img"
+                    />
+                    {img.phase && (
+                      <span class={`phase-badge phase-${img.phase.toLowerCase().replace(/\s+/g, '-')}`}>
+                        {img.phase}
+                      </span>
+                    )}
+                  </div>
+                  {img.caption && (
+                    <figcaption class="gallery-caption">
+                      {img.caption}
+                    </figcaption>
+                  )}
+                </figure>
+              ))}
+            </div>
+          </section>
+        )}
+
         <!-- Client Quote / Review -->
         {project.clientQuote && (
           <aside class="client-quote-card" aria-label="Kundeomtale">
@@ -545,6 +583,97 @@ const mailtoHref = buildSmartMailto({
     border-radius: var(--radius-md);
     padding: 2rem;
     margin-bottom: 2rem;
+  }
+
+  /* Photo Story / Gallery */
+  .project-gallery-section {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 2rem;
+    margin-bottom: 2rem;
+  }
+  .gallery-header {
+    margin-bottom: 1.5rem;
+  }
+  .gallery-lead {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin-top: -0.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  @media (min-width: 640px) {
+    .gallery-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  .gallery-item {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    background-color: var(--bg-surface);
+  }
+  .gallery-image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 240px;
+    background-color: #121212;
+    overflow: hidden;
+  }
+  .gallery-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.25s ease;
+  }
+  .gallery-item:hover .gallery-img {
+    transform: scale(1.03);
+  }
+  .phase-badge {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    padding: 0.3rem 0.65rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  }
+  .phase-bygningen {
+    background-color: rgba(24, 43, 54, 0.9);
+    color: #ffffff;
+  }
+  .phase-under-arbeid {
+    background-color: rgba(196, 85, 45, 0.92);
+    color: #ffffff;
+  }
+  .phase-ferdigstilt {
+    background-color: rgba(42, 92, 67, 0.92);
+    color: #ffffff;
+  }
+  .phase-detalj {
+    background-color: rgba(33, 57, 71, 0.9);
+    color: #ffffff;
+  }
+  .gallery-caption {
+    padding: 0.85rem 1rem;
+    font-size: 0.875rem;
+    color: var(--text-main);
+    line-height: 1.5;
+    background-color: var(--bg-card);
+    border-top: 1px solid var(--border-subtle);
   }
   .quote-stars {
     color: #eab308;
