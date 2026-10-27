@@ -26,6 +26,43 @@ export interface ProjectCaseStudy {
 
 export const projectsData: ProjectCaseStudy[] = [
   {
+    id: 'bakgard-skifer-belegningsstein',
+    slug: 'bakgard-skifer-belegningsstein',
+    href: path('/prosjekter/bakgard-skifer-belegningsstein/'),
+    title: 'Oppgradering av bakgård med skifer og belegningsstein',
+    neighborhood: 'Majorstuen / Frogner, Oslo',
+    buildingType: 'Klassisk bygård / Sameie',
+    year: 2024,
+    duration: '3,5 uker',
+    mainImage: path('/images/bakgard-skifer-ferdig.jpg'),
+    serviceSlugs: ['vaktmester-oslo'],
+    tags: ['Bakgård', 'Skifer', 'Belegningsstein', 'Utemiljø', 'Sameie', 'Eiendomsdrift'],
+    excerpt: 'Totalrenovering av slitt felles bakgård i ærverdig bygård – mønsterlagt naturstein/skifer, belegningsstein, ny drenering og opprustning av fellesarealer.',
+    challenge: 'En tradisjonell Oslo-bygård hadde en nedslitt og ujevn bakgård med dårlig vannavrenning, setningsskader og slitt underlag. Sameiet ønsket et representativt, vedlikeholdsvennlig og trivelig fellesrom for beboerne, med soner for sittegrupper, sykkelparkering og trygg ferdsel.',
+    solution: 'Vi gravde ut og etablerte ny, stabil bærelagsbunn med fiberduk, drenerende pukk og settelag. I midten la vi håndtilpasset bruddskifer (naturstein) med en sentrert dekorativ steinsirkel rundt sluk. Langs fasader og gangveier la vi slitesterk belegningsstein med rette kanter og granittkantstein. Arbeidet ble utført med minimal forstyrrelse for beboerne.',
+    scopeList: [
+      'Utgraving av gamle masser og bortkjøring av overskuddsjord',
+      'Etablering av drenerende bærelag med geotekstil og komprimert pukk',
+      'Høydejustering og tilpasning mot kumlokk og nedløp',
+      'Håndtilpasning og legging av uregelmessig bruddskifer i sentersonen',
+      'Presis legging av belegningsstein i gangsoner og mot innganger',
+      'Settekantstein i granitt for stabile og varige avgrensninger',
+      'Fuging med herdet ugresshemmende fugesand og felles sluttbefaring med styret'
+    ],
+    materialsUsed: [
+      'Norsk bruddskifer (naturstein) med rustikk overflate',
+      'Tromlet belegningsstein i gråmix',
+      'Granittkantstein for overganger',
+      'Fiberduk klasse N2 og vasket settetegrus 2–4 mm',
+      'Spesialfugemasse som motvirker ugressvekst og maur'
+    ],
+    clientQuote: {
+      quote: 'Bakgården har blitt byggets nye samlingspunkt! Waldemar og teamet hans utførte steinarbeidet med en utrolig presisjon og holdt orden i oppgangen under hele prosjektet.',
+      author: 'Styret v/ Sameiet',
+      neighborhood: 'Majorstuen, Oslo'
+    }
+  },
+  {
     id: 'treterrasse-strandlinje',
     slug: 'treterrasse-strandlinje',
     href: path('/prosjekter/treterrasse-strandlinje/'),
