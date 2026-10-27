@@ -93,6 +93,139 @@ export const projectsData: ProjectCaseStudy[] = [
     }
   },
   {
+    id: 'totalrenovering-stue-apen-kjokkenlosning',
+    slug: 'totalrenovering-stue-apen-kjokkenlosning',
+    href: path('/prosjekter/totalrenovering-stue-apen-kjokkenlosning/'),
+    title: 'Totalrenovering av stue og åpen kjøkkenløsning',
+    neighborhood: 'Majorstuen / Sentrum, Oslo',
+    buildingType: 'Byleilighet med åpen planløsning',
+    mainImage: path('/images/stue-kjokken-totalrenovering-oversikt.jpg'),
+    gallery: [
+      {
+        src: path('/images/stue-kjokken-totalrenovering-oversikt.jpg'),
+        alt: 'Sammenhengende allrom med åpen kjøkkenløsning, spiseplass og stue',
+        caption: 'Oversikt: Sammenhengende allrom med åpen kjøkkenløsning, spiseplass og stue, opplyst av naturlig dagslys fra balkongdør.',
+        phase: 'Ferdigstilt'
+      },
+      {
+        src: path('/images/stue-kjokken-u-kjokken-detalj.jpg'),
+        alt: 'U-formet kjøkken med massiv trebenkeplate, integrerte hvitevarer og spotkasse med downlights',
+        caption: 'Kjøkkensone: U-kjøkken med matt hvite grepsfrie fronter, massiv trebenkeplate, underlimt vask, integrert koketopp og tilpasset spotkasse med downlights.',
+        phase: 'Detalj'
+      },
+      {
+        src: path('/images/stue-kjokken-spisesone-slettvegg.jpg'),
+        alt: 'Helsparklede og nymalte slette vegger i lun fargetone og terskelfri gulvovergang',
+        caption: 'Overflater & lys: Helsparklede slettvegger malt med supermatt Jotun Lady i lun greige-tone, kombinert med terskelfri gulvovergang for en sømløs romfølelse.',
+        phase: 'Detalj'
+      },
+      {
+        src: path('/images/stue-kjokken-salong-innsyn.jpg'),
+        alt: 'Helhetlig utsikt fra sofakroken mot spisesone og kjøkkenhalvøy',
+        caption: 'Helhet: Perspektiv fra stuesonen mot kjøkkenhalvøy og spisestue som viser rommets naturlige flyt og sonedeling.',
+        phase: 'Ferdigstilt'
+      }
+    ],
+    serviceSlugs: ['kjokkenoppussing-oslo', 'malerarbeid-oslo', 'gulvlegging-oslo', 'montering-oslo'],
+    tags: ['Totalrenovering', 'Åpen kjøkkenløsning', 'U-kjøkken', 'Helsparkling', 'Parkett', 'Spotkasse', 'Oslo'],
+    excerpt: 'Komplett innvendig forvandling av stue og kjøkken til en lys, sammenhengende allromsløsning med spesialtilpasset U-kjøkken, heltre benkeplate, sømløst gulv og helsparklede overflater.',
+    challenge: 'Leiligheten hadde opprinnelig en trang, avskjermet kjøkkensone og slitte overflater med ujevne underlag. Eieren ønsket å åpne opp rommet for å etablere en sosial og moderne allromsløsning med god belysning, rikelig benkeplass og gjennomgående gulv uten terskler.',
+    solution: 'Vi rev den opprinnelige innredningen, åpnet opp romløsningen og bygget en presis spotkasse i gips over kjøkkensonen med integrerte downlights og ventilasjonsrist. Undergulvet ble kontrollert og avrettet før det ble lagt gjennomgående 1-stavs gulv i hele flaten. Alle vegger ble helsparklet i tre omganger og malt med supermatt Jotun Lady. Det nye U-kjøkkenet ble montert i vater med tilpassede foringer, benkeplate i massivt tre og integrerte hvitevarer.',
+    scopeList: [
+      'Riving og miljøsanering av gammel kjøkkeninnredning og transport til avfallsmottak',
+      'Oppbygging av tilpasset gipskasse (spotkasse) i himling for downlights og ventilasjon',
+      'Helsparkling av alle veggflater i tre lag med armeringsbånd for sprekksikring',
+      'Støvfri maskinsliping med industrielt HEPA-avtrekk for speilblanke slettvegger',
+      'Maling av vegger og himling med supermatt Jotun Lady Pure Color',
+      'Avretting av undergulv og legging av gjennomgående 1-stavs gulv uten terskler',
+      'Montering av U-kjøkken med grepsløse fronter, tilpassede foringer og sokler',
+      'Tilskjæring, oljebehandling og montering av massiv trebenkeplate og bardisk',
+      'Felling av induksjonstopp, underliming av servant og montering av armatur',
+      'Montering av fotlister, dørgerikter og felles sluttbefaring'
+    ],
+    materialsUsed: [
+      'U-kjøkken med matt hvite grepsfrie fronter',
+      'Benkeplate i massivt treverk (oljebehandlet for våtsoner)',
+      '1-stavs gulv i lys naturlig eikefinish',
+      'Jotun Lady Pure Color supermatt interiørmaling',
+      'Gipsplater og stålprofiler for spotkasse i himling',
+      'Underlimt vask i rustfritt stål og moderne ettgreps blandebatteri'
+    ],
+    clientQuote: {
+      quote: 'Forvandlingen fra et mørkt, lukket kjøkken til dette åpne og luftige allrommet er helt utrolig. Håndverket på slettveggene og kjøkkendetaljene er i toppklasse!',
+      author: 'Leilighetseier',
+      neighborhood: 'Majorstuen / Sentrum, Oslo'
+    }
+  },
+  {
+    id: 'bad-marmor-sorte-detaljer',
+    slug: 'bad-marmor-sorte-detaljer',
+    href: path('/prosjekter/bad-marmor-sorte-detaljer/'),
+    title: 'Totalrenovering av bad med marmorfliser og sorte detaljer',
+    neighborhood: 'Majorstuen / Frogner, Oslo',
+    buildingType: 'Klassisk bygårdsleilighet',
+    mainImage: path('/images/bad-inngang-terskel-oversikt.jpg'),
+    gallery: [
+      {
+        src: path('/images/bad-inngang-terskel-oversikt.jpg'),
+        alt: 'Oversikt fra rommet inn mot nyoppusset bad med dørterskel i eik',
+        caption: 'Inngangsparti: Innsyn til nyoppusset bad med forskriftsmessig opphøyd dørterskel i massiv eik iht. TEK17 våtromskrav.',
+        phase: 'Ferdigstilt'
+      },
+      {
+        src: path('/images/bad-marmor-dusjhjorne-sort.jpg'),
+        alt: 'Dusjsone med buet dusjhjørne, sorte profiler, takdusj og vegghengt toalett',
+        caption: 'Dusjsone & toalett: Buet dusjhjørne i herdet glass med sorte profiler, termostatstyrt takdusj, vegghengt toalett og marmorerte veggfliser.',
+        phase: 'Detalj'
+      },
+      {
+        src: path('/images/bad-servantskap-speil-detalj.jpg'),
+        alt: 'Vegghengt baderomsinnredning i mørk utførelse med sort armatur og speilskap',
+        caption: 'Baderomsinnredning: Mørkt servantskap med to dype skuffer, sort blandebatteri, speilskap med integrert LED-lys og stikkontakt.',
+        phase: 'Detalj'
+      },
+      {
+        src: path('/images/bad-vegghengt-toalett-dusj.jpg'),
+        alt: 'Mosaikkgulv med fall til sluk, innfelt sisterne og matt sort slukrist',
+        caption: 'Presisjonsarbeid: Mørkt mosaikkgulv med nøyaktig fall til sluk, matt sort slukrist og innbygget toalettsisterne.',
+        phase: 'Ferdigstilt'
+      }
+    ],
+    serviceSlugs: ['oppussing-av-bad-oslo'],
+    tags: ['Baderom', 'Våtrom', 'Marmorfliser', 'Mosaikk', 'Matt sort', 'Dusjhjørne', 'Vegghengt toalett', 'Oslo'],
+    excerpt: 'Komplett totalrenovering av bad i Oslo-leilighet – vanntett membran, store marmorerte fliser, mørk gulvmosaikk med fall, innbygget toalett og eksklusive matt sorte armaturer.',
+    challenge: 'Badet krevde full ombygging med oppgradering av fuktsikring og membran i tråd med TEK17 og våtromsnormen. Rommet krevde presist fall mot sluk i dusjsonen, plassering av vegghengt toalett med innbygget sisterne, samt tilpasning av en solid dørterskel i eik mot tilliggende tregulv.',
+    solution: 'Rommet ble strippet ned, og det ble lagt ny gulvstøp med korrekt fall mot slukrist i dusjsonen. Vi monterte godkjente våtromsplater og påførte sertifisert membran med tette mansjetter rundt alle rørgjennomføringer. Veggene ble kledd med store marmormønstrede keramiske fliser, og gulvet ble belagt med mørke mosaikkfliser. Vi monterte vegghengt toalett, buet dusjhjørne med sorte profiler, matt sort takdusj, servantskap og speilskap med LED-belysning.',
+    scopeList: [
+      'Riving, fjerning av eksisterende fliser og miljøsanering av gammelt våtrom',
+      'Oppbygging av gulv med korrekt fall mot sluk i dusjsonen',
+      'Montering av godkjente våtromsplater på vegger',
+      'Påføring av sertifisert våtromsmembran med tette mansjetter ved alle gjennomføringer',
+      'Etablering av forskriftsmessig oppkant og massiv dørterskel i lakkert eik',
+      'Flislegging med store marmorerte veggfliser og presis fuging',
+      'Legging av mørk marmormosaikk på gulv med nøyaktig tilpasning rundt sluk',
+      'Montering av innbyggingssisterne og vegghengt toalettskål',
+      'Montering av buet dusjhjørne i herdet glass med sorte profiler',
+      'Installasjon av sort takdusj, hånddusj, sort servantbatteri og sort slukrist',
+      'Montering av vegghengt baderomsmøbel og speilskap med integrert LED-lys'
+    ],
+    materialsUsed: [
+      'Keramiske marmormønstrede veggfliser i gråtoner',
+      'Mørke kvadratiske mosaikkfliser for gulv og dusjsone',
+      'Sertifisert våtromsmembran og tetteduk iht. TEK17',
+      'Geberit innbyggingssisterne med hvit trykkplate',
+      'Buet dusjhjørne i herdet sikkerhetsglass med sorte aluminiumsprofiler',
+      'Matt sort takdusjsett og servantarmatur',
+      'Vegghengt servantskap med integrert porselensvask',
+      'Dørterskel i massiv lakkert eik'
+    ],
+    clientQuote: {
+      quote: 'Badet ble utrolig lekkert! Kontrasten mellom de lyse marmorveggene og de sorte detaljene gir en ekte spafølelse, og arbeidet med membranen og fallet mot sluk er utført til punkt og prikke.',
+      author: 'Leilighetseier',
+      neighborhood: 'Majorstuen / Frogner, Oslo'
+    }
+  },
+  {
     id: 'rodt-trehus-fasademaling',
     slug: 'rodt-trehus-fasademaling',
     href: path('/prosjekter/rodt-trehus-fasademaling/'),
