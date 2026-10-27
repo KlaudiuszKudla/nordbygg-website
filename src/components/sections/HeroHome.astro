@@ -40,17 +40,17 @@ const mailtoHref = buildSmartMailto();
         <div class="craftsman-image-wrapper">
           <img
             src={path('/images/waldemar.jpg')}
-            alt={`${siteConfig.owner}, håndverker og daglig leder i ${siteConfig.companyName}`}
+            alt={`${siteConfig.owner}, fagmann og daglig leder i ${siteConfig.companyName}`}
             class="craftsman-photo"
             loading="eager"
             width="600"
-            height="400"
+            height="700"
           />
-          <div class="blueprint-badge">
-            <span class="bp-label">Utførende fagmann</span>
-            <strong class="bp-name">{siteConfig.owner}</strong>
-            <span class="bp-meta">Over 20 års erfaring i Oslo</span>
-          </div>
+        </div>
+        <div class="blueprint-badge">
+          <span class="bp-label">Utførende fagmann & daglig leder</span>
+          <strong class="bp-name">{siteConfig.owner}</strong>
+          <span class="bp-meta">Over 20 års erfaring med drift og håndverk i Oslo</span>
         </div>
         <div class="craftsman-quote">
           <p>
@@ -142,41 +142,32 @@ const mailtoHref = buildSmartMailto();
     border-radius: var(--radius-lg);
     overflow: hidden;
     box-shadow: var(--shadow-card);
+    display: flex;
+    flex-direction: column;
   }
   .craftsman-image-wrapper {
     position: relative;
-    min-height: 320px;
-    display: flex;
-    align-items: flex-end;
-    padding: 1.5rem;
+    width: 100%;
+    background-color: #0b0b0b;
     overflow: hidden;
-    background-color: var(--bg-dark);
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .craftsman-photo {
-    position: absolute;
-    inset: 0;
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center 25%;
-  }
-  .craftsman-image-wrapper::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, rgba(24, 43, 54, 0.15) 0%, rgba(24, 43, 54, 0.7) 100%);
+    height: auto;
+    max-height: 480px;
+    object-fit: contain;
+    display: block;
   }
   .blueprint-badge {
-    position: relative;
-    z-index: 2;
-    background-color: rgba(250, 248, 245, 0.96);
-    padding: 1rem 1.25rem;
-    border-radius: var(--radius-md);
-    width: 100%;
+    background-color: var(--bg-card);
+    border-top: 1px solid var(--border-subtle);
+    padding: 1.25rem 1.5rem 1rem;
     display: flex;
     flex-direction: column;
-    gap: 0.2rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    gap: 0.25rem;
   }
   .bp-label {
     font-size: 0.75rem;

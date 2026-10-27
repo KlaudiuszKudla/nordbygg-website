@@ -25,18 +25,20 @@ const pageDescription = `Møt ${siteConfig.owner}, håndverker og daglig leder i
     <div class="container about-grid">
       <div class="about-image-col">
         <div class="craftsman-card">
-          <img
-            src={path('/images/waldemar.jpg')}
-            alt={`${siteConfig.owner}, daglig leder og utførende håndverker i ${siteConfig.companyName}`}
-            class="craftsman-photo"
-            width="600"
-            height="500"
-            loading="eager"
-          />
+          <div class="craftsman-image-wrapper">
+            <img
+              src={path('/images/waldemar.jpg')}
+              alt={`${siteConfig.owner}, daglig leder og utførende fagmann i ${siteConfig.companyName}`}
+              class="craftsman-photo"
+              width="600"
+              height="700"
+              loading="eager"
+            />
+          </div>
           <div class="craftsman-badge">
-            <span class="badge-role">Utførende håndverker</span>
+            <span class="badge-role">Utførende fagmann & daglig leder</span>
             <strong class="badge-name">{siteConfig.owner}</strong>
-            <span class="badge-exp">{siteConfig.experienceYears} års erfaring i Oslo-boliger</span>
+            <span class="badge-exp">Over {siteConfig.experienceYears} års erfaring med drift og håndverk</span>
           </div>
         </div>
       </div>
@@ -317,33 +319,34 @@ const pageDescription = `Møt ${siteConfig.owner}, håndverker og daglig leder i
     }
   }
   .craftsman-card {
-    position: relative;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-subtle);
     border-radius: var(--radius-lg);
     overflow: hidden;
     box-shadow: var(--shadow-card);
-    border: 1px solid var(--border-subtle);
-    background-color: var(--bg-dark);
+    display: flex;
+    flex-direction: column;
+  }
+  .craftsman-image-wrapper {
+    background-color: #0b0b0b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .craftsman-photo {
     width: 100%;
-    height: 480px;
-    object-fit: cover;
-    object-position: center 20%;
+    height: auto;
+    max-height: 520px;
+    object-fit: contain;
     display: block;
   }
   .craftsman-badge {
-    position: absolute;
-    bottom: 1.25rem;
-    left: 1.25rem;
-    right: 1.25rem;
-    background-color: rgba(250, 248, 245, 0.96);
-    backdrop-filter: blur(8px);
+    background-color: var(--bg-card);
+    border-top: 1px solid var(--border-subtle);
     padding: 1.25rem 1.5rem;
-    border-radius: var(--radius-md);
     display: flex;
     flex-direction: column;
-    gap: 0.2rem;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    gap: 0.25rem;
   }
   .badge-role {
     font-size: 0.75rem;
