@@ -50,6 +50,31 @@ export async function getStaticPaths() {
     );
   }
 
+  // Support aliases for vaktmester: vedlikehold-oslo and driftstekniker-oslo
+  const vaktmester = siteConfig.services.find((s) => s.slug === 'vaktmester-oslo');
+  if (vaktmester) {
+    paths.push(
+      {
+        params: { slug: 'vedlikehold-oslo' },
+        props: {
+          service: {
+            ...vaktmester,
+            title: 'Vedlikehold og driftstekniker',
+          },
+        },
+      },
+      {
+        params: { slug: 'driftstekniker-oslo' },
+        props: {
+          service: {
+            ...vaktmester,
+            title: 'Driftstekniker og eiendomsdrift',
+          },
+        },
+      }
+    );
+  }
+
   return paths;
 }
 

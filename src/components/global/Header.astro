@@ -7,10 +7,10 @@ import { path } from '../../utils/paths';
   <div class="container header-inner">
     <!-- Brand / Logo -->
     <a href={path('/')} class="brand-logo" aria-label={`${siteConfig.companyName} - Til forsiden`}>
-      <span class="logo-mark" aria-hidden="true">{siteConfig.companyName.charAt(0)}</span>
+      <img src={path('/images/logo-satisfaction.jpg')} alt={`${siteConfig.companyName} logo`} class="logo-image" width="40" height="40" />
       <div class="logo-text">
         <span class="logo-name">{siteConfig.companyName}</span>
-        <span class="logo-sub">Oppussing & Håndverk i Oslo</span>
+        <span class="logo-sub">Oppussing, Håndverk & Drift i Oslo</span>
       </div>
     </a>
 
@@ -90,7 +90,7 @@ import { path } from '../../utils/paths';
                   <summary class="mobile-nav-link mobile-services-summary">
                     <div class="services-title-wrap">
                       <span>Tjenester</span>
-                      <span class="services-badge">6 fagområder</span>
+                      <span class="services-badge">7 fagområder</span>
                     </div>
                     <svg class="chevron-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
                       <path d="m6 9 6 6 6-6"/>
@@ -167,7 +167,7 @@ import { path } from '../../utils/paths';
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
                   <path d="M20 6 9 17l-5-5"/>
                 </svg>
-                <span>15+ år i Oslo</span>
+                <span>20+ år i Oslo</span>
               </div>
             </div>
           </div>
@@ -202,6 +202,14 @@ import { path } from '../../utils/paths';
     gap: 0.75rem;
     text-decoration: none;
     flex-shrink: 0;
+  }
+  .logo-image {
+    width: 2.6rem;
+    height: 2.6rem;
+    object-fit: cover;
+    border-radius: var(--radius-sm);
+    flex-shrink: 0;
+    border: 1px solid var(--border-subtle);
   }
   .logo-mark {
     display: grid;

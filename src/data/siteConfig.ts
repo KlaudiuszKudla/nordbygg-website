@@ -66,8 +66,112 @@ export const siteConfig = {
     ],
   },
   workingHours: 'Man–Fre: 07:00 – 17:00',
-  experienceYears: 15,
+  experienceYears: 20,
   services: [
+    {
+      title: 'Vaktmester og driftstjenester',
+      slug: 'vaktmester-oslo',
+      href: path('/tjenester/vaktmester-oslo/'),
+      image: path('/images/vaktmester.jpg'),
+      shortDesc: 'Profesjonell vaktmestertjeneste, vedlikehold og teknisk oppfølging for borettslag, sameier og næringseiendommer i Oslo – solid drift og pålitelig tilsyn.',
+      heroIntro: 'Med over 20 års allsidig erfaring innen eiendomsdrift, teknisk oppfølging og praktisk vedlikehold sørger vi for at bygget fungerer sømløst. Fra løpende ettersyn og raske utbedringer til faste driftsavtaler for borettslag, sameier og næringsbygg.',
+      highlights: ['Borettslag & næringseiendom', 'Løpende teknisk tilsyn', 'Forebyggende vedlikehold', 'Rask utbedring av feil'],
+      scopeOfWork: [
+        {
+          title: 'Periodisk teknisk ettersyn og tilsyn',
+          description: 'Regelmessig kontroll av tekniske rom, varmeanlegg, ventilasjon, pumper, belysning og brannverninstallasjoner for trygg og stabil drift.'
+        },
+        {
+          title: 'Løpende vedlikehold og reparasjoner',
+          description: 'Rask utbedring av slitasjeskader, dørpumper, låser, porttelefoner, sanitærproblemer og overflater i fellesarealer.'
+        },
+        {
+          title: 'Tilsyn med fellesarealer og trappeoppganger',
+          description: 'Inspeksjon av oppganger, kjellere, loft og rømningsveier slik at lover, forskrifter og trivsel i bygget ivaretas.'
+        },
+        {
+          title: 'Utendørs drift og vedlikehold av uteområder',
+          description: 'Feiing, avfallshåndtering, mindre kledningsreparasjoner, maling av fellesarealer og sesongmessig oppfølging av eiendommen.'
+        },
+        {
+          title: 'Praktisk koordinering og teknisk oppfølging',
+          description: 'Tett dialog med styret eller eiendomsforvalter. Oppfølging av eksterne fagfolk og kontroll av utførte serviceoppdrag på eiendommen.'
+        },
+        {
+          title: 'Bistand til beboere ved behov',
+          description: 'Tilgjengelig for praktiske oppgaver, vannstenging ved oppussing, nøkkelhåndtering og veiledning ved moderniseringsbehov.'
+        },
+        {
+          title: 'Forebyggende tiltak mot fukt og frost',
+          description: 'Rens av takrenner, sjekk av sluk, inspeksjon av rørgjennomføringer og forebygging av frostskader i kalde perioder.'
+        },
+        {
+          title: 'Skreddersydde driftsavtaler',
+          description: 'Faste avtaler tilpasset byggets størrelse og behov – enten ukentlig, månedlig eller på tilkallingsbasis med full loggføring.'
+        }
+      ],
+      pricingIntro: 'Prisen på vaktmester- og driftstjenester tilpasses eiendommens type, areal og ønsket frekvens på tilsynet:',
+      pricingFactors: [
+        {
+          title: 'Eiendommens størrelse og bygningsmasse',
+          description: 'Et lite sameie med én oppgang krever færre timer enn en større bygård eller et næringsbygg med komplekse tekniske installasjoner.'
+        },
+        {
+          title: 'Frekvens på tilsyn',
+          description: 'Avtaler kan variere fra ukentlig helsjekk til månedlige kontroller eller behovsbasert bistand etter avtalt timepris eller fast månedspris.'
+        },
+        {
+          title: 'Utearealer og sesongvariasjoner',
+          description: 'Behov for utvendig vedlikehold, takrennesjekk eller oppfølging av grøntarealer påvirker det totale tidsforbruket.'
+        },
+        {
+          title: 'Teknisk kompleksitet',
+          description: 'Bygg med sentralfyr, ventilasjonsaggregater og automatiske adgangskontroller stiller krav til hyppigere teknisk oppfølging.'
+        }
+      ],
+      typicalTimeline: 'Løpende fast avtale med oppstart etter gratis befaring og kartlegging av bygget.',
+      timelineSteps: [
+        {
+          phase: 'Steg 1',
+          title: 'Gratis befaring & kartlegging (Dag 1–3)',
+          description: 'Vi går gjennom eiendommen sammen med styret eller driftsleder, kartlegger tekniske anlegg og definerer oppgavebehovet.'
+        },
+        {
+          phase: 'Steg 2',
+          title: 'Tydelig avtaleforslag (Dag 3–5)',
+          description: 'Vi utarbeider en spesifisert drifts- og vedlikeholdsplan med fast pris eller faste timeintervaller.'
+        },
+        {
+          phase: 'Steg 3',
+          title: 'Oppstart & etablering av rutiner',
+          description: 'Nøkkeloverlevering, merking av tekniske rom og oppstart av faste sjekklister for eiendommen.'
+        },
+        {
+          phase: 'Steg 4',
+          title: 'Løpende drift & statusrapporter',
+          description: 'Fast kontaktperson, løpende logg over utført arbeid og direkte dialog med styret.'
+        }
+      ],
+      bygardNote: 'Vi har omfattende erfaring med drift av bygårder og eldre bygningsmasser i Oslo, inkludert oppfølging av stoppekraner, fellesrør og brannkrav.',
+      faqs: [
+        {
+          question: 'Hvilke typer eiendommer tilbyr dere vaktmestertjenester for?',
+          answer: 'Vi betjener borettslag, sameier, bygårder og næringseiendommer i Oslo, Bærum og Asker – fra mindre bygårder til større boligselskaper.'
+        },
+        {
+          question: 'Kan vi kombinere vaktmestertjeneste med fremtidige oppussingsprosjekter?',
+          answer: 'Ja, nettopp dette er en av våre største styrker! Som fast vaktmester kjenner vi bygget ut og inn, og kan raskt og kostnadseffektivt bistå med oppussing av leiligheter, malerarbeid, gulvlegging og snekkerarbeid.'
+        },
+        {
+          question: 'Tilbyr dere faste månedsavtaler eller timebasert oppdrag?',
+          answer: 'Begge deler. Vi kan levere en forutsigbar fast månedspris basert på definerte ukentlige eller månedlige oppgaver, eller timebasert bistand ved behov.'
+        },
+        {
+          question: 'Hvor raskt kan dere rykke ut ved akutte hendelser?',
+          answer: 'For faste kunder med driftsavtale prioriterer vi akutte henvendelser som vannlekkasjer, låsproblemer eller defekte inngangsdører fortest mulig samme dag.'
+        }
+      ]
+    },
     {
       title: 'Oppussing av bad',
       slug: 'oppussing-av-bad-oslo',
