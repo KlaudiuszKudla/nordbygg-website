@@ -226,6 +226,68 @@ export const projectsData: ProjectCaseStudy[] = [
     }
   },
   {
+    id: 'fornyelse-av-soverom-parkett-dorer',
+    slug: 'fornyelse-av-soverom-parkett-dorer',
+    href: path('/prosjekter/fornyelse-av-soverom-parkett-dorer/'),
+    title: 'Fornyelse av soverom – helsparkling, fargesetting, parkett og nye innerdører',
+    neighborhood: 'Majorstuen / Frogner, Oslo',
+    buildingType: 'Byleilighet',
+    mainImage: path('/images/soverom-hovedrom-nude-vegg.jpg'),
+    gallery: [
+      {
+        src: path('/images/soverom-hovedrom-nude-vegg.jpg'),
+        alt: 'Hovedsoverom med helsparklede slettvegger i lun terrakottatone og nytt tregulv',
+        caption: 'Hovedsoverom: Helsparklede og nymalte slettvegger i lun skandinavisk terrakottatone, nytt 1-stavs gulv og hotellgardiner montert til tak.',
+        phase: 'Ferdigstilt'
+      },
+      {
+        src: path('/images/soverom-gjesterom-innerdor.jpg'),
+        alt: 'Gjesterom med profilert hvit innerdør, nytt gulv og tidsriktig fargepalett',
+        caption: 'Gjesterom: Helhetlig fargesetting, ny hvit profilert innerdør med moderne dørvrider i børstet stål og terskelfri gulvlegging.',
+        phase: 'Detalj'
+      },
+      {
+        src: path('/images/soverom-inngang-dor-parkett.jpg'),
+        alt: 'Inngangsparti med nymontert dørblad, gerikter, fotlister og parkettovergang',
+        caption: 'Inngangsparti: Detalj av nymontert dørblad, gerikter, hvite fotlister og sømløs overgang i parketten fra gangen.',
+        phase: 'Ferdigstilt'
+      }
+    ],
+    serviceSlugs: ['malerarbeid-oslo', 'gulvlegging-oslo', 'montering-oslo', 'snekkerarbeid-oslo'],
+    tags: ['Soverom', 'Helsparkling', 'Slette vegger', 'Jotun Lady', 'Parkett', 'Innerdører', 'Listverk', 'Oslo'],
+    excerpt: 'Helhetlig oppgradering av soveromssonen i byleilighet med helsparkling, sofistikert skandinavisk fargesetting, legging av 1-stavs eikegulv, nye profilerte innerdører og takhengte gardiner.',
+    challenge: 'Rommene hadde opprinnelig slitte tapetvegger med synlige skjøter, ujevne undergulv og eldre mørke finer-dører med slitte karmer. Kunden ønsket et lunt, helhetlig uttrykk med silkeglatte overflater, moderne dører som demper lyd, og sømløs flyt i gulvet mellom rommene.',
+    solution: 'Vi fjernet gammel tapet og løse partier, helsparklet alle vegger i tre omganger og slipte støvfritt med HEPA-avtrekk. Veggene ble malt med Jotun Lady Pure Color supermatt i en harmonisk jordtone. Undergulvet ble klargjort før legging av 1-stavs eikegulv med trinnlydsdemping. Vi monterte nye formpressede 3-speils innerdører med nye hvite karmer, lyddempende pakninger og dørvridere i børstet stål, samt profilerte gerikter, nye fotlister og diskrete gardinskinner i himling.',
+    scopeList: [
+      'Riving av eksisterende innerdører, karmer og slitt listverk',
+      'Forberedelse av vegger og helsparkling i tre lag med armeringsbånd',
+      'Støvfri maskinsliping med HEPA-avsug for slette, feilfrie veggflater',
+      'Maling av vegger med Jotun Lady Pure Color i lun terrakottatone',
+      'Maling av himling i helhetlig ren hvit nyanse',
+      'Legging av 1-stavs gulv i lys eik med trinnlydsunderlag',
+      'Montering og justering av nye hvite fyllingsdører i lodd og vater',
+      'Montering av nye dørkarmer med integrerte dempelister for stillere lukking',
+      'Montering av dørvridere i børstet stål med magnetlås',
+      'Presis gjæring og montering av profilerte gerikter og fotlister',
+      'Montering av takhengte gardinskinner for hotelloppheng'
+    ],
+    materialsUsed: [
+      'Jotun Lady Pure Color supermatt interiørmaling',
+      'Jotun rullesparkel medium og papir-armeringsbånd',
+      '1-stavs eikegulv med børstet og mattlakkert overflate',
+      'Godkjent trinnlydsunderlag for lydisolering',
+      'Klassiske 3-speils formpressede innerdører i ren hvit (NCS S 0500-N)',
+      'Karmsett med integrerte tettelister',
+      'Hoppe dørvridere i børstet rustfritt stål',
+      'Profilerte gerikter og fotlister'
+    ],
+    clientQuote: {
+      quote: 'Soverommene ble forvandlet til en rolig oase med hotellfølelse. Dørene lukker seg silkemykt, veggene er fullstendig slette, og fargevalget gir en utrolig lun atmosfære.',
+      author: 'Leilighetseier',
+      neighborhood: 'Majorstuen / Frogner, Oslo'
+    }
+  },
+  {
     id: 'rodt-trehus-fasademaling',
     slug: 'rodt-trehus-fasademaling',
     href: path('/prosjekter/rodt-trehus-fasademaling/'),
