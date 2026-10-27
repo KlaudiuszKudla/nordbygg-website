@@ -91,7 +91,7 @@ export const siteConfig = {
         },
         {
           title: 'Utendørs drift og vedlikehold av uteområder',
-          description: 'Feiing, avfallshåndtering, mindre kledningsreparasjoner, maling av fellesarealer og sesongmessig oppfølging av eiendommen.'
+          description: 'Feiing, avfallshåndtering, legging og reparasjon av belegningsstein og skifer, treterrasser, mindre kledningsreparasjoner og sesongmessig oppfølging.'
         },
         {
           title: 'Praktisk koordinering og teknisk oppfølging',
@@ -102,8 +102,8 @@ export const siteConfig = {
           description: 'Tilgjengelig for praktiske oppgaver, vannstenging ved oppussing, nøkkelhåndtering og veiledning ved moderniseringsbehov.'
         },
         {
-          title: 'Forebyggende tiltak mot fukt og frost',
-          description: 'Rens av takrenner, sjekk av sluk, inspeksjon av rørgjennomføringer og forebygging av frostskader i kalde perioder.'
+          title: 'Takrenner, tak og dreneringstilsyn',
+          description: 'Mindre tak- og takrennereparasjoner, rens av taknedløp, sjekk av overvannskummer og forebyggende tiltak mot fuktinntrengning og frost.'
         },
         {
           title: 'Skreddersydde driftsavtaler',
@@ -696,10 +696,10 @@ export const siteConfig = {
       title: 'Utvendig malerarbeid',
       slug: 'utvendig-maling-oslo',
       href: path('/tjenester/utvendig-maling-oslo/'),
-      image: path('/images/utvendig-maling.jpg'),
+      image: path('/images/fasade-vinduer-maling.jpg'),
       shortDesc: 'Profesjonell husmaling og fasadebehandling i Oslo og omegn – grundig fasadevask, sopp- og algedreper, skraping, grunning og to fyldige strøk på trehus og eneboliger.',
-      heroIntro: 'Norske trehus krever kompromissløs beskyttelse mot skiftende vær, fukt, sol og kulde. Vi utfører grundig forarbeid med fasadevask, soppdreper, skraping av løs maling og grunning av bart treverk før vi påfører markedets beste utendørsmaling (f.eks. Jotun Drygolin Nordic Extreme).',
-      highlights: ['Fasadevask & sopp-/algebehandling', 'Skraping, sliping & impregnering', 'Jotun Drygolin & Optimal', 'Eneboliger, tomannsboliger & rekkehus'],
+      heroIntro: 'Norske trehus krever kompromissløs beskyttelse mot skiftende vær, fukt, sol og kulde. Vi utfører grundig forarbeid med fasadevask, soppdreper, skraping av løs maling, kledningssjekk og nøyaktig maling av fasader, vinduer og staffasje med markedets beste utendørsmaling (f.eks. Jotun Drygolin Nordic Extreme).',
+      highlights: ['Fasadevask & sopp-/algebehandling', 'Maling av fasader & vinduer', 'Jotun Drygolin & Optimal', 'Eneboliger, tomannsboliger & rekkehus'],
       scopeOfWork: [
         {
           title: 'Grundig husvask og sopp-/algedreper',

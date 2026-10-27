@@ -26,6 +26,80 @@ export interface ProjectCaseStudy {
 
 export const projectsData: ProjectCaseStudy[] = [
   {
+    id: 'treterrasse-strandlinje',
+    slug: 'treterrasse-strandlinje',
+    href: path('/prosjekter/treterrasse-strandlinje/'),
+    title: 'Eksklusiv treterrasse og bryggeplatting ved sjøen',
+    neighborhood: 'Bekkelaget / Bunnefjorden, Oslo',
+    buildingType: 'Fritidseiendom / bolig ved sjøen',
+    year: 2025,
+    duration: '2,5 uker',
+    mainImage: path('/images/treterrasse-brygge-fjord.jpg'),
+    serviceSlugs: ['montering-oslo', 'vaktmester-oslo'],
+    tags: ['Treterrasse', 'Utemiljø', 'Bryggeplatting', 'Snekkerarbeid', 'Kystmiljø'],
+    excerpt: 'Skreddersydd treterrasse og integrert badebrygge tilpasset krevende kystterreng på fjell og betongfundament med fantastisk fjordutsikt.',
+    challenge: 'Tomten hadde krevende fjellskråning rett ned i sjøen med ujevnt steinete underlag og kraftig eksponering for saltvann, vind og bølger. Det krevde bunnsolid fundamentering i fjell samt materialer som tåler røft norsk kystklima over tid.',
+    solution: 'Vi forankret solide betong- og stålfester direkte i fjellet, etablerte kraftig bærekonstruksjon i k-virke og la førsteklasses impregnerte terrassebord med millimeterpresisjon. Løsningen inkluderte trappetrinn ned mot bryggen og en elegant integrert utstikkerplatting.',
+    scopeList: [
+      'Oppmåling og forankring med kjemiske anker i fjellgrunn',
+      'Støping av tilpassede betongpilarer og sokler mot sjøen',
+      'Oppbygging av kraftig bjelkelag i impregnert konstruksjonsvirke',
+      'Skjult eller presis innfesting av premium terrassebord i furu',
+      'Bygging av solide overgangstrapper mellom nivåer',
+      'Montering av integrert sittegruppe og utstikkerbrygge',
+      'Sluttbehandling og grundig opprydding i kystsonen'
+    ],
+    materialsUsed: [
+      'Trykkimpregnert furu klasse AB/A for kystmiljø',
+      'Syrefaste A4-skruer og beslag mot korrosjon fra sjøsprøyt',
+      'Armert B30 betong og kjemiske fjellankere',
+      'Spesialtilpasset bjelkelag 48x198 mm for maksimal stivhet'
+    ],
+    clientQuote: {
+      quote: 'Terrassen ble fantastisk! Waldemar løste fundamenteringen i det bratte fjellet helt perfekt, og håndverket tåler både bølger og storm.',
+      author: 'Eier av eiendom',
+      neighborhood: 'Bekkelaget, Oslo'
+    }
+  },
+  {
+    id: 'drenering-enebolig',
+    slug: 'drenering-enebolig',
+    href: path('/prosjekter/drenering-enebolig/'),
+    title: 'Komplett drenering og fuktsikring av grunnmur',
+    neighborhood: 'Nordstrand, Oslo',
+    buildingType: 'Enebolig med sokkeletasje',
+    year: 2024,
+    duration: '3 uker',
+    mainImage: path('/images/drenering-grunnmur.jpg'),
+    serviceSlugs: ['vaktmester-oslo'],
+    tags: ['Drenering', 'Fuktsikring', 'Grunnmur', 'Overvann', 'Platon'],
+    excerpt: 'Total fornyelse av dreneringssystem og grunnmursbeskyttelse med knasteplast, drensrør, pukkfylling og inspeksjonskum for tørr og trygg kjeller.',
+    challenge: 'Eldre enebolig opplevde fuktinnsig og saltutslag på kjellerveggene etter kraftig nedbør. Eksisterende drensrør fra byggeåret var tette av jord og røtter, og grunnmuren manglet moderne fuktsikring og tilstrekkelig fall bort fra huset.',
+    solution: 'Vi gravde opp rundt hele grunnmuren, renset og utbedret murflaten, monterte grunnmursplate (knasteplast) med dekklist, la nye drensrør i filterduk omkranset av pukk, og etablerte ny inspeksjonskum for overvann.',
+    scopeList: [
+      'Graving og avdekking av grunnmur ned til fundament',
+      'Rengjøring av muren og sjekk av såleoverganger',
+      'Montering av grunnmursplate (knasteplast/Platon) med topplist',
+      'Isolering av grunnmur utvendig mot kuldebroer og tele',
+      'Utlegging av drensrør med jevnt fall mot overvannskum',
+      'Fylling med pukk og drenerende masser innpakket i fiberduk',
+      'Installasjon av korrugert drens- og overvannskum',
+      'Tilbakefylling og planering av terrenget med fall bort fra muren'
+    ],
+    materialsUsed: [
+      'Grunnmursplate (knasteplast) med spikerfester og kantlister',
+      'Slissede drensrør 110 mm',
+      'Fiberduk klasse N2 / N3 mot gjenstopping',
+      'Vasket pukk 11/16 mm for optimal vanngjennomstrømning',
+      'XPS-isolasjonsplater for grunnmur'
+    ],
+    clientQuote: {
+      quote: 'Kjelleren ble knusktørr med én gang. Grundig og ryddig utført fra utgraving til ferdig planert tomt.',
+      author: 'Familien Berg',
+      neighborhood: 'Nordstrand, Oslo'
+    }
+  },
+  {
     id: 'bad-st-hanshaugen',
     slug: 'bad-st-hanshaugen',
     href: path('/prosjekter/bad-st-hanshaugen/'),
