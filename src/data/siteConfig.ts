@@ -32,7 +32,6 @@ export interface ServiceItem {
   scopeOfWork: ServiceScopeItem[];
   pricingIntro?: string;
   pricingFactors: ServicePricingFactor[];
-  typicalTimeline: string;
   timelineSteps: ServiceTimelineStep[];
   faqs: ServiceFAQ[];
   bygardNote?: string;
@@ -129,16 +128,15 @@ export const siteConfig = {
           description: 'Bygg med sentralfyr, ventilasjonsaggregater og automatiske adgangskontroller stiller krav til hyppigere teknisk oppfølging.'
         }
       ],
-      typicalTimeline: 'Løpende fast avtale med oppstart etter gratis befaring og kartlegging av bygget.',
       timelineSteps: [
         {
           phase: 'Steg 1',
-          title: 'Gratis befaring & kartlegging (Dag 1–3)',
+          title: 'Gratis befaring & kartlegging',
           description: 'Vi går gjennom eiendommen sammen med styret eller driftsleder, kartlegger tekniske anlegg og definerer oppgavebehovet.'
         },
         {
           phase: 'Steg 2',
-          title: 'Tydelig avtaleforslag (Dag 3–5)',
+          title: 'Tydelig avtaleforslag & tilbud',
           description: 'Vi utarbeider en spesifisert drifts- og vedlikeholdsplan med fast pris eller faste timeintervaller.'
         },
         {
@@ -233,26 +231,25 @@ export const siteConfig = {
           description: 'Innebygde armaturer i vegg krever ekstra forarbeid sammenlignet med tradisjonelle utenpåliggende blandebatterier.'
         }
       ],
-      typicalTimeline: '3 til 5 uker for et standard baderom i Oslo.',
       timelineSteps: [
         {
           phase: 'Fase 1',
-          title: 'Befaring & tilbud (Dag 1–3)',
+          title: 'Befaring & tilbud',
           description: 'Gratis befaring hjemme hos deg, gjennomgang av ønsker og utarbeidelse av et detaljert, uforpliktende pristilbud.'
         },
         {
           phase: 'Fase 2',
-          title: 'Riving & rør/elektro (Uke 1)',
+          title: 'Riving & rør/elektro',
           description: 'Tildekking av fellesarealer, skånsom riving, bortkjøring av avfall og oppstart for rørlegger og elektriker.'
         },
         {
           phase: 'Fase 3',
-          title: 'Støp, fall & membran (Uke 2)',
+          title: 'Støp, fall & membran',
           description: 'Avretting av gulv med korrekt fall, montering av våtromsplater og påføring av vanntett smøremembran.'
         },
         {
           phase: 'Fase 4',
-          title: 'Flislegging, montering & sluttkontroll (Uke 3–5)',
+          title: 'Flislegging, montering & sluttkontroll',
           description: 'Presis flislegging, fuging, montering av baderomsmøbler, samt felles sluttbefaring av badet.'
         }
       ],
@@ -337,26 +334,25 @@ export const siteConfig = {
           description: 'Montering av helintegrert oppvaskmaskin, kjøleskap og ventilator med integrerte dører krever ekstra justering for perfekt spalteavstand.'
         }
       ],
-      typicalTimeline: '1 til 3 uker avhengig av omfang og leveringstid på benkeplate.',
       timelineSteps: [
         {
           phase: 'Fase 1',
-          title: 'Befaring & planlegging (Dag 1–2)',
-          description: 'Vi kontrollerer kontrollmål fra leverandør (f.eks. IKEA tegning), sjekker rør/el-punkter og gir et bindende fastpristilbud.'
+          title: 'Befaring & planlegging',
+          description: 'Vi kontrollerer kontrollmål fra leverandør (f.eks. IKEA tegning), sjekker rør/el-punkter og gir et bindende pristilbud.'
         },
         {
           phase: 'Fase 2',
-          title: 'Riving & grunnarbeid (Dag 1–3 i uke 1)',
+          title: 'Riving & grunnarbeid',
           description: 'Gammelt kjøkken demonteres og kjøres bort. Skjeve vegger rettes opp og rør/elektro klargjøres.'
         },
         {
           phase: 'Fase 3',
-          title: 'Montering av innredning (Uke 2)',
+          title: 'Montering av innredning',
           description: 'Skrog, overskap, høyskap, skuffer og tilpassede foringer monteres i vater.'
         },
         {
           phase: 'Fase 4',
-          title: 'Benkeplate, flis & tilkobling (Uke 3)',
+          title: 'Benkeplate, flis & tilkobling',
           description: 'Montering av benkeplate, sprutfliser, rør- og strømtilkobling, samt finjustering av fronter og sluttbefaring.'
         }
       ],
@@ -441,26 +437,25 @@ export const siteConfig = {
           description: 'Det er ofte mer kostnadseffektivt å kombinere dørbytte og snekkerarbeid med påfølgende maling og listing i samme oppdrag.'
         }
       ],
-      typicalTimeline: 'Fra 2 dager for dør- og listingsoppdrag til 1–2 uker for større ombygginger.',
       timelineSteps: [
         {
           phase: 'Fase 1',
-          title: 'Befaring & oppmåling (Dag 1)',
+          title: 'Befaring & oppmåling',
           description: 'Vi måler opp, ser på rommets bæring og vinkler, og gir råd om optimale løsninger og materialvalg.'
         },
         {
           phase: 'Fase 2',
-          title: 'Klargjøring & materialleveranse (Dag 2)',
+          title: 'Klargjøring & materialleveranse',
           description: 'Tildekking av gulv og fellesarealer, samt innkjøring og bæring av materialer og verktøy.'
         },
         {
           phase: 'Fase 3',
-          title: 'Snekring & montering (Dag 3–5)',
+          title: 'Snekring & montering',
           description: 'Oppsetting av stendere, isolasjon, plating, dørkarmmontering og innbygging av møbler/garderober.'
         },
         {
           phase: 'Fase 4',
-          title: 'Listverk, foringer & finish (Dag 6+)',
+          title: 'Listverk, foringer & finish',
           description: 'Presis tilskjæring og gjæring av lister, akrylforsegling og rydding før felles befaring.'
         }
       ],
@@ -545,26 +540,25 @@ export const siteConfig = {
           description: 'I bygårder kreves det ofte dokumenterte trinnlydsplater (f.eks. 6 mm eller 12 mm Silencio) for å dempe lydoverføring.'
         }
       ],
-      typicalTimeline: '2 til 6 dager avhengig av romstørrelse og tørketid på flytsparkel.',
       timelineSteps: [
         {
           phase: 'Fase 1',
-          title: 'Befaring & planhetsmåling (Dag 1)',
+          title: 'Befaring & planhetsmåling',
           description: 'Vi måler rommets planhet med rettholt, sjekker fukt i undergulvet og anbefaler riktig oppbygging.'
         },
         {
           phase: 'Fase 2',
-          title: 'Riving & flytsparkling (Dag 1–2)',
+          title: 'Riving & flytsparkling',
           description: 'Gammelt gulv fjernes, underlaget primes og fiberarmert avrettingsmasse legges ut for en perfekt plan flate.'
         },
         {
           phase: 'Fase 3',
-          title: 'Underlag & gulvlegging (Dag 3–4)',
+          title: 'Underlag & gulvlegging',
           description: 'Trinnlydsduk/plater legges ut, og parketten eller fiskebensmønsteret legges med millimeterpresisjon.'
         },
         {
           phase: 'Fase 4',
-          title: 'Underskjæring, listing & terskler (Dag 5)',
+          title: 'Underskjæring, listing & terskler',
           description: 'Karmer underskjæres, fotlister og terskler monteres, og rommet støvsuges og overleveres klart til innflytting.'
         }
       ],
@@ -649,26 +643,25 @@ export const siteConfig = {
           description: 'Maling i én helhetlig farge er rimeligere enn kombinasjoner med flere fargeskift i samme rom som krever ekstra nøyaktig maskering.'
         }
       ],
-      typicalTimeline: '3 til 8 dager avhengig av leilighetens areal og tørketid mellom sparkelstrøkene.',
       timelineSteps: [
         {
           phase: 'Fase 1',
-          title: 'Befaring & fargerådgivning (Dag 1)',
+          title: 'Befaring & fargerådgivning',
           description: 'Vi vurderer veggenes tilstand, lysforhold og takhøyde, og gir råd om farger og nødvendig forarbeid.'
         },
         {
           phase: 'Fase 2',
-          title: 'Tildekking & helsparkling (Dag 1–3)',
+          title: 'Tildekking & helsparkling',
           description: 'Komplett maskering av rommet, sparkling av første og andre lag, og tørketid.'
         },
         {
           phase: 'Fase 3',
-          title: 'Støvfri sliping & grunning (Dag 4)',
+          title: 'Støvfri sliping & grunning',
           description: 'Plansliping med HEPA-avtrekk, støvtørking og påføring av grunning samt akrylforsegling i hjørner.'
         },
         {
           phase: 'Fase 4',
-          title: 'Maling av tak, vegg & treverk (Dag 5–7)',
+          title: 'Maling av tak, vegg & treverk',
           description: 'To toppstrøk med Lady-maling, maling av karmer og lister, fjerning av maskering og grundig opprydding.'
         }
       ],
@@ -753,26 +746,25 @@ export const siteConfig = {
           description: 'Store slette kledningsflater males raskere enn hus med mange sprosser, utskjæringer, vindusomramminger og ulike farger på kledning og detaljer.'
         }
       ],
-      typicalTimeline: '1 til 2,5 uker avhengig av husets størrelse, tørkeforhold og vær.',
       timelineSteps: [
         {
           phase: 'Fase 1',
-          title: 'Befaring & fuktmåling (Dag 1)',
-          description: 'Vi kontrollerer fuktnivået i kledningen (må være under 16–18 %), vurderer kledningsbord og gir et bindende fastpristilbud.'
+          title: 'Befaring & fuktmåling',
+          description: 'Vi kontrollerer fuktnivået i kledningen (må være under 16–18 %), vurderer kledningsbord og gir et bindende tilbud.'
         },
         {
           phase: 'Fase 2',
-          title: 'Fasadevask & soppbehandling (Dag 1–3)',
+          title: 'Fasadevask & soppbehandling',
           description: 'Rengjøring med kraftvask, påføring av sopp- og algedreper og nødvendig tørketid før videre arbeid.'
         },
         {
           phase: 'Fase 3',
-          title: 'Stillas, skraping & grunning (Dag 4–6)',
+          title: 'Stillas, skraping & grunning',
           description: 'Montering av godkjent stillas, grundig skraping av flakende maling, sliping og grunning av bart treverk og endeved.'
         },
         {
           phase: 'Fase 4',
-          title: 'Toppstrøk & sluttkontroll (Uke 2)',
+          title: 'Toppstrøk & sluttkontroll',
           description: 'To strøk med kledningsmaling, maling av vinduer og staffasje, demontering av stillas og felles sluttbefaring.'
         }
       ],

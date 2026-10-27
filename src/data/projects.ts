@@ -14,8 +14,6 @@ export interface ProjectCaseStudy {
   title: string;
   neighborhood: string;
   buildingType: string;
-  year: number;
-  duration: string;
   mainImage: string;
   gallery?: ProjectGalleryImage[];
   serviceSlugs: string[];
@@ -40,8 +38,6 @@ export const projectsData: ProjectCaseStudy[] = [
     title: 'Langsiktig eiendomsdrift og oppgradering av klassisk bygård',
     neighborhood: 'Frogner / Majorstuen, Oslo',
     buildingType: 'Klassisk bygård fra 1890-tallet med næringseiendom og leiligheter',
-    year: 2024,
-    duration: 'Flerårig driftsansvar & oppgraderingsprosjekter',
     mainImage: path('/images/bygard-fasade-osteklokken.jpg'),
     gallery: [
       {
@@ -103,8 +99,6 @@ export const projectsData: ProjectCaseStudy[] = [
     title: 'Fasademaling og fornyelse av klassisk trehus',
     neighborhood: 'Holmenkollen / Vestre Aker, Oslo',
     buildingType: 'Klassisk enebolig i tre med glassveranda',
-    year: 2024,
-    duration: '2 uker',
     mainImage: path('/images/rodt-trehus-fasademaling-stillas.jpg'),
     gallery: [
       {
@@ -154,8 +148,6 @@ export const projectsData: ProjectCaseStudy[] = [
     title: 'Komplett drenering og fuktsikring av grunnmur',
     neighborhood: 'Nordstrand, Oslo',
     buildingType: 'Enebolig med sokkeletasje',
-    year: 2024,
-    duration: '3 uker',
     mainImage: path('/images/drenering-grunnmur.jpg'),
     gallery: [
       {
@@ -212,8 +204,6 @@ export const projectsData: ProjectCaseStudy[] = [
     title: 'Eksklusiv treterrasse og bryggeplatting ved sjøen',
     neighborhood: 'Bekkelaget / Bunnefjorden, Oslo',
     buildingType: 'Fritidseiendom / bolig ved sjøen',
-    year: 2025,
-    duration: '2,5 uker',
     mainImage: path('/images/treterrasse-brygge-fjord.jpg'),
     serviceSlugs: ['montering-oslo', 'vaktmester-oslo'],
     tags: ['Treterrasse', 'Utemiljø', 'Bryggeplatting', 'Snekkerarbeid', 'Kystmiljø'],
@@ -248,8 +238,6 @@ export const projectsData: ProjectCaseStudy[] = [
     title: 'Totalrenovering av bad i klassisk bygård',
     neighborhood: 'St. Hanshaugen, Oslo',
     buildingType: 'Bygård fra 1898',
-    year: 2025,
-    duration: '4,5 uker',
     mainImage: path('/images/bad.jpg'),
     serviceSlugs: ['oppussing-av-bad-oslo'],
     tags: ['Våtrom', 'Flislegging', 'Bygård', 'Totaloppussing'],
@@ -272,7 +260,7 @@ export const projectsData: ProjectCaseStudy[] = [
       'Mapei fleksibel flislim og fugefarge'
     ],
     clientQuote: {
-      quote: 'Oppussingen av badet gikk knirkefritt. Arbeidsplassen ble støvskjermet, fellesarealene var alltid ryddige, og fremdriftsplanen på 4,5 uker holdt på dagen.',
+      quote: 'Oppussingen av badet gikk knirkefritt. Arbeidsplassen ble støvskjermet, fellesarealene var alltid ryddige, og fremdriftsplanen holdt til punkt og prikke.',
       author: 'Andreas & Christine',
       neighborhood: 'St. Hanshaugen'
     }
@@ -284,8 +272,6 @@ export const projectsData: ProjectCaseStudy[] = [
     title: 'Kjøkkenoppussing og takhøye foringer i Frogner-leilighet',
     neighborhood: 'Frogner, Oslo',
     buildingType: 'Klassisk bygårdsleilighet (3,2 m takhøyde)',
-    year: 2025,
-    duration: '3 uker',
     mainImage: path('/images/kjokken.jpg'),
     serviceSlugs: ['kjokkenoppussing-oslo', 'gulvlegging-oslo'],
     tags: ['Kjøkken', 'Bygård', 'Foringer', 'IKEA'],
@@ -320,8 +306,6 @@ export const projectsData: ProjectCaseStudy[] = [
     title: 'Avretting av undergulv og 1-stavs eikeparkett',
     neighborhood: 'Majorstuen, Oslo',
     buildingType: 'Murbygård fra 1920-tallet',
-    year: 2024,
-    duration: '1 uke',
     mainImage: path('/images/gulv.jpg'),
     serviceSlugs: ['gulvlegging-oslo'],
     tags: ['Gulvlegging', 'Flytsparkel', 'Trinnlyd', 'Parkett'],
@@ -356,8 +340,6 @@ export const projectsData: ProjectCaseStudy[] = [
     title: 'Helsparkling, støvfri sliping og maling av bygårdsleilighet',
     neighborhood: 'Grünerløkka, Oslo',
     buildingType: 'Klassisk bygårdsleilighet fra 1905',
-    year: 2024,
-    duration: '1,5 uker',
     mainImage: path('/images/maling.jpg'),
     serviceSlugs: ['malerarbeid-oslo'],
     tags: ['Maling', 'Helsparkling', 'Jotun Lady', 'Støvfri sliping'],
@@ -392,8 +374,6 @@ export const projectsData: ProjectCaseStudy[] = [
     title: 'Plassbygd garderobeinnredning og nye innerdører',
     neighborhood: 'Nordstrand, Oslo',
     buildingType: 'Enebolig',
-    year: 2024,
-    duration: '4 dager',
     mainImage: path('/images/montering.jpg'),
     serviceSlugs: ['montering-oslo'],
     tags: ['Snekkerarbeid', 'Innbygging', 'Garderobe', 'Dører'],
@@ -428,8 +408,6 @@ export const projectsData: ProjectCaseStudy[] = [
     title: 'Utvendig maling av trehus og utskifting av kledningsbord',
     neighborhood: 'Nordstrand / Bekkelaget, Oslo',
     buildingType: 'Klassisk trevilla fra 1928',
-    year: 2025,
-    duration: '2 uker',
     mainImage: path('/images/utvendig-maling.jpg'),
     serviceSlugs: ['utvendig-maling-oslo'],
     tags: ['Utvendig maling', 'Trehus', 'Jotun Drygolin', 'Fasade'],

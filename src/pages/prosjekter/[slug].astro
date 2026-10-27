@@ -52,7 +52,7 @@ const mailtoHref = buildSmartMailto({
       <div class="project-header-copy">
         <div class="project-badge-row">
           <span class="eyebrow">📍 {project.neighborhood}</span>
-          <span class="year-badge">Ferdigstilt {project.year}</span>
+          <span class="ref-badge">Referanseprosjekt</span>
         </div>
 
         <h1 class="project-title">{project.title}</h1>
@@ -60,12 +60,12 @@ const mailtoHref = buildSmartMailto({
 
         <div class="project-quick-meta">
           <div class="meta-item">
-            <span class="meta-label">Boligtype</span>
+            <span class="meta-label">Eiendomstype</span>
             <strong class="meta-val">{project.buildingType}</strong>
           </div>
           <div class="meta-item">
-            <span class="meta-label">Varighet</span>
-            <strong class="meta-val">{project.duration}</strong>
+            <span class="meta-label">Område</span>
+            <strong class="meta-val">{project.neighborhood}</strong>
           </div>
           <div class="meta-item">
             <span class="meta-label">Utført av</span>
@@ -73,7 +73,7 @@ const mailtoHref = buildSmartMailto({
           </div>
           <div class="meta-item">
             <span class="meta-label">Betaling</span>
-            <strong class="meta-val">Ingen forskudd – betal etter ferdigstillelse</strong>
+            <strong class="meta-val">Ingen forskudd – betal etter utført arbeid</strong>
           </div>
         </div>
 
@@ -214,12 +214,8 @@ const mailtoHref = buildSmartMailto({
               <span class="fact-val">{project.buildingType}</span>
             </li>
             <li>
-              <span class="fact-label">Tidsbruk:</span>
-              <span class="fact-val">{project.duration}</span>
-            </li>
-            <li>
-              <span class="fact-label">År:</span>
-              <span class="fact-val">{project.year}</span>
+              <span class="fact-label">Utførelse:</span>
+              <span class="fact-val">Direkte av {siteConfig.owner}</span>
             </li>
             <li>
               <span class="fact-label">Betaling:</span>
@@ -366,7 +362,7 @@ const mailtoHref = buildSmartMailto({
     gap: 1rem;
     margin-bottom: 0.5rem;
   }
-  .year-badge {
+  .ref-badge {
     font-size: 0.8125rem;
     font-weight: 600;
     color: var(--text-muted);
