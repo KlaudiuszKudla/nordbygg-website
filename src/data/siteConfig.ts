@@ -180,7 +180,7 @@ export const siteConfig = {
       image: path('/images/bad-marmor-dusjhjorne-sort.jpg'),
       shortDesc: 'Totalrenovering av bad og våtrom i Oslo – riving, oppbygging med vanntett membran, avretting med fall mot sluk og presis flislegging.',
       heroIntro: 'Fra eldre bygårdsbad til moderne og funksjonelle baderom. Waldemar Kudla utfører arbeidet med stor nøyaktighet og koordinerer fremdriften slik at resultatet blir pent, solid og holdbart.',
-      highlights: ['Riving & grundig forarbeid', 'Støp med fall til sluk', 'Membran & presis flislegging', 'Skriftlig tilbud & fastpris'],
+      highlights: ['Riving & grundig forarbeid', 'Støp med fall til sluk', 'Membran & presis flislegging', 'Tydelig tilbud & skriftlig avtale'],
       scopeOfWork: [
         {
           title: 'Skånsom riving og avfallshåndtering',
@@ -271,8 +271,8 @@ export const siteConfig = {
           answer: 'Ja, i de fleste borettslag og sameier i Oslo skal styret informeres om oppussing, og naboer skal varsles om støyende arbeid og eventuell vannavstenging. Vi bistår med standard nabovarsel.'
         },
         {
-          question: 'Gir dere fastpris på oppussing av bad?',
-          answer: 'Ja, etter en grundig gratis befaring leverer vi et forutsigbart og uforpliktende fastpristilbud som spesifiserer alle inkluderte arbeidsoperasjoner.'
+          question: 'Hvordan beregnes prisen på oppussing av bad?',
+          answer: 'Etter gratis befaring leverer vi et spesifisert pristilbud som klart beskriver inkluderte arbeidsoperasjoner. Dersom det avdekkes uforutsette forhold bak vegger eller under gulv, avklares alltid tiltak og pris med deg før utbedring.'
         }
       ]
     },
