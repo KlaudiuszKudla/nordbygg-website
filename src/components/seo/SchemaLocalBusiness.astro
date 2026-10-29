@@ -7,7 +7,6 @@ const schema = {
   '@id': `${siteConfig.siteUrl}/#organization`,
   name: siteConfig.companyName,
   legalName: siteConfig.legalName,
-  taxID: siteConfig.orgNr,
   founder: {
     '@type': 'Person',
     name: siteConfig.owner,
@@ -19,8 +18,6 @@ const schema = {
   priceRange: '$$',
   address: {
     '@type': 'PostalAddress',
-    streetAddress: siteConfig.location.street,
-    postalCode: siteConfig.location.postalCode,
     addressLocality: siteConfig.location.city,
     addressCountry: siteConfig.location.country,
   },

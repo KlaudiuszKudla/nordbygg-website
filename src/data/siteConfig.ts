@@ -41,14 +41,11 @@ export const siteConfig = {
   companyName: 'Satisfaction',
   legalName: 'Waldemar Kudla',
   owner: 'Waldemar Kudla',
-  orgNr: '999 999 999 MVA',
   phoneDisplay: '+47 976 73 411',
   phoneHref: '+4797673411',
   email: 'waldemarkudla@gmail.com',
   siteUrl: 'https://klaudiuszkudla.github.io/nordbygg-website',
   location: {
-    street: 'Kirkeveien 64',
-    postalCode: '0364',
     city: 'Oslo',
     country: 'NO',
     serviceAreas: [

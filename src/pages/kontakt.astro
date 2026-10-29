@@ -161,19 +161,15 @@ const defaultMailto = buildSmartMailto();
       </div>
 
       <div class="company-facts-card">
-        <h2 class="section-subtitle">Firmaopplysninger & trygghet</h2>
+        <h2 class="section-subtitle">Direkte kontakt & trygghet</h2>
         <ul class="facts-list">
           <li>
-            <span class="f-label">Foretak:</span>
-            <strong class="f-val">{siteConfig.legalName}</strong>
+            <span class="f-label">Håndverker:</span>
+            <strong class="f-val">{siteConfig.owner}</strong>
           </li>
           <li>
-            <span class="f-label">Organisasjonsnr:</span>
-            <strong class="f-val tabular-nums">{siteConfig.orgNr}</strong>
-          </li>
-          <li>
-            <span class="f-label">Adresse:</span>
-            <strong class="f-val">{siteConfig.location.street}, {siteConfig.location.postalCode} {siteConfig.location.city}</strong>
+            <span class="f-label">Område:</span>
+            <strong class="f-val">{siteConfig.location.city} og omegn</strong>
           </li>
           <li>
             <span class="f-label">Befaring:</span>
@@ -182,6 +178,10 @@ const defaultMailto = buildSmartMailto();
           <li>
             <span class="f-label">Prisavtale:</span>
             <strong class="f-val">Tydelig tilbud – fastpris eller timepris etter avtale</strong>
+          </li>
+          <li>
+            <span class="f-label">Trygghet:</span>
+            <strong class="f-val">Skriftlig avtale før oppstart</strong>
           </li>
         </ul>
       </div>
