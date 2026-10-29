@@ -23,11 +23,6 @@ export interface ProjectCaseStudy {
   solution: string;
   scopeList: string[];
   materialsUsed: string[];
-  clientQuote?: {
-    quote: string;
-    author: string;
-    neighborhood: string;
-  };
 }
 
 export const projectsData: ProjectCaseStudy[] = [
@@ -85,12 +80,7 @@ export const projectsData: ProjectCaseStudy[] = [
       'Granittkantstein for solide overganger',
       'Fiberduk klasse N2 og vasket settegrus 2–4 mm',
       'Ugresshemmende fugesand for varig stabilitet'
-    ],
-    clientQuote: {
-      quote: 'Waldemar har vært en uvurderlig ressurs for gården vår i mange år. Han kjenner hver krik og krok av bygget, og bakgården han oppgraderte er nå gårdens flotteste samlingssted.',
-      author: 'Styreleder Sameiet',
-      neighborhood: 'Frogner / Majorstuen, Oslo'
-    }
+    ]
   },
   {
     id: 'totalrenovering-stue-apen-kjokkenlosning',
@@ -150,12 +140,7 @@ export const projectsData: ProjectCaseStudy[] = [
       'Jotun Lady Pure Color supermatt interiørmaling',
       'Gipsplater og stålprofiler for spotkasse i himling',
       'Underlimt vask i rustfritt stål og moderne ettgreps blandebatteri'
-    ],
-    clientQuote: {
-      quote: 'Forvandlingen fra et mørkt, lukket kjøkken til dette åpne og luftige allrommet er helt utrolig. Håndverket på slettveggene og kjøkkendetaljene er i toppklasse!',
-      author: 'Leilighetseier',
-      neighborhood: 'Majorstuen / Sentrum, Oslo'
-    }
+    ]
   },
   {
     id: 'bad-marmor-sorte-detaljer',
@@ -218,12 +203,7 @@ export const projectsData: ProjectCaseStudy[] = [
       'Matt sort takdusjsett og servantarmatur',
       'Vegghengt servantskap med integrert porselensvask',
       'Dørterskel i massiv lakkert eik'
-    ],
-    clientQuote: {
-      quote: 'Badet ble utrolig lekkert! Kontrasten mellom de lyse marmorveggene og de sorte detaljene gir en ekte spafølelse, og arbeidet med membranen og fallet mot sluk er utført til punkt og prikke.',
-      author: 'Leilighetseier',
-      neighborhood: 'Majorstuen / Frogner, Oslo'
-    }
+    ]
   },
   {
     id: 'fornyelse-av-soverom-parkett-dorer',
@@ -280,12 +260,7 @@ export const projectsData: ProjectCaseStudy[] = [
       'Karmsett med integrerte tettelister',
       'Hoppe dørvridere i børstet rustfritt stål',
       'Profilerte gerikter og fotlister'
-    ],
-    clientQuote: {
-      quote: 'Soverommene ble forvandlet til en rolig oase med hotellfølelse. Dørene lukker seg silkemykt, veggene er fullstendig slette, og fargevalget gir en utrolig lun atmosfære.',
-      author: 'Leilighetseier',
-      neighborhood: 'Majorstuen / Frogner, Oslo'
-    }
+    ]
   },
   {
     id: 'rodt-trehus-fasademaling',
@@ -329,12 +304,7 @@ export const projectsData: ProjectCaseStudy[] = [
       'Jotun Drygolin Vindu og Dør i klassisk hvit',
       'Jotun Visir Oljegrunning Pigmentert',
       'Jotun Kraftvask og Sopp- og Algedreper'
-    ],
-    clientQuote: {
-      quote: 'Huset har fått nytt liv! Glassverandaen er nydelig utført, og fargekombinasjonen skinner i nabolaget. Svært ryddig og dyktig håndverker.',
-      author: 'Huseier',
-      neighborhood: 'Holmenkollen, Oslo'
-    }
+    ]
   },
   {
     id: 'drenering-enebolig',
@@ -385,12 +355,7 @@ export const projectsData: ProjectCaseStudy[] = [
       'Fiberduk klasse N2 / N3 mot gjenstopping',
       'Vasket pukk 11/16 mm for optimal vanngjennomstrømning',
       'XPS-isolasjonsplater for grunnmur'
-    ],
-    clientQuote: {
-      quote: 'Kjelleren ble knusktørr med én gang. Grundig og ryddig utført fra utgraving til ferdig planert tomt.',
-      author: 'Familien Berg',
-      neighborhood: 'Nordstrand, Oslo'
-    }
+    ]
   },
   {
     id: 'treterrasse-strandlinje',
@@ -419,11 +384,6 @@ export const projectsData: ProjectCaseStudy[] = [
       'Syrefaste A4-skruer og beslag mot korrosjon fra sjøsprøyt',
       'Armert B30 betong og kjemiske fjellankere',
       'Spesialtilpasset bjelkelag 48x198 mm for maksimal stivhet'
-    ],
-    clientQuote: {
-      quote: 'Terrassen ble fantastisk! Waldemar løste fundamenteringen i det bratte fjellet helt perfekt, og håndverket tåler både bølger og storm.',
-      author: 'Eier av eiendom',
-      neighborhood: 'Bekkelaget, Oslo'
-    }
+    ]
   }
 ];
