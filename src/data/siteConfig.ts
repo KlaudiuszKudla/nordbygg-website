@@ -38,7 +38,7 @@ export interface ServiceItem {
 }
 
 export const siteConfig = {
-  companyName: 'Waldemar Kudla',
+  companyName: 'Satisfaction',
   legalName: 'Waldemar Kudla',
   owner: 'Waldemar Kudla',
   orgNr: '999 999 999 MVA',

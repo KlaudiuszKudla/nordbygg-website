@@ -5,7 +5,7 @@ import { path } from '../utils/paths';
 import DirectContactBanner from '../components/conversion/DirectContactBanner.astro';
 
 const pageTitle = `Om oss | ${siteConfig.companyName} – Håndverker & Eiendomsdrift`;
-const pageDescription = `Møt ${siteConfig.owner}, håndverker og daglig leder med ${siteConfig.experienceYears} års praktisk erfaring i Stor-Oslo, bygårder og borettslag.`;
+const pageDescription = `Møt ${siteConfig.owner}, erfaren håndverker med over ${siteConfig.experienceYears} års praktisk erfaring fra oppussing og eiendomsdrift i Stor-Oslo, bygårder og borettslag.`;
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
@@ -28,7 +28,7 @@ const pageDescription = `Møt ${siteConfig.owner}, håndverker og daglig leder m
           <div class="craftsman-image-wrapper">
             <img
               src={path('/images/waldemar.jpg')}
-              alt={`${siteConfig.owner}, daglig leder og utførende fagmann`}
+              alt={`${siteConfig.owner}, din faste håndverker i ${siteConfig.companyName}`}
               class="craftsman-photo"
               width="600"
               height="700"
@@ -36,7 +36,7 @@ const pageDescription = `Møt ${siteConfig.owner}, håndverker og daglig leder m
             />
           </div>
           <div class="craftsman-badge">
-            <span class="badge-role">Utførende fagmann & daglig leder</span>
+            <span class="badge-role">Din faste håndverker</span>
             <strong class="badge-name">{siteConfig.owner}</strong>
             <span class="badge-exp">Over {siteConfig.experienceYears} års erfaring med drift og håndverk</span>
           </div>
