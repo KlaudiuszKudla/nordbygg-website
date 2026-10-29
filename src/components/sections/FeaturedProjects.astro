@@ -2,8 +2,18 @@
 import { projectsData } from '../../data/projects';
 import { path } from '../../utils/paths';
 
-// Feature the top 4 projects from the central projects dataset (2x2 balanced grid)
-const featuredProjects = projectsData.slice(0, 4);
+// Feature 4 balanced projects for the 2x2 home grid:
+// Eiendomsdrift, Stue/Kjøkken, Bad, and Husmaling
+const featuredSlugs = [
+  'langsiktig-eiendomsdrift-frogner-bygard',
+  'totalrenovering-stue-apen-kjokkenlosning',
+  'bad-marmor-sorte-detaljer',
+  'rodt-trehus-fasademaling',
+];
+
+const featuredProjects = featuredSlugs
+  .map((slug) => projectsData.find((p) => p.slug === slug))
+  .filter((p): p is (typeof projectsData)[0] => Boolean(p));
 ---
 
 <section class="projects-section section-padding">

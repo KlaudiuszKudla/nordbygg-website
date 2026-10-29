@@ -206,6 +206,50 @@ export const projectsData: ProjectCaseStudy[] = [
     ]
   },
   {
+    id: 'rodt-trehus-fasademaling',
+    slug: 'rodt-trehus-fasademaling',
+    href: path('/prosjekter/rodt-trehus-fasademaling/'),
+    title: 'Fasademaling og fornyelse av klassisk trehus',
+    neighborhood: 'Oslo',
+    buildingType: 'Klassisk enebolig i tre med glassveranda',
+    mainImage: path('/images/rodt-trehus-fasademaling-stillas.jpg'),
+    gallery: [
+      {
+        src: path('/images/rodt-trehus-fasademaling-stillas.jpg'),
+        alt: 'Maling av fasade med stillas på rødt trehus',
+        caption: 'Under arbeid: Sertifisert fasadestillas, grundig skraping, grunning og påføring av to fyldige strøk Jotun Drygolin Nordic Extreme.',
+        phase: 'Under arbeid'
+      },
+      {
+        src: path('/images/rodt-trehus-glassveranda.jpg'),
+        alt: 'Ferdigstilt glassveranda med smårutete vinduer og nymalt fasade',
+        caption: 'Ferdigstilt detalj: Glassveranda og inngangsparti med presisjonsmalte hvite vindusrammer og dyp rød kontrastvegg.',
+        phase: 'Ferdigstilt'
+      }
+    ],
+    serviceSlugs: ['utvendig-maling-oslo'],
+    tags: ['Husmaling', 'Trehus', 'Glassveranda', 'Drygolin', 'Stillas', 'Oslo'],
+    excerpt: 'Komplett utvendig fornyelse av staselig trehus med glassveranda – grundig forarbeid, stillasrigging og to strøk tradisjonsrik rød kledningsmaling med hvite detaljer.',
+    challenge: 'Trekledningen bar preg av værslitasje, soltørke og flassing på sør- og vestveggene. Den detaljrike glassverandaen med mange småruter i vinduene krevde ekstrem nøyaktighet, skraping for hånd og spesialpensler for å unngå malingssøl på glassflatene.',
+    solution: 'Vi monterte komplett fasadestillas rundt hele boligen, utførte grundig kraftvask med soppdreper, skrapte bort all løs maling ned til bærekraftig treverk og impregnerte bart tre med visirgrunning. Deretter påførte vi to fyldige strøk Jotun Drygolin Nordic Extreme i dyp rød farge, mens vinduer, gesimser og glassveranda ble malt i silkematt hvit for maksimal kontrast og holdbarhet.',
+    scopeList: [
+      'Montering og sertifisering av godkjent fasadestillas',
+      'Fasadevask med sopp- og algedreper og påfølgende tørking',
+      'Mekanisk skraping av all flakende og løs maling',
+      'Pussing av overganger og grunning av endeved og bart treverk',
+      'Presisjonsmaling av glassveranda med smårutede vinduer',
+      'To strøk med premium Jotun Drygolin kledningsmaling',
+      'Maling av grunnmur, takskjegg og vindskier',
+      'Demontering av stillas, opprydding og felles sluttbefaring'
+    ],
+    materialsUsed: [
+      'Jotun Drygolin Nordic Extreme i tradisjonell rød farge',
+      'Jotun Drygolin Vindu og Dør i klassisk hvit',
+      'Jotun Visir Oljegrunning Pigmentert',
+      'Jotun Kraftvask og Sopp- og Algedreper'
+    ]
+  },
+  {
     id: 'fornyelse-av-soverom-parkett-dorer',
     slug: 'fornyelse-av-soverom-parkett-dorer',
     href: path('/prosjekter/fornyelse-av-soverom-parkett-dorer/'),
@@ -260,50 +304,6 @@ export const projectsData: ProjectCaseStudy[] = [
       'Karmsett med integrerte tettelister',
       'Hoppe dørvridere i børstet rustfritt stål',
       'Profilerte gerikter og fotlister'
-    ]
-  },
-  {
-    id: 'rodt-trehus-fasademaling',
-    slug: 'rodt-trehus-fasademaling',
-    href: path('/prosjekter/rodt-trehus-fasademaling/'),
-    title: 'Fasademaling og fornyelse av klassisk trehus',
-    neighborhood: 'Oslo',
-    buildingType: 'Klassisk enebolig i tre med glassveranda',
-    mainImage: path('/images/rodt-trehus-fasademaling-stillas.jpg'),
-    gallery: [
-      {
-        src: path('/images/rodt-trehus-fasademaling-stillas.jpg'),
-        alt: 'Maling av fasade med stillas på rødt trehus',
-        caption: 'Under arbeid: Sertifisert fasadestillas, grundig skraping, grunning og påføring av to fyldige strøk Jotun Drygolin Nordic Extreme.',
-        phase: 'Under arbeid'
-      },
-      {
-        src: path('/images/rodt-trehus-glassveranda.jpg'),
-        alt: 'Ferdigstilt glassveranda med smårutete vinduer og nymalt fasade',
-        caption: 'Ferdigstilt detalj: Oszklona weranda i inngangsparti med presisjonsmalte hvite vindusrammer og dyp rød kontrastvegg.',
-        phase: 'Ferdigstilt'
-      }
-    ],
-    serviceSlugs: ['utvendig-maling-oslo'],
-    tags: ['Husmaling', 'Trehus', 'Glassveranda', 'Drygolin', 'Stillas', 'Holmenkollen'],
-    excerpt: 'Komplett utvendig fornyelse av staselig trehus med glassveranda – grundig forarbeid, stillasrigging og to strøk tradisjonsrik rød kledningsmaling med hvite detaljer.',
-    challenge: 'Trekledningen bar preg av værslitasje, soltørke og flassing på sør- og vestveggene. Den detaljrike glassverandaen med mange småruter i vinduene krevde ekstrem nøyaktighet, skraping for hånd og spesialpensler for å unngå malingssøl på glassflatene.',
-    solution: 'Vi monterte komplett fasadestillas rundt hele boligen, utførte grundig kraftvask med soppdreper, skrapte bort all løs maling ned til bærekraftig treverk og impregnerte bart tre med visirgrunning. Deretter påførte vi to fyldige strøk Jotun Drygolin Nordic Extreme i dyp rød farge, mens vinduer, gesimser og glassveranda ble malt i silkematt hvit for maksimal kontrast og holdbarhet.',
-    scopeList: [
-      'Montering og sertifisering av godkjent fasadestillas',
-      'Fasadevask med sopp- og algedreper og påfølgende tørking',
-      'Mekanisk skraping av all flakende og løs maling',
-      'Pussing av overganger og grunning av endeved og bart treverk',
-      'Presisjonsmaling av glassveranda med smårutede vinduer',
-      'To strøk med premium Jotun Drygolin kledningsmaling',
-      'Maling av grunnmur, takskjegg og vindskier',
-      'Demontering av stillas, opprydding og felles sluttbefaring'
-    ],
-    materialsUsed: [
-      'Jotun Drygolin Nordic Extreme i tradisjonell rød farge',
-      'Jotun Drygolin Vindu og Dør i klassisk hvit',
-      'Jotun Visir Oljegrunning Pigmentert',
-      'Jotun Kraftvask og Sopp- og Algedreper'
     ]
   },
   {
