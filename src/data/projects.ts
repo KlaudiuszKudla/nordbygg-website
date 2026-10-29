@@ -31,7 +31,7 @@ export const projectsData: ProjectCaseStudy[] = [
     slug: 'langsiktig-eiendomsdrift-frogner-bygard',
     href: path('/prosjekter/langsiktig-eiendomsdrift-frogner-bygard/'),
     title: 'Langsiktig eiendomsdrift og oppgradering av klassisk bygård',
-    neighborhood: 'Frogner / Majorstuen, Oslo',
+    neighborhood: 'Frogner, Oslo',
     buildingType: 'Klassisk bygård fra 1890-tallet med næringseiendom og leiligheter',
     mainImage: path('/images/bygard-fasade-osteklokken.jpg'),
     gallery: [
@@ -87,7 +87,7 @@ export const projectsData: ProjectCaseStudy[] = [
     slug: 'totalrenovering-stue-apen-kjokkenlosning',
     href: path('/prosjekter/totalrenovering-stue-apen-kjokkenlosning/'),
     title: 'Totalrenovering av stue og åpen kjøkkenløsning',
-    neighborhood: 'Majorstuen / Sentrum, Oslo',
+    neighborhood: 'Oslo',
     buildingType: 'Byleilighet med åpen planløsning',
     mainImage: path('/images/stue-kjokken-totalrenovering-oversikt.jpg'),
     gallery: [
@@ -147,7 +147,7 @@ export const projectsData: ProjectCaseStudy[] = [
     slug: 'bad-marmor-sorte-detaljer',
     href: path('/prosjekter/bad-marmor-sorte-detaljer/'),
     title: 'Totalrenovering av bad med marmorfliser og sorte detaljer',
-    neighborhood: 'Majorstuen / Frogner, Oslo',
+    neighborhood: 'Oslo',
     buildingType: 'Klassisk bygårdsleilighet',
     mainImage: path('/images/bad-inngang-terskel-oversikt.jpg'),
     gallery: [
@@ -210,7 +210,7 @@ export const projectsData: ProjectCaseStudy[] = [
     slug: 'fornyelse-av-soverom-parkett-dorer',
     href: path('/prosjekter/fornyelse-av-soverom-parkett-dorer/'),
     title: 'Fornyelse av soverom – helsparkling, fargesetting, parkett og nye innerdører',
-    neighborhood: 'Majorstuen / Frogner, Oslo',
+    neighborhood: 'Oslo',
     buildingType: 'Byleilighet',
     mainImage: path('/images/soverom-hovedrom-nude-vegg.jpg'),
     gallery: [
@@ -267,7 +267,7 @@ export const projectsData: ProjectCaseStudy[] = [
     slug: 'rodt-trehus-fasademaling',
     href: path('/prosjekter/rodt-trehus-fasademaling/'),
     title: 'Fasademaling og fornyelse av klassisk trehus',
-    neighborhood: 'Holmenkollen / Vestre Aker, Oslo',
+    neighborhood: 'Oslo',
     buildingType: 'Klassisk enebolig i tre med glassveranda',
     mainImage: path('/images/rodt-trehus-fasademaling-stillas.jpg'),
     gallery: [
@@ -311,7 +311,7 @@ export const projectsData: ProjectCaseStudy[] = [
     slug: 'drenering-enebolig',
     href: path('/prosjekter/drenering-enebolig/'),
     title: 'Komplett drenering og fuktsikring av grunnmur',
-    neighborhood: 'Nordstrand, Oslo',
+    neighborhood: 'Oslo',
     buildingType: 'Enebolig med sokkeletasje',
     mainImage: path('/images/drenering-grunnmur.jpg'),
     gallery: [
@@ -362,7 +362,7 @@ export const projectsData: ProjectCaseStudy[] = [
     slug: 'treterrasse-strandlinje',
     href: path('/prosjekter/treterrasse-strandlinje/'),
     title: 'Eksklusiv treterrasse og bryggeplatting ved sjøen',
-    neighborhood: 'Bekkelaget / Bunnefjorden, Oslo',
+    neighborhood: 'Oslo',
     buildingType: 'Fritidseiendom / bolig ved sjøen',
     mainImage: path('/images/treterrasse-brygge-fjord.jpg'),
     serviceSlugs: ['montering-oslo', 'vaktmester-oslo'],
