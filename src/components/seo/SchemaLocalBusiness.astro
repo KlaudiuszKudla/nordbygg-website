@@ -26,7 +26,7 @@ const schema = {
   },
   areaServed: siteConfig.location.serviceAreas.map((area) => ({
     '@type': 'Place',
-    name: `${area}, Oslo/Viken`,
+    name: area,
   })),
   openingHours: 'Mo-Fr 07:00-17:00',
   hasOfferCatalog: {

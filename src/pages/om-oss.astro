@@ -4,8 +4,8 @@ import { siteConfig } from '../data/siteConfig';
 import { path } from '../utils/paths';
 import DirectContactBanner from '../components/conversion/DirectContactBanner.astro';
 
-const pageTitle = `Om oss | ${siteConfig.companyName} – Håndverker i Oslo`;
-const pageDescription = `Møt ${siteConfig.owner}, håndverker og daglig leder i ${siteConfig.companyName} med ${siteConfig.experienceYears} års praktisk erfaring i Oslo-boliger, bygårder og borettslag.`;
+const pageTitle = `Om oss | ${siteConfig.companyName} – Håndverker & Eiendomsdrift`;
+const pageDescription = `Møt ${siteConfig.owner}, håndverker og daglig leder med ${siteConfig.experienceYears} års praktisk erfaring i Stor-Oslo, bygårder og borettslag.`;
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
@@ -28,7 +28,7 @@ const pageDescription = `Møt ${siteConfig.owner}, håndverker og daglig leder i
           <div class="craftsman-image-wrapper">
             <img
               src={path('/images/waldemar.jpg')}
-              alt={`${siteConfig.owner}, daglig leder og utførende fagmann i ${siteConfig.companyName}`}
+              alt={`${siteConfig.owner}, daglig leder og utførende fagmann`}
               class="craftsman-photo"
               width="600"
               height="700"
@@ -226,10 +226,10 @@ const pageDescription = `Møt ${siteConfig.owner}, håndverker og daglig leder i
 
       <div class="trust-cards-grid">
         <div class="trust-card">
-          <div class="trust-icon" aria-hidden="true">💳</div>
-          <h3 class="trust-card-title">0 kr i forskudd</h3>
+          <div class="trust-icon" aria-hidden="true">📋</div>
+          <h3 class="trust-card-title">Alltid gratis befaring</h3>
           <p class="trust-card-desc">
-            Du betaler ingenting på forskudd. Vi fakturerer først etter at arbeidet er fullført og du har godkjent resultatet.
+            Vi kommer gjerne på en uforpliktende befaring hjemme hos deg eller til eiendommen for å vurdere arbeidet og gi gode råd før oppstart.
           </p>
         </div>
 

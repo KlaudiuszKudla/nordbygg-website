@@ -5,8 +5,8 @@ import { siteConfig } from '../data/siteConfig';
 import { buildSmartMailto } from '../utils/mailtoBuilder';
 import { path } from '../utils/paths';
 
-const pageTitle = `Kontakt ${siteConfig.companyName} | Gratis befaring i Oslo`;
-const pageDescription = `Ta direkte kontakt med ${siteConfig.owner} på telefon ${siteConfig.phoneDisplay} eller e-post for en uforpliktende prat og gratis befaring i Oslo og omegn.`;
+const pageTitle = `Kontakt ${siteConfig.companyName} | Gratis befaring i Stor-Oslo`;
+const pageDescription = `Ta direkte kontakt med ${siteConfig.owner} på telefon ${siteConfig.phoneDisplay} eller e-post for en uforpliktende prat og gratis befaring i Stor-Oslo og omegn.`;
 const defaultMailto = buildSmartMailto();
 ---
 
@@ -41,7 +41,7 @@ const defaultMailto = buildSmartMailto();
           <div class="card-icon" aria-hidden="true">📞</div>
           <h2 class="card-title">Ring direkte</h2>
           <p class="card-desc">
-            For raskest avklaring eller akutt spørsmål om befaring i Oslo og Bærum.
+            For raskest avklaring eller spørsmål om gratis befaring i Stor-Oslo og omegn.
           </p>
           <div class="card-action">
             <a href={`tel:${siteConfig.phoneHref}`} class="btn-primary tabular-nums">
@@ -176,8 +176,8 @@ const defaultMailto = buildSmartMailto();
             <strong class="f-val">{siteConfig.location.street}, {siteConfig.location.postalCode} {siteConfig.location.city}</strong>
           </li>
           <li>
-            <span class="f-label">Betalingsbetingelser:</span>
-            <strong class="f-val">0 kr i forskudd – betaling først etter fullført og godkjent arbeid</strong>
+            <span class="f-label">Befaring:</span>
+            <strong class="f-val">Alltid gratis og uforpliktende</strong>
           </li>
           <li>
             <span class="f-label">Prisavtale:</span>

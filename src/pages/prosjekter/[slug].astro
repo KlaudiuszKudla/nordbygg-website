@@ -30,8 +30,8 @@ const mailtoHref = buildSmartMailto({
 ---
 
 <BaseLayout
-  title={`${project.title} | Prosjekt i Oslo | ${siteConfig.companyName}`}
-  description={`${project.excerpt} Utført av ${siteConfig.companyName} i ${project.neighborhood}.`}
+  title={`${project.title} | ${siteConfig.companyName}`}
+  description={`${project.excerpt} Utført av ${siteConfig.companyName} (${project.neighborhood}).`}
 >
   <!-- Breadcrumb Navigation -->
   <nav class="breadcrumb-nav" aria-label="Brødsmulesti">
@@ -69,11 +69,11 @@ const mailtoHref = buildSmartMailto({
           </div>
           <div class="meta-item">
             <span class="meta-label">Utført av</span>
-            <strong class="meta-val">{siteConfig.owner} ({siteConfig.companyName})</strong>
+            <strong class="meta-val">{siteConfig.owner}</strong>
           </div>
           <div class="meta-item">
-            <span class="meta-label">Betaling</span>
-            <strong class="meta-val">Ingen forskudd – betal etter utført arbeid</strong>
+            <span class="meta-label">Befaring</span>
+            <strong class="meta-val">Alltid gratis og uforpliktende</strong>
           </div>
         </div>
 
@@ -218,8 +218,8 @@ const mailtoHref = buildSmartMailto({
               <span class="fact-val">Direkte av {siteConfig.owner}</span>
             </li>
             <li>
-              <span class="fact-label">Betaling:</span>
-              <span class="fact-val">Først ved godkjent resultat</span>
+              <span class="fact-label">Prisavtale:</span>
+              <span class="fact-val">Tydelig skriftlig tilbud</span>
             </li>
             <li>
               <span class="fact-label">Befaring:</span>

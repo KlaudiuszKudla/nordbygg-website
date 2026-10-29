@@ -38,13 +38,13 @@ export interface ServiceItem {
 }
 
 export const siteConfig = {
-  companyName: 'Satisfaction',
-  legalName: 'Satisfaction Waldemar Kudla ENK',
+  companyName: 'Waldemar Kudla',
+  legalName: 'Waldemar Kudla',
   owner: 'Waldemar Kudla',
   orgNr: '999 999 999 MVA',
-  phoneDisplay: '+47 999 99 999',
-  phoneHref: '+4799999999',
-  email: 'kontakt@satisfaction.no',
+  phoneDisplay: '+47 976 73 411',
+  phoneHref: '+4797673411',
+  email: 'waldemarkudla@gmail.com',
   siteUrl: 'https://klaudiuszkudla.github.io/nordbygg-website',
   location: {
     street: 'Kirkeveien 64',
@@ -52,16 +52,19 @@ export const siteConfig = {
     city: 'Oslo',
     country: 'NO',
     serviceAreas: [
-      'Frogner',
-      'Majorstuen',
-      'St. Hanshaugen',
-      'Grünerløkka',
-      'Sagene',
-      'Nordstrand',
-      'Ullern',
-      'Vestre Aker',
+      'Oslo',
       'Bærum',
       'Asker',
+      'Lillestrøm',
+      'Ski',
+      'Ås',
+      'Frogn',
+      'Oppegård',
+      'Enebakk',
+      'Lier',
+      'Drammen',
+      'Moss',
+      'Askim',
     ],
   },
   workingHours: 'Man–Fre: 07:00 – 17:00',
@@ -177,7 +180,7 @@ export const siteConfig = {
       image: path('/images/bad.jpg'),
       shortDesc: 'Totalrenovering av bad og våtrom i Oslo – riving, oppbygging med vanntett membran, avretting med fall mot sluk og presis flislegging.',
       heroIntro: 'Fra eldre bygårdsbad til moderne og funksjonelle baderom. Waldemar Kudla utfører arbeidet med stor nøyaktighet og koordinerer fremdriften slik at resultatet blir pent, solid og holdbart.',
-      highlights: ['Riving & grundig forarbeid', 'Støp med fall til sluk', 'Membran & presis flislegging', 'Ingen forskuddsbetaling'],
+      highlights: ['Riving & grundig forarbeid', 'Støp med fall til sluk', 'Membran & presis flislegging', 'Skriftlig tilbud & fastpris'],
       scopeOfWork: [
         {
           title: 'Skånsom riving og avfallshåndtering',
@@ -256,8 +259,8 @@ export const siteConfig = {
       bygardNote: 'Vi har omfattende erfaring med bad i eldre Oslo-bygårder med trebjelkelag, etasjeskillere og felles soil- og avløpsstammer.',
       faqs: [
         {
-          question: 'Må jeg betale noe på forskudd?',
-          answer: 'Nei, for din trygghet betaler du ingenting på forskudd. Vi fakturerer først etter at arbeidet er ferdigstilt og vi har gått gjennom resultatet sammen på sluttbefaringen.'
+          question: 'Hvordan foregår befaring og pristilbud?',
+          answer: 'Vi kommer på en gratis og uforpliktende befaring der vi ser på badet og lytter til dine ønsker. Deretter mottar du et detaljert, skriftlig tilbud med avtalt pris før oppstart.'
         },
         {
           question: 'Hvem har ansvaret for koordinering av rørlegger og elektriker?',
